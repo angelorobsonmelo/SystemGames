@@ -95,7 +95,7 @@
 
 		$scope.cancel = function(){
 
-			$scope.modalInstance.cancel();
+			$scope.modalInstance.close();
 
 		};
 		
