@@ -14764,7 +14764,7 @@ a.thumbnail.active {
 }
 
 .modal .modal-header {
-  padding: 23px 26px;
+  padding: 10px 26px;
   background-color: #2196f3;
   color: #fff;
   margin-bottom: 1%;
@@ -15392,4 +15392,20 @@ a.thumbnail.active {
 
 .chosen-container .chosen-container-single .chosen-with-drop .chosen-container-active{
 	width: 100% !important;
+}
+
+.titulo-modal{
+	color: #fff;
+}
+
+.card-imput-esporte{
+	position: relative;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    margin-bottom: 5px;
+}
+
+.cor-imput-azul{
+	background-color: #DBEEFD !important;
+	height: 31px;
 }
