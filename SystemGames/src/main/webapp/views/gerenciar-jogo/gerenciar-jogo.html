@@ -25,12 +25,12 @@
                     </tr>
                     </thead>
                    <tbody>
-                    <tr ng-repeat="w in data">
+                    <tr ng-repeat="w in jogos">
                         <td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
-                            {{ w.id }}
+                            {{ $index + 1 }}
                         </td>
                         <td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">
-                            {{ w.name }}
+                            {{ w.jogo }}
                         </td>
                         <td data-title="'HORA'" filter="{ 'email': 'text' }">
                             {{ w.campeonatoVO.nome  }}
@@ -39,7 +39,7 @@
                             {{ w.dataJogoFormatadaBasica }}
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            1
+                            {{ w.campeonatoVO.nome }}
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
                             4

@@ -124,7 +124,7 @@
 												<tbody>
 													<tr>
 														<td>Taxas</td>
-														<td><input type="text" id="casa" name="casa" ng-required="true"
+														<td><input type="text" id="casa" name="casa" ng-required="true" 
 															class="form-control text-center bgm-red-taxa"
 															placeholder="0" ng-model="jogo.limiteApostaVO.casa" />
 															
@@ -495,8 +495,8 @@
 												</div>
 
 												<div class="checkbox m-b-10">
-													<label class="f-11"> <input type="checkbox" 
-														value="" ng-checked="true"
+													<label class="f-11"> <input type="checkbox"  ng-true-value="true" ng-false-value="false"
+														 ng-checked="true"
 														ng-model="jogo.configuracaoJogoVO.finalizarAutomaticamente">
 														<i class="input-helper"></i> Finalizar Jogo
 														Automaticamente
@@ -506,7 +506,7 @@
 												</div>
 
 												<div class="checkbox m-b-10">
-													<label class="f-11"> <input type="checkbox" 
+													<label class="f-11"> <input type="checkbox"  ng-checked="false"  ng-true-value="true" ng-false-value="false"
 														value="" ng-model="jogo.configuracaoJogoVO.jogoFinalizado">
 														<i class="input-helper"></i> Jogo Finalizado
 													</label>

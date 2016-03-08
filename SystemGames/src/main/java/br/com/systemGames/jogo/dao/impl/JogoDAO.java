@@ -249,6 +249,9 @@ public class JogoDAO implements IJogoDAO {
 			jogoVO.setHoraInicialJogo(rs.getString("hora_inicial_jogo"));
 			jogoVO.setDataJogo(rs.getDate("data_jogo"));
 
+			esporteVO = jogoVO.getEsporteVO();
+			campeonatoVO = jogoVO.getCampeonatoVO();
+			
 			
 			jogoVO.setEsporteVO(new EsporteDAO().listarPorSequencial(esporteVO));
 			jogoVO.setCampeonatoVO(new CampeonatoDAO().listarPorSequencial(campeonatoVO));

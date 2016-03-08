@@ -19,24 +19,39 @@
 		$scope.salvar = function() {
 
 			console.log($scope.jogo);
-			
-			
-			GerenciarJogoFactory.salvar($scope.jogo);
-			
+
+			GerenciarJogoFactory.salvar($scope.jogo).then(function(resposta){
+
+
+				if(resposta == "OK"){
+
+
+					listartodos();
+					$scope.modalInstance.dismiss();
+					alert('Cadastrado com Sucesso!');
+				}
+
+
+			});
+		} 
+
+
+
+		listartodos();
+
+		function listartodos() { 
+
+			GerenciarJogoFactory.listarTodos().then(function(resposta) {
+
+				var jogosCopy = angular.copy(resposta);
+
+				$rootScope.jogos = jogosCopy;
+
+				console.log($scope.jogos);
+
+			});
+
 		}
-		
-		
-		
-		GerenciarJogoFactory.listarTodos().then(function(resposta) {
-
-			var jogosCopy = angular.copy(resposta);
-
-			$scope.jogos = jogosCopy;
-
-			console.log($scope.jogos);
-
-		})
-		
 
 		CampeonatoFactory.listarTodos().then(function(resposta) {
 
@@ -58,8 +73,8 @@
 			console.log($scope.esportes);
 
 		});
-		
-		
+
+
 		$scope.openModalPossoAjudarPrincipal = function () {
 
 			var modalScope = $rootScope.$new();
@@ -95,11 +110,11 @@
 
 		$scope.cancel = function(){
 
-			$scope.modalInstance.close();
+			$scope.modalInstance.dismiss();
 
 		};
-		
-		
+
+
 
 
 	}]);
