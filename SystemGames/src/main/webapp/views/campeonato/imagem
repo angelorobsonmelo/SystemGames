@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>
+Imagem
+</title>
+
+</head>
+
+<body>
+<!-- 
+Ctrl + S = salvar, 
+Ctrl + C = copiar, 
+Ctrl + X = recortar,
+Ctrl + V = colar,
+Ctrl + Z = desfazer, 
+Ctrl + Y = refazer ,
+Ctrl + N = novo.
+Ctrl + O = abrir,
+Ctrl + ALT + S = salvar como
+-->
+
+
+
+<img  width="500px"  height="500px" alt="imagem da paisagem" border="50px" vspace="50px" hspace="500px" src="C:\Users\AngeloRobson\Pictures\Chuteira\paisagem-tropical-wallpaper.jpg" /> <!-- Tag img serve para definimos a imagem e o atributo src serve para dizermos onde está localizada a imagem -->
+
+
+<!-- O atributo width define a largura da imagem e o valor desse a tributo pode ser definido em pixels -->
+
+<!-- O atributo height(altura) define a altura da imagem e o valor desse a tributo pode ser definido em pixels -->
+
+<!-- O atributo align(alinhamento) define a posição da imagem e este atributo tem 3 valores que são: center(centro), right(direita), left(esquerda); lembrando que só não funciona o valor center -->
+
+<!-- O atributo alt mostra um texto quando a imagem não é encontrada. -->
+
+<!-- O atributo border(borda) coloca uma borda ao redor da imagem e o valor deste atributo é definido em pixels -->
+
+<!-- o atributo vspace servi para especificar o espaço que deve ser deixado acima e abaixo da imagem e o valor é definido em pixels -->
+
+<!-- o tributo hspace servi para especifica o espaço que deve ser deixado nas laterais da imagem -->
+
+</body>
+
+</html>
