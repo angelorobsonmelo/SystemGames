@@ -27,7 +27,7 @@
 
 
 					listartodos();
-					$scope.modalInstance.dismiss();
+					$scope.jogo = '';
 					alert('Cadastrado com Sucesso!');
 				}
 
