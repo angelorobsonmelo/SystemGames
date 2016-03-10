@@ -28,7 +28,9 @@
 
 		$scope.cancel = function(){
 
-			$scope.modalInstance.cancel();
+
+			$scope.modalInstance.close();
+			listarUsuariosCambistas();
 
 		};
 
@@ -41,7 +43,7 @@
 
 					alert("salvo com sucesso!");
 					$scope.usuario = '';
-					/* carregaruUsuarios();*/
+					listarUsuariosCambistas();
 				}
 
 			});

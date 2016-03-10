@@ -48,7 +48,7 @@
       <file leaf-file-name="modal-gerenciar-cambista.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/modals/modal-gerenciar-cambista.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.384615">
+            <state vertical-scroll-proportion="32.807693">
               <caret line="146" column="56" selection-start-line="146" selection-start-column="56" selection-end-line="146" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#div#12;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
@@ -60,17 +60,17 @@
       <file leaf-file-name="gerenciar-cambista.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/gerenciar-cambista.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
+            <state vertical-scroll-proportion="-7.1538463">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.137931">
+            <state vertical-scroll-proportion="0.42522523">
               <caret line="258" column="32" selection-start-line="258" selection-start-column="32" selection-end-line="258" selection-end-column="32" />
               <folding />
             </state>
@@ -80,8 +80,8 @@
       <file leaf-file-name="modal-gerenciar-jogo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/modals/modal-gerenciar-jogo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.730769">
-              <caret line="45" column="50" selection-start-line="36" selection-start-column="44" selection-end-line="45" selection-end-column="50" />
+            <state vertical-scroll-proportion="-40.423077">
+              <caret line="393" column="42" selection-start-line="393" selection-start-column="42" selection-end-line="393" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -91,17 +91,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GerenciarJogoCtrl.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GerenciarJogoCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/js/GerenciarJogoCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46575344">
-              <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="99" column="10" selection-start-line="95" selection-start-column="8" selection-end-line="99" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -111,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaFactory.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="44" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="44" />
+              <caret line="79" column="44" selection-start-line="79" selection-start-column="44" selection-end-line="79" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -122,11 +122,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaCtrl.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaFactory.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/modals/modal-gerenciar-cambista.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/gerenciar-cambista.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/js/GerenciarJogoCtrl.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaCtrl.js" />
       </list>
     </option>
   </component>
@@ -363,6 +364,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -370,6 +372,9 @@
     </key>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c203dabd-f230-41a6-9979-89f12500ca40" name="Default" comment="" />
@@ -381,7 +386,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -401,6 +406,14 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -432,25 +445,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/js/GerenciarJogoCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="10" selection-start-line="95" selection-start-column="8" selection-end-line="99" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaFactory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="44" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="44" />
+          <caret line="79" column="44" selection-start-line="79" selection-start-column="44" selection-end-line="79" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/modals/modal-gerenciar-jogo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="45" column="50" selection-start-line="36" selection-start-column="44" selection-end-line="45" selection-end-column="50" />
+        <state vertical-scroll-proportion="-40.423077">
+          <caret line="393" column="42" selection-start-line="393" selection-start-column="42" selection-end-line="393" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/modals/modal-gerenciar-cambista.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.384615">
+        <state vertical-scroll-proportion="32.807693">
           <caret line="146" column="56" selection-start-line="146" selection-start-column="56" selection-end-line="146" selection-end-column="56" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#12;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#0;n#!!top" expanded="true" />
@@ -460,16 +481,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/gerenciar-cambista.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.137931">
-          <caret line="258" column="32" selection-start-line="258" selection-start-column="32" selection-end-line="258" selection-end-column="32" />
+        <state vertical-scroll-proportion="-7.1538463">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -477,15 +490,15 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-cambista/js/GerenciarCambistaCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/gerenciar-jogo/js/GerenciarJogoCtrl.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46575344">
-          <caret line="73" column="56" selection-start-line="73" selection-start-column="56" selection-end-line="73" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.42522523">
+          <caret line="258" column="32" selection-start-line="258" selection-start-column="32" selection-end-line="258" selection-end-column="32" />
           <folding />
         </state>
       </provider>
