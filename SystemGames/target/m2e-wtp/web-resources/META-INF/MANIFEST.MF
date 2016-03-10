@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Ademar
-Build-Jdk: 1.8.0_11
+Built-By: Hercules
+Build-Jdk: 1.8.0_72
 Created-By: Maven Integration for Eclipse
 

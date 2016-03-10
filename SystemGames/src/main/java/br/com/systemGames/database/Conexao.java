@@ -30,7 +30,7 @@ public class Conexao
         
         Properties props = new Properties();
         props.setProperty("user","postgres");
-        props.setProperty("password","admin");
+        props.setProperty("password","postgres");
         //props.setProperty("ssl","true");
         //props.setProperty("socketTimeout",int);         
        
