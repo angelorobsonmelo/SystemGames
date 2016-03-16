@@ -60,34 +60,13 @@
 		});
 		
 		
-		$scope.openModalPossoAjudarPrincipal = function () {
+
+		$scope.openModalInserirAposta = function () {
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-jogo.html',
-				controller: 'GerenciarJogosCtrl',
-				scope: modalScope
-			});
-
-		};
-
-		$scope.openModalGerenciarEsporte = function () {
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-esporte.html',
-				controller: 'GerenciarJogosCtrl',
-				scope: modalScope
-			});
-
-		};
-
-		$scope.openModalGerenciarCampeonato = function () {
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-campeonato.html',
-				controller: 'GerenciarJogosCtrl',
+				templateUrl: 'views/gerenciar-aposta/modals/modal-inserir-aposta.html',
+				controller: 'GerenciarApostaCtrl',
 				scope: modalScope
 			});
 

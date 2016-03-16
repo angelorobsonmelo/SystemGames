@@ -19,27 +19,27 @@
                         <th class="label-th" style="width: 20%; text-align: center;">USUARIO</th>
                         <th class="label-th" style="width: 12%; text-align: center;">CONTATO</th>
                         <th class="label-th" style="width: 8%; text-align: center;">CIDADE</th>
-                        <th class="label-th" style="width: 5%; text-align: center;">DETALHES</th>
-                        <th class="label-th" style="width: 5%; text-align: center;">Editar</th>
-                        <th class="label-th" style="width: 5%; text-align: center;">Excluir</th>
+                        <th class="label-th" style="width: 4%; text-align: center;">DETALHES</th>
+                        <th class="label-th" style="width: 4%; text-align: center;">Editar</th>
+                        <th class="label-th" style="width: 4%; text-align: center;">Excluir</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="cambista in cambistas">
+                    <tr>
                         <td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
-                            {{ cambista.sequencial }}
+                            1
                         </td>
-                        <td data-title="'NOME_CAMBISTA'" filter="{ 'name': 'text' }">
-                            {{ cambista.nomeUsuario }}
+                        <td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">
+                            José da Silva
                         </td>
-                        <td data-title="'USUARIO'" filter="{ 'name': 'text' }">
-                            {{ cambista.login }}
+                        <td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">
+                            Zé da Roda
                         </td>
-                        <td data-title="'CONTATO'" filter="{ 'email': 'text' }">
-                            {{ cambista.contato }}
+                        <td data-title="'HORA'" filter="{ 'email': 'text' }">
+                            99999-9999
                         </td>
-                        <td data-title="'CIDADE'" filter="{ 'username': 'text' }">
-                            {{ cambista.cidade }}
+                        <td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
+                            Maceió
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
                             <button class="btn bgm-orange btn-icon waves-effect waves-circle" popover-placement="top" popover-trigger="mouseenter" popover="Mais dados sobre Cambista" ng-click="detalhes(w)">

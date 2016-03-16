@@ -15409,3 +15409,7 @@ a.thumbnail.active {
 	background-color: #DBEEFD !important;
 	height: 31px;
 }
+
+.botao-cancel{
+	cursor: pointer;
+}

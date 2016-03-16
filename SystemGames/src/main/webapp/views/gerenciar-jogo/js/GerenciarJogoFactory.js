@@ -17,6 +17,9 @@
 			.success(function(data) {
 
 				retorno.resolve(data);
+
+
+
 			})
 			.error(function(data, status) {
 
@@ -31,21 +34,25 @@
 
 		function salvar(jogo) {
 
+			var retorno = $q.defer();
 
 			$http.post(urlRaiz + 'salvar', jogo)
 			.success(function(resposta) {
 
-				if(resposta == 'OK'){
 
-					alert("ok");
 
-				}
+				retorno.resolve(resposta);
+
+
 
 			})
-			.error(function(resposta) {
+			.error(function(resposta, status) {
 
-				console.log(resposta)
+				alert("Erro Status: " + status);
+				retorno.resolve(resposta);
 			})
+
+			return retorno.promise;
 
 		}
 

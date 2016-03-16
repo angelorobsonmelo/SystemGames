@@ -27,7 +27,7 @@
 
 
 					listartodos();
-					$scope.jogo = '';
+					$scope.modalInstance.dismiss();
 					alert('Cadastrado com Sucesso!');
 				}
 
@@ -102,6 +102,17 @@
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
 				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-campeonato.html',
+				controller: 'GerenciarJogosCtrl',
+				scope: modalScope
+			});
+
+		};
+		
+		$scope.openModalGerenciarResultadoJogo = function () {
+
+			var modalScope = $rootScope.$new();
+			modalScope.modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-resultado-jogo.html',
 				controller: 'GerenciarJogosCtrl',
 				scope: modalScope
 			});
