@@ -10,7 +10,7 @@
 					class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
 					popover-placement="top" popover-trigger="mouseenter"
 					popover="Inserir Novo Jogo"
-					ng-click="openModalPossoAjudarPrincipal()">
+					ng-click="openModalInserirJogo()">
 					<i class="zmdi zmdi-plus"></i>
 				</button>
 			</div>
@@ -74,7 +74,7 @@
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								<button class="btn bgm-teal btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
-									popover="Editar">
+									popover="Editar" ng-click="editarJogo(w)">
 									<i class="zmdi zmdi-edit"></i>
 								</button>
 							</td>

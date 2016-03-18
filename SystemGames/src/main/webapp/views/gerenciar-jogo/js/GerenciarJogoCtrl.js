@@ -75,7 +75,7 @@
 		});
 
 
-		$scope.openModalPossoAjudarPrincipal = function () {
+		$scope.openModalInserirJogo = function () {
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
@@ -118,6 +118,13 @@
 			});
 
 		};
+		
+		$scope.editarJogo = function(jogo){
+			
+			$scope.jogo = jogo;
+			console.log($scope.jogo);
+		}
+		
 
 		$scope.cancel = function(){
 
