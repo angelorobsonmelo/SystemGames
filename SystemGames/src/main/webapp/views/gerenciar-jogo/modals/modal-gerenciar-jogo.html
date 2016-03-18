@@ -40,7 +40,7 @@
 												<select class="form-control"  style="width: 80%" id="esporte" name="esporte"
 														ng-model="jogo.esporteVO.sequencial" required>
 													<option ng-repeat="item in esportes"
-															value="{{ item.sequencial }}" ng-bind="item.nome"></option>
+															value="{{ item.sequencial }}" ng-selected="jogo.esporteVO.sequencial == item.sequencial"  ng-bind="item.nome"></option>
 													<option value="" selected>Selecione...</option>
 												</select>
 												
@@ -55,7 +55,7 @@
 												<select class="form-control" name="campeonato" id="campeonato" style="width: 104%"
 														ng-model="jogo.campeonatoVO.sequencial" required>
 													<option ng-repeat="item in campeonatos"
-															value="{{ item.sequencial }}" ng-bind="item.nome"></option>
+															value="{{ item.sequencial }}" ng-selected="jogo.campeonatoVO.sequencial == item.sequencial" ng-bind="item.nome"></option>
 													<option value="" selected>Selecione...</option>
 												</select>
 												
@@ -325,17 +325,17 @@
 													<span class="input-group-addon"></span>
 													<div class="fg-line">
 														
-														<button ng-disabled="myForm.$invalid"
+														<button ng-disabled="myForm.$invalid" ng-if="!jogo.sequencial"
 															class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
 															popover-placement="top" popover-trigger="mouseenter"
 															popover="Salvar Jogo" type="submit" >
 															<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
 														</button>
 														
-														<button
+														<button  ng-if="jogo.sequencial"
 															class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
 															popover-placement="top" popover-trigger="mouseenter"
-															popover="Alterar Jogo" type="button" ng-click="salvar()" >
+															popover="Alterar Jogo" type="submit"  >
 															<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
 														</button>
 														

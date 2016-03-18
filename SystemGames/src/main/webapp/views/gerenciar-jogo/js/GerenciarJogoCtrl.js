@@ -53,27 +53,36 @@
 
 		}
 
-		CampeonatoFactory.listarTodos().then(function(resposta) {
 
-			var capeonatosCopy = angular.copy(resposta);
+		 listarCampeonatos();
 
-			$scope.campeonatos = capeonatosCopy;
+		function listarCampeonatos(){
 
-			console.log($scope.campeonatos);
+			CampeonatoFactory.listarTodos().then(function(resposta) {
 
-		});
+				var capeonatosCopy = angular.copy(resposta);
 
+				$scope.campeonatos = capeonatosCopy;
 
-		EsporteFactory.listarTodos().then(function(resposta) {
+				console.log($scope.campeonatos);
 
-			var esportesCopy = angular.copy(resposta);
+			});
+		}
 
-			$scope.esportes = esportesCopy;
+		listarEsportes();
+		
+		function listarEsportes(){
 
-			console.log($scope.esportes);
+			EsporteFactory.listarTodos().then(function(resposta) {
 
-		});
+				var esportesCopy = angular.copy(resposta);
 
+				$scope.esportes = esportesCopy;
+
+				console.log($scope.esportes);
+
+			});
+		}
 
 		$scope.openModalInserirJogo = function () {
 
@@ -107,7 +116,7 @@
 			});
 
 		};
-		
+
 		$scope.openModalGerenciarResultadoJogo = function () {
 
 			var modalScope = $rootScope.$new();
@@ -118,13 +127,92 @@
 			});
 
 		};
-		
+
 		$scope.editarJogo = function(jogo){
+
+			var modalScope = $rootScope.$new();
+			modalScope.modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-jogo.html',
+				controller: AtualizarJogo,
+				resolve: {
+					jogo: function () {
+						return jogo;
+					}
+				}
+			});
+
+		}
+
+		function AtualizarJogo($scope, $modalInstance, jogo, EsporteFactory, CampeonatoFactory) {
+
 			
 			$scope.jogo = jogo;
-			console.log($scope.jogo);
-		}
-		
+			
+			
+			$scope.salvar = function() {
+
+				console.log();
+
+				GerenciarJogoFactory.salvar($scope.jogo).then(function(resposta){
+
+
+					if(resposta == "OK"){
+
+
+						listartodos();
+						$scope.modalInstance.dismiss();
+						alert('Cadastrado com Sucesso!');
+					}
+
+
+				});
+			} 
+			
+			
+			function listartodos() { 
+
+				GerenciarJogoFactory.listarTodos().then(function(resposta) {
+
+					var jogosCopy = angular.copy(resposta);
+
+					$rootScope.jogos = jogosCopy;
+
+					console.log($scope.jogos);
+
+				});
+
+			}
+			
+			
+
+			EsporteFactory.listarTodos().then(function(resposta) {
+
+				var esportesCopy = angular.copy(resposta);
+
+				$scope.esportes = esportesCopy;
+
+				console.log($scope.esportes);
+
+			});
+			
+			
+			CampeonatoFactory.listarTodos().then(function(resposta) {
+
+				var capeonatosCopy = angular.copy(resposta);
+
+				$scope.campeonatos = capeonatosCopy;
+
+				console.log($scope.campeonatos);
+
+			});
+
+
+			$scope.close = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		};
+
+
 
 		$scope.cancel = function(){
 
