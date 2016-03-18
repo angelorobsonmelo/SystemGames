@@ -42,6 +42,8 @@
 		var items = {};
 		items.jogos = [];
 		$scope.items = items;
+		$scope.valorTtotal = 0;
+		$scope.valorAposta = 0;
 
 		$scope.deleteItem = function (index) {
 
@@ -49,6 +51,7 @@
 
 			items.jogos.splice(index, 1);
 			var teste = 1;
+			
 			angular.forEach($scope.items.jogos, function(item, index) {
 
 
@@ -60,7 +63,9 @@
 			console.log($scope.items.jogos);
 
 		};
+		
 		$scope.addItem = function (jogo,valor, tipo) {
+			if(jogo.jogo != jogo.jogo){
 			items.jogos.push({
 				id: $scope.items.jogos.length + 1,
 				jogo: jogo.jogo,
@@ -69,7 +74,9 @@
 				tipo: tipo
 
 			});
-
+			}else{
+				
+			}
 			var teste = 1;
 			angular.forEach($scope.items.jogos, function(item, index) {
 
