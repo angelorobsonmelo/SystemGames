@@ -44,7 +44,21 @@
 		$scope.items = items;
 
 		$scope.deleteItem = function (index) {
+
+			console.log(items.jogos[index]);
+
 			items.jogos.splice(index, 1);
+			var teste = 1;
+			angular.forEach($scope.items.jogos, function(item, index) {
+
+
+				teste *= item.aposta;
+				$scope.valorTtotal = teste;
+				console.log(teste);
+			});
+
+			console.log($scope.items.jogos);
+
 		};
 		$scope.addItem = function (jogo,valor, tipo) {
 			items.jogos.push({
