@@ -28,11 +28,33 @@
 
 
 		}
+		
+		
+		function salvar(esporte){
+
+			var retorno = $q.defer();
+
+			$http.post(urlRaiz + 'salvar', esporte)
+			.success(function(data) {
+
+				retorno.resolve(data);
+			})
+			.error(function(data, status) {
+
+				console.log(data);
+				console.log(status);
+			})
+
+			return retorno.promise;
+
+
+		}
 
 
 		return {
 
-			listarTodos: listarTodos
+			listarTodos: listarTodos,
+			salvar: salvar
 
 
 		}

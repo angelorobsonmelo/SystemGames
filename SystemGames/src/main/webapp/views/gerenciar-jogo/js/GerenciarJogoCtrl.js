@@ -99,8 +99,8 @@
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-esporte.html',
-				controller: 'GerenciarJogosCtrl',
+				templateUrl: 'views/esportes/modals/modal-gerenciar-esporte.html',
+				controller: 'EsportesCtrl',
 				scope: modalScope
 			});
 
@@ -110,8 +110,8 @@
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-campeonato.html',
-				controller: 'GerenciarJogosCtrl',
+				templateUrl: 'views/campeonato/modals/modal-gerenciar-campeonato.html',
+				controller: 'CampeonatoCtrl',
 				scope: modalScope
 			});
 
