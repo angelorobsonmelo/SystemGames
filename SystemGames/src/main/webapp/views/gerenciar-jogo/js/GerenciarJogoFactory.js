@@ -32,6 +32,7 @@
 
 		}
 
+
 		function salvar(jogo) {
 
 			var retorno = $q.defer();

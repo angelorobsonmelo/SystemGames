@@ -7,7 +7,7 @@
 
 	var app = angular.module('materialAdmin');
 
-	app.controller('GerenciarCambistaCtrl', ['$scope', '$rootScope', '$location', '$modal', function($scope, $rootScope, $location, $modal){
+	app.controller('GerenciarCambistaCtrl', ['$scope', '$rootScope', '$location', '$modal','gerenciarCambistaFactory', function($scope, $rootScope, $location, $modal,gerenciarCambistaFactory){
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
@@ -28,9 +28,56 @@
 
 		$scope.cancel = function(){
 
-			$scope.modalInstance.dismiss();
+
+			$scope.modalInstance.close();
+			listarUsuariosCambistas();
 
 		};
+
+		$scope.cadastrarCambista = function() {
+
+			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
+
+
+				if(data) {
+
+					alert("salvo com sucesso!");
+					$scope.usuario = '';
+					listarUsuariosCambistas();
+				}
+
+			});
+
+
+		};
+
+		$scope.cadastrarUsuario = function() {
+
+			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
+
+
+				if(data) {
+
+					alert("salvo com sucesso!");
+					$scope.usuario = '';
+					/* carregaruUsuarios();*/
+				}
+
+			})
+
+		};
+
+		listarUsuariosCambistas();
+		function listarUsuariosCambistas() {
+
+			gerenciarCambistaFactory.buscarUsuariosCambistas().then(function(dado) {
+
+				$scope.cambistas = dado;
+				console.log(dado);
+
+			})
+
+		}
 
 
 	}]);

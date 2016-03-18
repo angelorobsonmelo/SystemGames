@@ -6,13 +6,14 @@
 	'use strict';
 
 	var app = angular.module('materialAdmin');
-
-	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory){
+	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory) {
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
 
 		$scope.ToggleCampeonato = false;
+
+
 
 
 
@@ -24,9 +25,9 @@
 			GerenciarJogoFactory.salvar($scope.jogo);
 			
 		}
-		
-		
-		
+
+
+
 		GerenciarJogoFactory.listarTodos().then(function(resposta) {
 
 			var jogosCopy = angular.copy(resposta);
@@ -35,8 +36,31 @@
 
 			console.log($scope.jogos);
 
-		})
-		
+		});
+
+
+		var items = {};
+		items.jogos = [];
+		$scope.items = items;
+
+		$scope.deleteItem = function (index) {
+			items.jogos.splice(index, 1);
+		};
+		$scope.addItem = function (jogo, valor) {
+			items.jogos.push({
+				id: $scope.items.jogos.length + 1,
+				jogo: jogo.jogo,
+				dataJogo: jogo.dataJogoFormatadaBasica,
+				aposta: valor
+
+			});
+			console.log($scope.items.jogos);
+		};
+
+
+
+
+
 
 		CampeonatoFactory.listarTodos().then(function(resposta) {
 
