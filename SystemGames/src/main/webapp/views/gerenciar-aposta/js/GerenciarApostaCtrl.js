@@ -46,15 +46,31 @@
 		$scope.deleteItem = function (index) {
 			items.jogos.splice(index, 1);
 		};
-		$scope.addItem = function (jogo, valor) {
+		$scope.addItem = function (jogo,valor, tipo) {
 			items.jogos.push({
 				id: $scope.items.jogos.length + 1,
 				jogo: jogo.jogo,
 				dataJogo: jogo.dataJogoFormatadaBasica,
-				aposta: valor
+				aposta: valor,
+				tipo: tipo
 
 			});
+
+			var teste = 1;
+			angular.forEach($scope.items.jogos, function(item, index) {
+
+
+                  teste *= item.aposta;
+				$scope.valorTtotal = teste;
+				console.log(teste);
+			});
+
 			console.log($scope.items.jogos);
+		};
+
+		$scope.apostar = function(ta,bra){
+			var multi = ta * bra;
+			console.log(multi);
 		};
 
 

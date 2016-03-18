@@ -18,6 +18,7 @@
                         <th class="label-th" style="width: 12%; text-align: center;">CAMPEONATO</th>
                         <th class="label-th" style="width: 10%; text-align: center;">CASA</th>
                         <th class="label-th" style="width: 10%; text-align: center;">EMPATE</th>
+                        <th class="label-th" style="width: 10%; text-align: center;">FORA</th>
                         <th class="label-th" style="width: 10%; text-align: center;">GOL E MEIO</th>
                         <th class="label-th" style="width: 10%; text-align: center;">DUPLA CHANCE</th>
                         <th class="label-th" style="width: 10%; text-align: center;">AMBOS</th>
@@ -32,19 +33,22 @@
                             {{jogo.campeonatoVO.nome}}
                         </td>
                         <td data-title="'HORA'" filter="{ 'email': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,'Casa: '+jogo.limiteApostaVO.casa)">{{jogo.limiteApostaVO.casa}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.casa, 'Casa: ')">{{jogo.limiteApostaVO.casa}}</button>
                         </td>
                         <td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,'Empate: '+jogo.limiteApostaVO.empate)">{{jogo.limiteApostaVO.empate}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.empate,'Empate: ')">{{jogo.limiteApostaVO.empate}}</button>
+                        </td>
+                        <td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.fora,'Fora: ')">{{jogo.limiteApostaVO.fora}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,'Gol e Meio: '+jogo.limiteApostaVO.golEMeio)">{{jogo.limiteApostaVO.golEMeio}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.golEMeio,'Gol e Meio: ')">{{jogo.limiteApostaVO.golEMeio}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,'Dupla Chance: '+jogo.limiteApostaVO.duplaChance)">{{jogo.limiteApostaVO.duplaChance}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.duplaChance,'Dupla Chance: ')">{{jogo.limiteApostaVO.duplaChance}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                          	<button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,'Ambos: '+jogo.limiteApostaVO.ambos)">{{jogo.limiteApostaVO.ambos}}</button>
+                          	<button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.ambos,'Ambos: ')">{{jogo.limiteApostaVO.ambos}}</button>
                         </td>
                     </tr>
                     </tbody>
@@ -83,7 +87,7 @@
                             <div class="col-sm-12 m-b-5">
                                 <p class="f-12 c-black m-b-5">{{item.jogo}} </p>
                                 <p class="f-14 c-black m-b-5">{{item.dataJogo}}</p>
-                                <p class="f-14 c-black m-b-5" data-ng-model="item.apostaC">{{item.aposta}}</p>
+                                <p class="f-14 c-black m-b-5" data-ng-model="item.apostaC">{{item.tipo}}{{item.aposta}}</p>
                                 <a ng-click="deleteItem($index)" class="delete-item">x</a>
                             </div>
 
@@ -91,15 +95,17 @@
 
                             <div class="input-group m-b-20">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control c-red bgm-red-limite text-center" placeholder="Valor Apostado">
+                                    <input type="text" class="form-control c-red bgm-red-limite text-center" ng-model="valorAposta" placeholder="Valor Apostado">
                                 </div>
                             </div>
 
                             <div class="input-group">
                                 <div class="fg-line">
-                                    <input type="text" class="form-control c-red bgm-red-limite text-center" placeholder="Retorno Possível">
+                                    <p>{{valorTtotal * valorAposta}}</p>
                                 </div>
                             </div>
+
+                        <button type="button" ng-click="apostar(valorTtotal,valorAposta)">CONFIRMAR</button>
 
                             <!--<div class="col-sm-12 m-b-5">
                             <p class="f-14 c-black m-b-5">Voce escolher <strong>"Empate"</strong></p>
