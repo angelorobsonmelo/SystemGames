@@ -102,6 +102,14 @@ public class JogoBO implements IJogoBO {
 
 							jogoVO.setSequencial(jogoBO.retornarUltimoSequencial().getSequencial());
 
+							if(jogoVO.getConfiguracaoJogoVO().getJogoFinalizado() == null){
+
+								jogoVO.getConfiguracaoJogoVO().setJogoFinalizado(false);
+
+							}
+
+							jogoVO.getConfiguracaoJogoVO().setFinalizarAutomaticamente(true);
+
 
 							configuracaoJogoBO.salvar(jogoVO);
 
@@ -175,19 +183,19 @@ public class JogoBO implements IJogoBO {
 
 			Calendar dataAtual = new GregorianCalendar();
 			Calendar dataDoJogo = new GregorianCalendar();
-			
+
 			Date data = new Date(System.currentTimeMillis());  
 			SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy"); 
 
 			dataAtual.setTime(format.parse(formatarDate.format(data)));
-			
+
 
 
 			for (JogoVO jogoVO : retornoBanco) {
 
 				dataDoJogo.setTime(format.parse(jogoVO.getDataJogoFormatadaBasica()));
-				
-				
+
+
 				if (jogoVO.getResultadoJogoVO().getResultadoCasa() == 0 && jogoVO.getResultadoJogoVO().getResultadoFora() == 0 && dataDoJogo.getTimeInMillis() >= dataAtual.getTimeInMillis()) {
 
 					jogoVO.getResultadoJogoVO().setResultadoCasa(null);
