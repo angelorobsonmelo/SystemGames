@@ -23,33 +23,48 @@
 
 				if(resposta == "OK"){
 
+					swal("Aviso!", "Cadastrado com Sucesso.", "success");
 
 					listarEsportes();
-				
-					alert('Cadastrado com Sucesso!');
+					
+					$scope.esporte = "";
+
 				}
 
 
 			});
 		} 
-		
-		
+
+
 		$scope.remover = function(esporte) {
 
+			swal({   
+				title: "Deseja Realmente Remover?",   
+				text: "",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Sim",   
+				closeOnConfirm: false
+			}, function(){   
+				EsporteFactory.remover(esporte).then(function(resposta){
 
-			EsporteFactory.remover(esporte).then(function(resposta){
+
+					if(resposta == "OK"){
+
+						swal("Aviso!", "Removido com Sucesso.", "success");
+
+						listarEsportes();
+						
+						$scope.esporte = "";
+
+					}
 
 
-				if(resposta == "OK"){
-
-
-					listarEsportes();
-				
-					alert('Removido com Sucesso!');
-				}
-
-
+				});
 			});
+
+
 		} 
 
 

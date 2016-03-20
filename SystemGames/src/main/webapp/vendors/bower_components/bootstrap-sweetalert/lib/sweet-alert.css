@@ -354,6 +354,7 @@
   overflow: hidden;
   display: none;
   z-index: 2000;
+  box-shadow: 5px 5px 40px rgba(0, 0, 0, .5);
 }
 @media all and (max-width: 767px) {
   .sweet-alert {

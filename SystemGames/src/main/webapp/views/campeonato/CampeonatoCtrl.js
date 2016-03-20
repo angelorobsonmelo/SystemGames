@@ -26,8 +26,10 @@
 
 
 					listarCampeonatos();
-					
-					alert('Cadastrado com Sucesso!');
+
+					swal("Aviso!", "Cadastrado com Sucesso.", "success");
+
+					$scope.campeonato = "";
 				}
 
 
@@ -72,22 +74,35 @@
 
 		$scope.remover = function(campeonato) {
 
+			swal({   
+				title: "Deseja Realmente Remover?",   
+				text: "",   
+				type: "warning",   
+				showCancelButton: true,   
+				confirmButtonColor: "#DD6B55",   
+				confirmButtonText: "Sim",   
+				closeOnConfirm: false
+			}, function(){ 
 
-			CampeonatoFactory.remover(campeonato).then(function(resposta){
+				CampeonatoFactory.remover(campeonato).then(function(resposta){
 
 
-				if(resposta == "OK"){
+					if(resposta == "OK"){
 
-					alert('Removido com Sucesso!');
-					listarCampeonatos();
-					
-					
-				}
+						swal("Aviso!", "Removido com Sucesso.", "success");
+						
+						listarCampeonatos();
+						
+						$scope.campeonato = "";
 
+					}
+
+
+				});
 
 			});
 		} 
-		
+
 
 	}]);
 

@@ -7,7 +7,7 @@
 
 	var app = angular.module('materialAdmin');
 
-	app.controller('GerenciarJogosCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory){
+	app.controller('VisualizarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory){
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
@@ -28,14 +28,13 @@
 
 					listartodos();
 					$scope.modalInstance.dismiss();
-
-					swal("Aviso!", "Cadastrado com Sucesso.", "success");
-
+					alert('Cadastrado com Sucesso!');
 				}
 
 
 			});
 		} 
+
 
 
 		listartodos();
@@ -55,7 +54,7 @@
 		}
 
 
-		listarCampeonatos();
+		 listarCampeonatos();
 
 		function listarCampeonatos(){
 
@@ -71,7 +70,7 @@
 		}
 
 		listarEsportes();
-
+		
 		function listarEsportes(){
 
 			EsporteFactory.listarTodos().then(function(resposta) {
@@ -85,76 +84,24 @@
 			});
 		}
 
-		$scope.openModalInserirJogo = function () {
+		$scope.openModalVizulizarDadosAposta = function () {
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-jogo.html',
-				controller: 'GerenciarJogosCtrl',
+				templateUrl: 'views/relatorio-aposta/modals/modal-visualizar-dados-aposta.html',
+				controller: 'VisualizarApostaCtrl',
 				scope: modalScope
 			});
 
 		};
 
-		$scope.openModalGerenciarEsporte = function () {
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/esportes/modals/modal-gerenciar-esporte.html',
-				controller: 'EsportesCtrl',
-				scope: modalScope
-			});
-
-		};
-
-		$scope.openModalGerenciarCampeonato = function () {
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/campeonato/modals/modal-gerenciar-campeonato.html',
-				controller: 'CampeonatoCtrl',
-				scope: modalScope
-			});
-
-		};
-
-		$scope.openModalGerenciarResultadoJogo = function (jogo) {
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-resultado/modals/modal-gerenciar-resultado-jogo.html',
-				controller: 'GerenciarResultadoCtrl',
-				scope: modalScope,
-				resolve: {
-					jogo: function () {
-						return jogo;
-					}
-				}
-			});
-
-		};
-
-		$scope.editarJogo = function(jogo){
-
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-jogo.html',
-				controller: AtualizarJogo,
-				resolve: {
-					jogo: function () {
-						return jogo;
-					}
-				}
-			});
-
-		}
 
 		function AtualizarJogo($scope, $modalInstance, jogo, EsporteFactory, CampeonatoFactory) {
 
-
+			
 			$scope.jogo = jogo;
-
-
+			
+			
 			$scope.salvar = function() {
 
 				console.log();
@@ -167,14 +114,14 @@
 
 						listartodos();
 						$scope.modalInstance.dismiss();
-						swal("Aviso!", "Cadastrado com Sucesso.", "success");
+						alert('Cadastrado com Sucesso!');
 					}
 
 
 				});
 			} 
-
-
+			
+			
 			function listartodos() { 
 
 				GerenciarJogoFactory.listarTodos().then(function(resposta) {
@@ -188,8 +135,8 @@
 				});
 
 			}
-
-
+			
+			
 
 			EsporteFactory.listarTodos().then(function(resposta) {
 
@@ -200,8 +147,8 @@
 				console.log($scope.esportes);
 
 			});
-
-
+			
+			
 			CampeonatoFactory.listarTodos().then(function(resposta) {
 
 				var capeonatosCopy = angular.copy(resposta);
@@ -227,33 +174,6 @@
 		};
 
 
-		$scope.remover = function (jogo) {
-
-			swal({   
-				title: "Deseja Realmente Remover?",   
-				text: "",   
-				type: "warning",   
-				showCancelButton: true,   
-				confirmButtonColor: "#DD6B55",   
-				confirmButtonText: "Sim",   
-				closeOnConfirm: false
-			}, function(){ 
-
-				GerenciarJogoFactory.remover(jogo).then(function(resposta){
-
-
-					if(resposta == "OK"){
-
-						swal("Aviso!", "Removido com Sucesso.", "success");
-						listartodos();
-
-					}
-
-
-				});
-
-			});
-		}
 
 
 	}]);

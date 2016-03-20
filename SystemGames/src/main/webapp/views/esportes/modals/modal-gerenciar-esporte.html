@@ -52,7 +52,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="w in esportes">
+                            <tr ng-repeat="w in esportes |  orderBy:'-sequencial'">
                                 <td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
                                     {{ w.sequencial }}
                                 </td>
