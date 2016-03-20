@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Fabricia
-Build-Jdk: 1.8.0_74
+Built-By: AngeloRobson
+Build-Jdk: 1.8.0_45
 Created-By: Maven Integration for Eclipse
 

@@ -12,10 +12,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.SchedulerFactory;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
+
 import br.com.systemGames.excecao.BOException;
 import br.com.systemGames.jogo.bo.impl.JogoBO;
 import br.com.systemGames.jogo.model.JogoVO;
 import br.com.systemGames.jogo.resource.IJogoResource;
+import br.com.systemGames.util.VericadorDeJogoReliazadoTarefa;
 
 @Path("jogo")
 public class JogoResource implements IJogoResource {
@@ -107,5 +120,49 @@ public class JogoResource implements IJogoResource {
 
 		}
 	}
+
+
+	@GET
+	@Path("VericadorDeJogoReliazadoTarefa")
+	public String verficar(){
+
+
+		try {
+
+			// specify the job' s details..
+			JobDetail job = JobBuilder.newJob(VericadorDeJogoReliazadoTarefa.class)
+					.withIdentity("verificarDeJogoRealizado")
+					.build();
+
+			// specify the running period of the job
+			Trigger trigger = TriggerBuilder.newTrigger()
+					.withSchedule(  
+							SimpleScheduleBuilder.simpleSchedule()
+							.withIntervalInSeconds(5)
+							.repeatForever())
+							.build();  
+
+			//schedule the job
+			SchedulerFactory schFactory = new StdSchedulerFactory();
+			Scheduler sch = schFactory.getScheduler();
+			sch.start();	    	
+			sch.scheduleJob(job, trigger);		
+
+		} catch (SchedulerException e) {
+			e.printStackTrace();
+		}
+
+
+		return "OK";
+
+	}
+
+
+	public void execute(JobExecutionContext arg0) throws JobExecutionException {
+		System.out.println("");
+
+	}
+
+
 
 }
