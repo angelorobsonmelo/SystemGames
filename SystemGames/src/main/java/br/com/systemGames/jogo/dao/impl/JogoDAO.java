@@ -237,29 +237,39 @@ public class JogoDAO implements IJogoDAO {
 
 			JogoVO jogoVO = new JogoVO();
 
-			EsporteVO esporteVO = new EsporteVO();
-			CampeonatoVO campeonatoVO = new CampeonatoVO();
-			ConfiguracaoJogoVO configuracaoJogoVO = new ConfiguracaoJogoVO();
-			LimiteApostaVO limiteApostaVO = new LimiteApostaVO();
-
 			jogoVO.setSequencial(rs.getInt("seq_jogo"));
 			jogoVO.setJogo(rs.getString("jogo"));
-			jogoVO.getCampeonatoVO().setSequencial(rs.getInt("cod_campeonato"));
-			jogoVO.getEsporteVO().setSequencial(rs.getInt("cod_esporte"));
 			jogoVO.setHoraInicialJogo(rs.getString("hora_inicial_jogo"));
 			jogoVO.setDataJogo(rs.getDate("data_jogo"));
 
-			esporteVO = jogoVO.getEsporteVO();
-			campeonatoVO = jogoVO.getCampeonatoVO();
-			
-			
-			jogoVO.setEsporteVO(new EsporteDAO().listarPorSequencial(esporteVO));
-			jogoVO.setCampeonatoVO(new CampeonatoDAO().listarPorSequencial(campeonatoVO));
-			jogoVO.setConfiguracaoJogoVO(new ConfiguracaoJogoDAO().buscarConfiguracaoPorSeqJogo(jogoVO));
-			jogoVO.setLimiteApostaVO(new LimiteApostaDAO().buscarTodosPorSeqJogo(jogoVO));
-			
+			jogoVO.getCampeonatoVO().setSequencial(rs.getInt("cod_campeonato"));
+			jogoVO.getCampeonatoVO().setNome(rs.getString("nome_campeonato"));
 
+			jogoVO.getEsporteVO().setSequencial(rs.getInt("cod_esporte"));
+			jogoVO.getEsporteVO().setNome(rs.getString("nome_esporte"));
 
+			jogoVO.getConfiguracaoJogoVO().setSequencial(rs.getInt("seq_configuracao_jogo"));
+			jogoVO.getConfiguracaoJogoVO().setFinalizarAutomaticamente(rs.getBoolean("finalizar_automaticamente"));
+			jogoVO.getConfiguracaoJogoVO().setJogoFinalizado(rs.getBoolean("jogo_finalizado"));
+
+			jogoVO.getLimiteApostaVO().setSequencial(rs.getInt("seq_limite_aposta"));
+			jogoVO.getLimiteApostaVO().setCasa(rs.getDouble("casa"));
+			jogoVO.getLimiteApostaVO().setEmpate(rs.getDouble("empate"));
+			jogoVO.getLimiteApostaVO().setFora(rs.getDouble("fora"));
+			jogoVO.getLimiteApostaVO().setGolEMeio(rs.getDouble("gol_e_meio"));
+			jogoVO.getLimiteApostaVO().setDuplaChance(rs.getDouble("dupla_chance"));
+			jogoVO.getLimiteApostaVO().setAmbos(rs.getDouble("ambos"));
+			jogoVO.getLimiteApostaVO().setLimiteCasa(rs.getDouble("limite_casa"));
+			jogoVO.getLimiteApostaVO().setLimiteEmpate(rs.getDouble("limite_empate"));
+			jogoVO.getLimiteApostaVO().setLimiteFora(rs.getDouble("limite_fora"));
+			jogoVO.getLimiteApostaVO().setLimiteGolEMeio(rs.getDouble("limite_gol_e_meio"));
+			jogoVO.getLimiteApostaVO().setLimiteDuplaChance(rs.getDouble("limite_dupla_chance"));
+			jogoVO.getLimiteApostaVO().setLimiteIndividual(rs.getDouble("limite_individual"));
+			jogoVO.getLimiteApostaVO().setLimiteAmbos(rs.getDouble("limite_ambos"));
+
+			jogoVO.getResultadoJogoVO().setSequencial(rs.getInt("seq_resultado_jogo"));
+			jogoVO.getResultadoJogoVO().setResultadoCasa(rs.getInt("resultado_jogo_casa"));
+			jogoVO.getResultadoJogoVO().setResultadoFora(rs.getInt("resultado_jogo_fora"));
 
 			lista.add(jogoVO);
 		}

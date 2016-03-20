@@ -16,6 +16,7 @@ public class JogoVO {
 	private String horaInicialJogo;
 	private ConfiguracaoJogoVO configuracaoJogoVO;
 	private LimiteApostaVO limiteApostaVO;
+	private ResultadoJogoVO resultadoJogoVO;
 
 	public JogoVO() {
 
@@ -23,6 +24,7 @@ public class JogoVO {
 		esporteVO = new EsporteVO();
 		configuracaoJogoVO = new ConfiguracaoJogoVO();
 		limiteApostaVO = new LimiteApostaVO();
+		resultadoJogoVO = new ResultadoJogoVO();
 
 	}
 
@@ -109,6 +111,14 @@ public class JogoVO {
 
 	public void setLimiteApostaVO(LimiteApostaVO limiteApostaVO) {
 		this.limiteApostaVO = limiteApostaVO;
+	}
+
+	public ResultadoJogoVO getResultadoJogoVO() {
+		return resultadoJogoVO;
+	}
+
+	public void setResultadoJogoVO(ResultadoJogoVO resultadoJogoVO) {
+		this.resultadoJogoVO = resultadoJogoVO;
 	}
 
 

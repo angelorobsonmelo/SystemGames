@@ -117,13 +117,18 @@
 
 		};
 
-		$scope.openModalGerenciarResultadoJogo = function () {
+		$scope.openModalGerenciarResultadoJogo = function (jogo) {
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-resultado-jogo.html',
-				controller: 'GerenciarJogosCtrl',
-				scope: modalScope
+				templateUrl: 'views/gerenciar-resultado/modals/modal-gerenciar-resultado-jogo.html',
+				controller: 'GerenciarResultadoCtrl',
+				scope: modalScope,
+				resolve: {
+					jogo: function () {
+						return jogo;
+					}
+				}
 			});
 
 		};

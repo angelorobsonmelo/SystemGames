@@ -1,9 +1,12 @@
 package br.com.systemGames.jogo.bo.impl;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import br.com.systemGames.database.Conexao;
 import br.com.systemGames.excecao.BOException;
@@ -165,7 +168,41 @@ public class JogoBO implements IJogoBO {
 			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
 			Conexao.setarAutoCommitParaFalse();
 
-			return jogoDAO.listarTodos();
+			ArrayList<JogoVO> retornoBanco = jogoDAO.listarTodos();
+			ArrayList<JogoVO> lista = new ArrayList<JogoVO>();
+
+			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+			Calendar dataAtual = new GregorianCalendar();
+			Calendar dataDoJogo = new GregorianCalendar();
+			
+			Date data = new Date(System.currentTimeMillis());  
+			SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy"); 
+
+			dataAtual.setTime(format.parse(formatarDate.format(data)));
+			
+
+
+			for (JogoVO jogoVO : retornoBanco) {
+
+				dataDoJogo.setTime(format.parse(jogoVO.getDataJogoFormatadaBasica()));
+				
+				
+				if (jogoVO.getResultadoJogoVO().getResultadoCasa() == 0 && jogoVO.getResultadoJogoVO().getResultadoFora() == 0 && dataDoJogo.getTimeInMillis() >= dataAtual.getTimeInMillis()) {
+
+					jogoVO.getResultadoJogoVO().setResultadoCasa(null);
+					jogoVO.getResultadoJogoVO().setResultadoFora(null);
+
+					lista.add(jogoVO);
+
+				}else {
+
+					lista.add(jogoVO);
+
+				}
+			}
+
+			return lista;
 		} catch (Exception e) {
 			throw new BOException(e);
 		}

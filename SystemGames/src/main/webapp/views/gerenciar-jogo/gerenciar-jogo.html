@@ -30,9 +30,9 @@
 							<th class="label-th" style="width: 18%; text-align: center;">JOGO</th>
 							<th class="label-th" style="width: 12%; text-align: center;">CAMPEONATO</th>
 							<th class="label-th" style="width: 6%; text-align: center;">DATA</th>
-							<th class="label-th" style="width: 8%; text-align: center;">RESULT
+							<th class="label-th" style="width: 8%; text-align: center;">RESULTADO
 								CASA</th>
-							<th class="label-th" style="width: 8%; text-align: center;">RESULT
+							<th class="label-th" style="width: 8%; text-align: center;">RESULTADO
 								FORA</th>
 							<th class="label-th" style="width: 10%; text-align: center;">INSERIR
 								RESULT</th>
@@ -52,14 +52,14 @@
 							<td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
 								{{ w.dataJogoFormatadaBasica }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-								1</td>
+								{{ w.resultadoJogoVO.resultadoCasa }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-								4</td>
+								{{ w.resultadoJogoVO.resultadoFora }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								<button
 									class="btn btn-success btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
-									popover="Inserir Resultado do Jogo" ng-click="openModalGerenciarResultadoJogo()">
+									popover="Inserir Resultado do Jogo" ng-click="openModalGerenciarResultadoJogo(w)">
 									<i class="zmdi zmdi-check-all"></i>
 								</button>
 							</td>
