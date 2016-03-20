@@ -73,4 +73,35 @@ public class CampeonatoBO implements ICampeonatoBO {
 		}
 	}
 
+	public String remover(CampeonatoVO campeonatoVO) throws SQLException,
+			BOException {
+		String resultadoExecucaoInserirUnidadeDeSaude = null;
+
+		try{	
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			resultadoExecucaoProcedures.clear();
+
+			resultadoExecucaoInserirUnidadeDeSaude =  campeonatoDAO.remover(campeonatoVO);
+			resultadoExecucaoProcedures.add(resultadoExecucaoInserirUnidadeDeSaude);
+
+			if (!resultadoExecucaoInserirUnidadeDeSaude.equals("OK")){
+				throw new BOException("Erro ao inserir unidade de saúde. "+resultadoExecucaoInserirUnidadeDeSaude);
+			}
+
+			return Conexao.verificarResultadosDaExecucaoDeProceduresValidandoCommit(resultadoExecucaoProcedures);
+
+		}catch (Exception ex) { 
+			/*Preferivel que seja dado um Rollback neste caso*/
+
+			throw new BOException(ex);
+		}
+		finally{
+			resultadoExecucaoInserirUnidadeDeSaude = null;
+			resultadoExecucaoProcedures.clear();
+
+		}
+	}
+
 }

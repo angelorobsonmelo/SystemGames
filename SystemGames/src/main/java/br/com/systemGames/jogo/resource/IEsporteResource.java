@@ -9,6 +9,8 @@ import br.com.systemGames.jogo.model.EsporteVO;
 public interface IEsporteResource {
 
 	public String salvar(EsporteVO esporteVO) throws SQLException, BOException;
+	
+	public String remover(Integer sequencial) throws SQLException, BOException;
 
 	public ArrayList<EsporteVO> listarTodos() throws SQLException, BOException;
 

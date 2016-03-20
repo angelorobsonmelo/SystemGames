@@ -8,6 +8,8 @@ import br.com.systemGames.jogo.model.CampeonatoVO;
 public interface ICampeonatoDAO {
 
 	public String salvar(CampeonatoVO campeonatoVO) throws DAOException;
+	
+	public String remover(CampeonatoVO campeonatoVO) throws DAOException;
 
 	public ArrayList<CampeonatoVO> listarTodos() throws DAOException;
 

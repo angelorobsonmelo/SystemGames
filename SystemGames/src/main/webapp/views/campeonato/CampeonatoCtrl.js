@@ -70,6 +70,24 @@
 
 
 
+		$scope.remover = function(campeonato) {
+
+
+			CampeonatoFactory.remover(campeonato).then(function(resposta){
+
+
+				if(resposta == "OK"){
+
+					alert('Removido com Sucesso!');
+					listarCampeonatos();
+					
+					
+				}
+
+
+			});
+		} 
+		
 
 	}]);
 

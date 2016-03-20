@@ -32,6 +32,25 @@
 
 			});
 		} 
+		
+		
+		$scope.remover = function(esporte) {
+
+
+			EsporteFactory.remover(esporte).then(function(resposta){
+
+
+				if(resposta == "OK"){
+
+
+					listarEsportes();
+				
+					alert('Removido com Sucesso!');
+				}
+
+
+			});
+		} 
 
 
 		listarEsportes();

@@ -14,6 +14,7 @@ public interface IJogoDAO {
 	public ArrayList<JogoVO> listarTodos() throws DAOException; 
 	
 	public JogoVO retornarUltimoSequencial() throws DAOException;
+	
 
 	
 }

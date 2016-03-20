@@ -57,11 +57,36 @@
 
 		}
 
+		function remover(jogo) {
+
+			var retorno = $q.defer();
+
+			$http.delete(urlRaiz + 'remover/'+ jogo.sequencial)
+			.success(function(resposta) {
+
+
+
+				retorno.resolve(resposta);
+
+
+
+			})
+			.error(function(resposta, status) {
+
+				alert("Erro Status: " + status);
+				retorno.resolve(resposta);
+			})
+
+			return retorno.promise;
+
+		}
+
 
 		return {
 
 			listarTodos: listarTodos,
-			salvar: salvar
+			salvar: salvar,
+			remover: remover
 
 
 		}

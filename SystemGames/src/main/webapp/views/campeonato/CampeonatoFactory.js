@@ -50,11 +50,31 @@
 
 		}
 
+		function remover(campeonato){
+
+			var retorno = $q.defer();
+
+			$http.delete(urlRaiz + 'remover/' + campeonato.sequencial)
+			.success(function(data) {
+
+				retorno.resolve(data);
+			})
+			.error(function(data, status) {
+
+				console.log(data);
+				console.log(status);
+			})
+
+			return retorno.promise;
+
+
+		}
 
 		return {
 
 			listarTodos: listarTodos,
-			salvar: salvar
+			salvar: salvar,
+			remover: remover
 
 
 		}

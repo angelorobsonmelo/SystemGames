@@ -54,7 +54,7 @@
 		}
 
 
-		 listarCampeonatos();
+		listarCampeonatos();
 
 		function listarCampeonatos(){
 
@@ -70,7 +70,7 @@
 		}
 
 		listarEsportes();
-		
+
 		function listarEsportes(){
 
 			EsporteFactory.listarTodos().then(function(resposta) {
@@ -150,10 +150,10 @@
 
 		function AtualizarJogo($scope, $modalInstance, jogo, EsporteFactory, CampeonatoFactory) {
 
-			
+
 			$scope.jogo = jogo;
-			
-			
+
+
 			$scope.salvar = function() {
 
 				console.log();
@@ -172,8 +172,8 @@
 
 				});
 			} 
-			
-			
+
+
 			function listartodos() { 
 
 				GerenciarJogoFactory.listarTodos().then(function(resposta) {
@@ -187,8 +187,8 @@
 				});
 
 			}
-			
-			
+
+
 
 			EsporteFactory.listarTodos().then(function(resposta) {
 
@@ -199,8 +199,8 @@
 				console.log($scope.esportes);
 
 			});
-			
-			
+
+
 			CampeonatoFactory.listarTodos().then(function(resposta) {
 
 				var capeonatosCopy = angular.copy(resposta);
@@ -226,6 +226,23 @@
 		};
 
 
+		$scope.remover = function (jogo) {
+
+			GerenciarJogoFactory.remover(jogo).then(function(resposta){
+
+
+				if(resposta == "OK"){
+
+					alert('Removido com Sucesso!');
+					listartodos();
+
+				}
+
+
+			});
+
+
+		}
 
 
 	}]);

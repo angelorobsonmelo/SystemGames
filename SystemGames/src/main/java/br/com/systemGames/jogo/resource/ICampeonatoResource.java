@@ -10,6 +10,8 @@ public interface ICampeonatoResource {
 
 	
 	public String salvar(CampeonatoVO campeonatoVO) throws SQLException, BOException;
+	
+	public String remover(Integer sequencial) throws SQLException, BOException;
 
 	public ArrayList<CampeonatoVO> listarTodos() throws SQLException, BOException;
 

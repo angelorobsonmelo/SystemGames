@@ -198,4 +198,35 @@ public class CampeonatoDAO implements ICampeonatoDAO {
 
 	}
 
+
+	public String remover(CampeonatoVO campeonatoVO) throws DAOException {
+		procedure = "{ ? = CALL SP_CAMPEONATO_REMOVER(?)}";
+		cstmt = null;
+		resultado = null;
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.VARCHAR);
+			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(campeonatoVO.getSequencial()));
+
+			cstmt.execute();
+
+			resultado = (String) cstmt.getString(1);
+			cstmt.close();
+
+			return resultado;
+		}
+		catch(Exception ex)
+		{
+			throw new DAOException(ex);
+		}
+		finally{
+
+			procedure = null;
+			cstmt = null;
+		}
+	}
+
 }
