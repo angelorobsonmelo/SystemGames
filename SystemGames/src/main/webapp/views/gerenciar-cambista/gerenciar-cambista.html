@@ -42,12 +42,15 @@
                             {{ cambista.cidade }}
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn bgm-orange btn-icon waves-effect waves-circle" popover-placement="top" popover-trigger="mouseenter" popover="Mais dados sobre Cambista" ng-click="detalhes(w)">
+                            <button class="btn bgm-orange btn-icon waves-effect waves-circle"
+                                    popover-placement="top" popover-trigger="mouseenter" popover="Mais dados sobre Cambista" ng-click="editarCambista(w)">
                                 <i class="zmdi zmdi-search"></i>
                             </button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn bgm-teal btn-icon waves-effect waves-circle" popover-placement="top" popover-trigger="mouseenter" popover="Editar">
+                            <button class="btn bgm-teal btn-icon waves-effect waves-circle"
+                                    popover-placement="top" popover-trigger="mouseenter"
+                                    popover="Editar" ng-click="editarCambista(cambista)">
                                 <i class="zmdi zmdi-edit"></i>
                             </button>
                         </td>

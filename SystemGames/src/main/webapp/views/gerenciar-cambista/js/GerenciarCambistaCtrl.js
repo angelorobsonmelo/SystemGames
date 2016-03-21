@@ -34,6 +34,67 @@
 
 		};
 
+		function AtualizarCambista($scope, $modalInstance, cambista, gerenciarCambistaFactory) {
+
+
+			$scope.usuario = cambista;
+
+
+			$scope.salvar = function() {
+
+				console.log();
+
+				gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(resposta){
+
+
+					if(resposta == "OK"){
+
+
+						listartodos();
+						$scope.modalInstance.dismiss();
+						swal("Aviso!", "Cadastrado com Sucesso.", "success");
+					}
+
+
+				});
+			}
+
+
+			function listartodos() {
+
+				gerenciarCambistaFactory.buscarUsuariosCambistas().then(function(resposta) {
+
+					var cambistaCopy = angular.copy(resposta);
+
+					$rootScope.cambista = cambistaCopy;
+
+					console.log($scope.cambista);
+
+				});
+
+			}
+
+
+			$scope.close = function () {
+				$modalInstance.dismiss('cancel');
+			};
+		};
+
+		$scope.editarCambista = function(cambista){
+
+			var modalScope = $rootScope.$new();
+			modalScope.modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-cambista/modals/modal-editar-cambista.html',
+				controller: AtualizarCambista,
+				resolve: {
+					cambista: function () {
+						return cambista;
+					}
+				}
+			});
+
+		}
+
 		$scope.cadastrarCambista = function() {
 
 			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
