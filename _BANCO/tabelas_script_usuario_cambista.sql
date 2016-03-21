@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.4.1
 -- Dumped by pg_dump version 9.4.0
--- Started on 2016-03-10 09:33:51
+-- Started on 2016-03-21 10:04:26
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -237,7 +237,7 @@ ALTER TABLE ONLY usuario
     ADD CONSTRAINT fkcod_tipo_usuario FOREIGN KEY (cod_tipo_usuario) REFERENCES tipo_usuario(seq_tipo_usuario);
 
 
--- Completed on 2016-03-10 09:33:52
+-- Completed on 2016-03-21 10:04:27
 
 --
 -- PostgreSQL database dump complete

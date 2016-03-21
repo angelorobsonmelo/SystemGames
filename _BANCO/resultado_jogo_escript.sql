@@ -1,19 +1,3 @@
-CREATE TABLE resultado_jogo
-(
-  seq_resultado_jogo serial NOT NULL,
-  cod_jogo integer,
-  resultado_jogo_casa integer,
-  resultado_jogo_fora integer,
-  CONSTRAINT resultado_jogo_pkey PRIMARY KEY (seq_resultado_jogo)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE resultado_jogo
-  OWNER TO postgres;
-
-
-
 CREATE OR REPLACE FUNCTION sp_resultado_jogo_inserir(
 "P_COD_JOGO" integer,
 "P_RESULTADO_CASA" integer,
