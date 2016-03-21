@@ -13,6 +13,8 @@ public interface IJogoDAO {
 	
 	public ArrayList<JogoVO> listarTodos() throws DAOException; 
 	
+	public ArrayList<JogoVO> listarTodosBasico() throws DAOException; 
+	
 	public JogoVO retornarUltimoSequencial() throws DAOException;
 	
 

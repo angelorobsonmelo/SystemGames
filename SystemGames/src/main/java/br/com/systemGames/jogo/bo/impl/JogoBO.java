@@ -228,4 +228,18 @@ public class JogoBO implements IJogoBO {
 		}
 	}
 
+	public ArrayList<JogoVO> listarTodosBasico() throws SQLException,
+			BOException {
+		try {
+
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			return jogoDAO.listarTodosBasico();
+
+		} catch (Exception e) {
+			throw new BOException(e);
+		}
+	}
+
 }

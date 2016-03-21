@@ -88,3 +88,21 @@ DECLARE
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
+  
+CREATE OR REPLACE FUNCTION sp_jogo_buscar_todos_basico(OUT "P_CS_GERAL" refcursor)
+  RETURNS refcursor AS
+$BODY$
+DECLARE
+ P_CS_GERAL REFCURSOR;
+
+BEGIN
+
+OPEN $1 FOR 
+  SELECT
+J.seq_jogo, J.data_jogo, J.hora_inicial_jogo, J.jogo
+FROM
+jogo J;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;

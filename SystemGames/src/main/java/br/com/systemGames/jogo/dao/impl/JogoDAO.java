@@ -10,11 +10,7 @@ import br.com.systemGames.database.Conexao;
 import br.com.systemGames.excecao.BOException;
 import br.com.systemGames.excecao.DAOException;
 import br.com.systemGames.jogo.dao.IJogoDAO;
-import br.com.systemGames.jogo.model.CampeonatoVO;
-import br.com.systemGames.jogo.model.ConfiguracaoJogoVO;
-import br.com.systemGames.jogo.model.EsporteVO;
 import br.com.systemGames.jogo.model.JogoVO;
-import br.com.systemGames.jogo.model.LimiteApostaVO;
 import br.com.systemGames.util.VerificadorValorObjeto;
 
 public class JogoDAO implements IJogoDAO {
@@ -208,6 +204,40 @@ public class JogoDAO implements IJogoDAO {
 			cstmt = null;
 		}
 	}
+	
+	
+
+	public ArrayList<JogoVO> listarTodosBasico() throws DAOException {
+		procedure = "{? = CALL SP_JOGO_BUSCAR_TODOS_BASICO()}";
+		cstmt = null;
+		ArrayList<JogoVO> lista = new ArrayList<JogoVO>();
+
+		try
+		{
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.OTHER);
+
+
+			cstmt.execute();
+
+			lista = mapearResultSetBasico((ResultSet) cstmt.getObject(1));
+
+			cstmt.close();		
+
+			return lista;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			throw new DAOException(ex);
+		} finally{        	
+			/*Indicar ao Garbage Collection do Java que as variáveis 
+			 * podem ser esvaziadas do Coletor de Lixo
+			 */        	
+			procedure = null;
+			cstmt = null;
+		}
+	}
 
 
 
@@ -275,5 +305,26 @@ public class JogoDAO implements IJogoDAO {
 		}
 		return lista;
 	}
+
+	
+
+	public ArrayList<JogoVO> mapearResultSetBasico(ResultSet rs) throws SQLException, BOException, DAOException{
+
+		ArrayList<JogoVO> lista = new ArrayList<JogoVO>();
+
+		while(rs.next()){
+
+			JogoVO jogoVO = new JogoVO();
+
+			jogoVO.setSequencial(rs.getInt("seq_jogo"));
+			jogoVO.setJogo(rs.getString("jogo"));
+			jogoVO.setHoraInicialJogo(rs.getString("hora_inicial_jogo"));
+			jogoVO.setDataJogo(rs.getDate("data_jogo"));
+
+			lista.add(jogoVO);
+		}
+		return lista;
+	}
+
 
 }

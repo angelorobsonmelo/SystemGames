@@ -1,14 +1,12 @@
 package br.com.systemGames.util;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import org.quartz.Job;
@@ -48,48 +46,47 @@ public class VericadorDeJogoReliazadoTarefa implements Job{
 
 			dataAtual.setTime(formatarDate.parse(formatarDate.format(data)));
 
-			ArrayList<JogoVO> listaJogoRetornado = jogoBO.listarTodos();
-			
-			
+			ArrayList<JogoVO> listaJogoRetornado = jogoBO.listarTodosBasico();
+
+
 			Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
-			
+
 			/* 
 			int ano = calendar.get(Calendar.YEAR);
 			int mes = calendar.get(Calendar.MONTH); // O mês vai de 0 a 11.
 			int semana = calendar.get(Calendar.WEEK_OF_MONTH);
 			int dia = calendar.get(Calendar.DAY_OF_MONTH);
-			*/
-			
+			 */
+
 			int hora = calendar.get(Calendar.HOUR_OF_DAY);
 			int minuto = calendar.get(Calendar.MINUTE);
 			int segundo = calendar.get(Calendar.SECOND);
 
 			String horaAtual = hora + "" + minuto + "" + segundo;
 
-			Integer contador = 0;
-			
+
 			for (JogoVO jogoVO : listaJogoRetornado) {
 
-				dataDoJogo.setTime(formatarDate.parse(jogoVO.getDataJogoFormatadaBasica()));
 				
+				dataDoJogo.setTime(formatarDate.parse(jogoVO.getDataJogoFormatadaBasica()));
+
 				String texto = jogoVO.getHoraInicialJogo();
-		        int inicio = texto.indexOf("");
-		        int fim = texto.indexOf(":", inicio);
-		        
-		        int inicio1 = texto.indexOf(":") + 1;
-		        int fim2 = texto.indexOf(":", inicio1);
-		        
-		        int inicio3 = texto.indexOf(":") + 4;
-		        
-		        String horaInicialJogoRetornoString = texto.substring(inicio, fim) + "" + texto.substring(inicio1, fim2) + "" + texto.substring(inicio3);
+				int inicio = texto.indexOf("");
+				int fim = texto.indexOf(":", inicio);
+
+				int inicio1 = texto.indexOf(":") + 1;
+				int fim2 = texto.indexOf(":", inicio1);
+
+				int inicio3 = texto.indexOf(":") + 4;
+
+				String horaInicialJogoRetornoString = texto.substring(inicio, fim) + "" + texto.substring(inicio1, fim2) + "" + texto.substring(inicio3);
 
 				if (dataDoJogo.getTimeInMillis() <= dataAtual.getTimeInMillis() && Integer.parseInt(horaInicialJogoRetornoString) <= Integer.parseInt(horaAtual)) {
+
+					System.out.println(jogoVO.getJogo());
 					
-					
-					System.out.println("jogo fora da data e hora: " + jogoVO.getJogo());
-                      
 					jogoVO.getConfiguracaoJogoVO().setJogoFinalizado(true);
-					
+
 					configuracaoJogoBO.salvar(jogoVO);
 				}
 
