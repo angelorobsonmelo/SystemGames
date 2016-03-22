@@ -5,15 +5,16 @@ CREATE OR REPLACE FUNCTION public.sp_usuario_alterar (
   "P_SENHA" varchar,
   "P_CPF" varchar,
   "P_NUM_RG" varchar,
-  "P_NUM_CELULAR" varchar,
-  "P_COD_TIPO_USUARIO" varchar,
+  "P_CONTATO" varchar,
+  "P_COD_TIPO_USUARIO" integer,
   "P_ENDERECO" varchar,
   "P_NUM_ENDERECO" varchar,
   "P_COMPLEMENTO" varchar,
   "P_BAIRRO" varchar,
   "P_CIDADE" varchar,
   "P_NUM_CEP" varchar,
-  "P_UF" varchar
+  "P_UF" varchar,
+  "P_NOM_LOGIN" varchar
 )
 RETURNS varchar AS
 $body$
@@ -28,7 +29,7 @@ BEGIN
       SENHA = $4,
       CPF = $5,
       NUM_RG = $6,
-      NUM_CELULAR = $7,
+      CONTATO = $7,
       COD_TIPO_USUARIO = $8,
       ENDERECO = $9,
       NUM_ENDERECO = $10,
@@ -36,7 +37,8 @@ BEGIN
       BAIRRO = $12,
       CIDADE = $13,
       CEP = $14,
-      UF = $15
+      UF = $15, 
+      NOM_LOGIN = $16
   WHERE SEQ_USUARIO = $1;
 
   P_MSG_RETORNO = 'OK';
