@@ -8,13 +8,22 @@ public class ConfiguracaoCambistaVO extends UsuarioVO{
 	private Integer sequencial;
 	private Double limiteMaximoVendaDiario;
 	private Double limiteMaximoVendaIndividual;
+	private UsuarioVO codigoUsuario;
 	private String observacao;
 	private Integer comissao1;
 	private Integer comissao2;
 	private Integer comissao3;
 	
 	
-	
+	public ConfiguracaoCambistaVO() {
+		codigoUsuario = new UsuarioVO();
+	}
+	public UsuarioVO getCodigoUsuario() {
+		return codigoUsuario;
+	}
+	public void setCodigoUsuario(UsuarioVO codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
+	}
 	public Integer getSequencial() {
 		return sequencial;
 	}

@@ -63,11 +63,11 @@ public class ConfiguracaoCambistaDAO implements IConfiguracaoCambistaDAO {
 			configuracaoCambistaVO.setLimiteMaximoVendaDiario(rs.getDouble("LIMITE_MAX_VENDA_DIARIO"));
 			configuracaoCambistaVO.setLimiteMaximoVendaIndividual(rs.getDouble("LIMITE_MAX_VENDA_INDIVIDUAL"));
 			configuracaoCambistaVO.setObservacao(rs.getString("OBSERVACAO"));
-			configuracaoCambistaVO.setSequencial(rs.getInt("COD_USUARIO"));
+			configuracaoCambistaVO.getCodigoUsuario().setUsuariosequencial(rs.getInt("COD_USUARIO"));
 			configuracaoCambistaVO.setComissao1(rs.getInt("COMISSAO1"));
 			configuracaoCambistaVO.setComissao2(rs.getInt("COMISSAO2"));
 			configuracaoCambistaVO.setComissao3(rs.getInt("COMISSAO3"));
-			configuracaoCambistaVO.setSequencial(rs.getInt("SEQ_USUARIO"));
+			configuracaoCambistaVO.setUsuariosequencial(rs.getInt("SEQ_USUARIO"));
 			configuracaoCambistaVO.setNomeUsuario(rs.getString("NOME_USUARIO"));
 			configuracaoCambistaVO.setEmail(rs.getString("EMAIL"));
 			configuracaoCambistaVO.setLogin(rs.getString("NOM_LOGIN"));
@@ -134,7 +134,7 @@ public class ConfiguracaoCambistaDAO implements IConfiguracaoCambistaDAO {
 	
 	public String remover(ConfiguracaoCambistaVO configuracaoCambistaVO)
 			throws DAOException {
-		procedure = "{ ? = CALL SP_CONFIGURACAO_CAMBISTA_REMOVER(?)}";	
+		procedure = "{ ? = CALL SP_CONFIGURACAO_CAMBISTA_REMOVER(?,?)}";	
 		cstmt = null;
 		resultado = null;
 
@@ -143,7 +143,8 @@ public class ConfiguracaoCambistaDAO implements IConfiguracaoCambistaDAO {
 
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.VARCHAR);
-			cstmt.setInt(2, configuracaoCambistaVO.getSequencial());			
+			cstmt.setInt(2, configuracaoCambistaVO.getSequencial());
+			cstmt.setInt(3, configuracaoCambistaVO.getUsuariosequencial());
 			cstmt.execute();
 
 			resultado = (String) cstmt.getString(1);
@@ -184,6 +185,136 @@ public class ConfiguracaoCambistaDAO implements IConfiguracaoCambistaDAO {
 			cstmt.setInt(7, configuracaoCambistaVO.getComissao1());
 			cstmt.setInt(8, configuracaoCambistaVO.getComissao2());
 			cstmt.setInt(9, configuracaoCambistaVO.getComissao3());
+			cstmt.execute();
+
+			resultado = (String) cstmt.getString(1);
+			cstmt.close();
+			
+			return resultado;
+
+		}
+		catch(Exception ex)
+		{
+			
+			throw new DAOException(ex);
+			
+		}finally{
+			
+			procedure = null;
+			cstmt = null;
+		}
+	}
+
+	public String inserirUsuario(ConfiguracaoCambistaVO configuracaoCambistaVO)
+			throws DAOException {
+		procedure = "{ ? = CALL SP_USUARIO_INSERIR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";	
+		cstmt = null;
+		resultado = null;
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.VARCHAR);
+			cstmt.setString(2, configuracaoCambistaVO.getNomeUsuario());
+			cstmt.setString(3, configuracaoCambistaVO.getEmail());			
+			cstmt.setString(4, configuracaoCambistaVO.getSenha());
+			cstmt.setString(5, configuracaoCambistaVO.getCpf());
+			cstmt.setString(6, configuracaoCambistaVO.getNumeroRg());
+			cstmt.setString(7, configuracaoCambistaVO.getContato());
+			cstmt.setInt(8, configuracaoCambistaVO.getCodigoTipoUsuario().getSequencial());
+			cstmt.setString(9, configuracaoCambistaVO.getEndereco());
+			cstmt.setString(10, configuracaoCambistaVO.getNumeroEndereco());
+			cstmt.setString(11, configuracaoCambistaVO.getComplemento());
+			cstmt.setString(12, configuracaoCambistaVO.getBairro());
+			cstmt.setString(13, configuracaoCambistaVO.getCidade());
+			cstmt.setString(14, configuracaoCambistaVO.getCep());
+			cstmt.setString(15, configuracaoCambistaVO.getUf());
+			cstmt.setString(16, configuracaoCambistaVO.getLogin());
+			/*cstmt.setDouble(2, configuracaoCambistaVO.getLimiteMaximoVendaDiario());
+			cstmt.setDouble(3, configuracaoCambistaVO.getLimiteMaximoVendaIndividual());
+			cstmt.setString(4, configuracaoCambistaVO.getObservacao());
+			cstmt.setInt(5, configuracaoCambistaVO.getSequencial());			
+			cstmt.setInt(6, configuracaoCambistaVO.getComissao1());
+			cstmt.setInt(7, configuracaoCambistaVO.getComissao2());
+			cstmt.setInt(8, configuracaoCambistaVO.getComissao3());*/
+			cstmt.execute();
+
+			resultado = (String) cstmt.getString(1);
+			cstmt.close();
+			
+			return resultado;
+
+		}
+		catch(Exception ex)
+		{
+			throw new DAOException(ex);
+		}finally{
+			
+			procedure = null;
+			cstmt = null;
+		}
+	}
+
+	public String alterarUsuario(ConfiguracaoCambistaVO configuracaoCambistaVO)
+			throws DAOException {
+		procedure = "{ ? = CALL SP_USUARIO_ALTERAR(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";	
+		cstmt = null;
+		resultado = null;
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.VARCHAR);
+			cstmt.setInt(2, configuracaoCambistaVO.getUsuariosequencial());
+			cstmt.setString(3, configuracaoCambistaVO.getNomeUsuario());
+			cstmt.setString(4, configuracaoCambistaVO.getEmail());			
+			cstmt.setString(5, configuracaoCambistaVO.getSenha());
+			cstmt.setString(6, configuracaoCambistaVO.getCpf());
+			cstmt.setString(7, configuracaoCambistaVO.getNumeroRg());
+			cstmt.setString(8, configuracaoCambistaVO.getContato());
+			cstmt.setInt(9, configuracaoCambistaVO.getCodigoTipoUsuario().getSequencial());
+			cstmt.setString(10, configuracaoCambistaVO.getEndereco());
+			cstmt.setString(11, configuracaoCambistaVO.getNumeroEndereco());
+			cstmt.setString(12, configuracaoCambistaVO.getComplemento());
+			cstmt.setString(13, configuracaoCambistaVO.getBairro());
+			cstmt.setString(14, configuracaoCambistaVO.getCidade());
+			cstmt.setString(15, configuracaoCambistaVO.getCep());
+			cstmt.setString(16, configuracaoCambistaVO.getUf());
+			cstmt.setString(17, configuracaoCambistaVO.getLogin());
+			cstmt.execute();
+
+			resultado = (String) cstmt.getString(1);
+			cstmt.close();
+			
+			return resultado;
+
+		}
+		catch(Exception ex)
+		{
+			
+			throw new DAOException(ex);
+			
+		}finally{
+			
+			procedure = null;
+			cstmt = null;
+		}
+	}
+
+	public String removerUsuario(ConfiguracaoCambistaVO configuracaoCambistaVO)
+			throws DAOException {
+		procedure = "{ ? = CALL SP_USUARIO_REMOVER(?)}";	
+		cstmt = null;
+		resultado = null;
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.VARCHAR);
+			cstmt.setInt(2, configuracaoCambistaVO.getUsuariosequencial());			
 			cstmt.execute();
 
 			resultado = (String) cstmt.getString(1);

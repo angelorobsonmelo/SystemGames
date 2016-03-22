@@ -78,7 +78,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.VARCHAR);
-			cstmt.setInt(2, usuarioVO.getSequencial());			
+			cstmt.setInt(2, usuarioVO.getUsuariosequencial());			
 			cstmt.execute();
 
 			resultado = (String) cstmt.getString(1);
@@ -189,7 +189,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			UsuarioVO usuarioVO = new UsuarioVO();	
 
-			usuarioVO.setSequencial(rs.getInt("SEQ_USUARIO"));
+			usuarioVO.setUsuariosequencial(rs.getInt("SEQ_USUARIO"));
 			usuarioVO.setNomeUsuario(rs.getString("NOME_USUARIO"));
 			usuarioVO.setEmail(rs.getString("EMAIL"));
 			usuarioVO.setLogin(rs.getString("NOM_LOGIN"));

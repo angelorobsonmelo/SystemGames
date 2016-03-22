@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -73,11 +74,16 @@ public class ConfiguracaoCambistaResource implements IConfiguracaoCambistaResour
 
 	@DELETE
 	@Produces(MediaType.TEXT_PLAIN)
-	@Path("removerUsuario")
-	public String remover(ConfiguracaoCambistaVO configuracaoCambistaVO)
+	@Path("removerUsuario/{sequencial}/{sequencialUsuario}")
+	public String remover(@PathParam("sequencial") Integer sequencial, @PathParam("sequencialUsuario") Integer sequencialUsuario)
 			throws SQLException, BOException {
 		try {
 			
+			ConfiguracaoCambistaVO configuracaoCambistaVO = new ConfiguracaoCambistaVO();
+			configuracaoCambistaVO.setSequencial(sequencial);
+			configuracaoCambistaVO.setUsuariosequencial(sequencialUsuario);
+			System.out.println("cam = "+sequencial);
+			System.out.println("usu = "+sequencialUsuario);
 			
 			return configuracaoCambistaBO.remover(configuracaoCambistaVO);
 
@@ -97,8 +103,16 @@ public class ConfiguracaoCambistaResource implements IConfiguracaoCambistaResour
 	@Path("alterar")
 	public String alterar(ConfiguracaoCambistaVO configuracaoCambistaVO)
 			throws SQLException, BOException {
+		try {
+			
+			System.out.println("cambista "+configuracaoCambistaVO.getSequencial());
+			System.out.println("usuario "+configuracaoCambistaVO.getUsuariosequencial());
+			return configuracaoCambistaBO.alterar(configuracaoCambistaVO);
+			
+		} catch (Exception e) {
+			throw new BOException(e);
+		}
 		
-		return configuracaoCambistaBO.alterar(configuracaoCambistaVO);
 	}
 
 }

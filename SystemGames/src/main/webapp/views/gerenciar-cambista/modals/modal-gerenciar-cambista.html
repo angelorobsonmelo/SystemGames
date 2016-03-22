@@ -1,7 +1,7 @@
 
 <div class="background-fundo">
     <meta charset="utf-8" />
-    <form ng-submit="cadastrarCambista()" name="myForm">
+    <form ng-submit="salvar()" name="myForm">
         <div class="modal-header">
             <div class="text-right"><i class="fa fa-times fa-2x" ng-click="cancel()"></i></div>
             <h3 class="modal-title text-center titulo-modal">Inserir Novo Cambista</h3>
@@ -40,7 +40,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="usuario.configuracaoCambistaVO.limiteMaximoVendaDiario" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                                <input type="text" ng-model="usuario.limiteMaximoVendaDiario" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
@@ -50,7 +50,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="usuario.configuracaoCambistaVO.limiteMaximoVendaIndividual" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                                <input type="text" ng-model="usuario.limiteMaximoVendaIndividual" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +188,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-assignment-o zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <textarea ng-model="usuario.configuracaoCambistaVO.observacao" class="form-control c-blue bgm-blue-realizado" rows="2" placeholder="Observacao...."></textarea>
+                                                <textarea ng-model="usuario.observacao" class="form-control c-blue bgm-blue-realizado" rows="2" placeholder="Observacao...."></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -277,7 +277,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="usuario.configuracaoCambistaVO.comissao1" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                                <input type="text" ng-model="usuario.comissao1" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="usuario.configuracaoCambistaVO.comissao2" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                                <input type="text" ng-model="usuario.comissao2" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
@@ -297,7 +297,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="usuario.configuracaoCambistaVO.comissao3" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                                <input type="text" ng-model="usuario.comissao3" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>

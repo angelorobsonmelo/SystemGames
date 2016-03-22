@@ -12,7 +12,7 @@ public interface IConfiguracaoCambistaResource {
 	
 	public String inserir(ConfiguracaoCambistaVO configuracaoCambistaVO) throws SQLException, BOException;
 
-	public String remover(ConfiguracaoCambistaVO configuracaoCambistaVO) throws SQLException, BOException;
+	public String remover(Integer sequencial, Integer sequencialUsuario) throws SQLException, BOException;
 
 	public String alterar(ConfiguracaoCambistaVO configuracaoCambistaVO) throws SQLException, BOException;
 

@@ -7,7 +7,7 @@ import br.com.systemGames.usuario.cambista.model.ConfiguracaoCambistaVO;
 
 public class UsuarioVO {
 	
-	private Integer sequencial;
+	private Integer Usuariosequencial;	
 	private TipoUsuarioVO codigoTipoUsuario;
 	private String nomeUsuario;
 	private String email;
@@ -38,11 +38,11 @@ public class UsuarioVO {
 			ConfiguracaoCambistaVO configuracaoCambistaVO) {
 		this.configuracaoCambistaVO = configuracaoCambistaVO;
 	}
-	public Integer getSequencial() {
-		return sequencial;
+	public Integer getUsuariosequencial() {
+		return Usuariosequencial;
 	}
-	public void setSequencial(Integer sequencial) {
-		this.sequencial = sequencial;
+	public void setUsuariosequencial(Integer usuariosequencial) {
+		Usuariosequencial = usuariosequencial;
 	}
 	public TipoUsuarioVO getCodigoTipoUsuario() {
 		return codigoTipoUsuario;

@@ -12,6 +12,8 @@ public interface IConfiguracaoCambistaBO {
 	public String inserir(ConfiguracaoCambistaVO configuracaoCambistaVO) throws BOException;
 
 	public String remover(ConfiguracaoCambistaVO configuracaoCambistaVO) throws BOException;
+	
+	public String removerUsuario(ConfiguracaoCambistaVO configuracaoCambistaVO) throws BOException;
 
 	public String alterar(ConfiguracaoCambistaVO configuracaoCambistaVO) throws BOException;
 

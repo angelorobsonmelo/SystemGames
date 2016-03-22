@@ -39,25 +39,20 @@
 
 			$scope.usuario = cambista;
 
-
-			$scope.salvar = function() {
-
-				console.log();
-
-				gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(resposta){
+			$scope.alterarr = function() {
+				gerenciarCambistaFactory.alterarUsuarioCambista($scope.usuario).then(function(data) {
 
 
-					if(resposta == "OK"){
+					if(data) {
 
-
+						alert("alterado com sucesso!");
 						listartodos();
-						$scope.modalInstance.dismiss();
-						swal("Aviso!", "Cadastrado com Sucesso.", "success");
 					}
 
-
 				});
-			}
+
+
+			};
 
 
 			function listartodos() {
@@ -95,8 +90,9 @@
 
 		}
 
-		$scope.cadastrarCambista = function() {
-
+		$scope.salvar = function() {
+			$scope.usuario.codigoTipoUsuario = {};
+			$scope.usuario.codigoTipoUsuario.sequencial = 2;
 			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
 
 
@@ -112,21 +108,50 @@
 
 		};
 
-		$scope.cadastrarUsuario = function() {
-
-			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
+		$scope.alterar = function() {
+			gerenciarCambistaFactory.alterarUsuarioCambista($scope.usuario).then(function(data) {
 
 
 				if(data) {
 
-					alert("salvo com sucesso!");
-					$scope.usuario = '';
-					/* carregaruUsuarios();*/
+					alert("alterado com sucesso!");
+					listarUsuariosCambistas();
 				}
 
-			})
+			});
+
 
 		};
+
+		$scope.removerCambista = function (usuario) {
+
+			swal({
+				title: "Deseja Realmente Remover?",
+				text: "",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Sim",
+				closeOnConfirm: false
+			}, function(){
+
+				gerenciarCambistaFactory.remover(usuario).then(function(resposta){
+
+
+					if(resposta == "OK"){
+
+						swal("Aviso!", "Removido com Sucesso.", "success");
+						listarUsuariosCambistas();
+
+					}
+
+
+				});
+
+			});
+		}
+
+
 
 		listarUsuariosCambistas();
 		function listarUsuariosCambistas() {
