@@ -13,6 +13,8 @@
 		$rootScope.esconderHeader = true;
 
 		$scope.ToggleCampeonato = false;
+
+		var url = document.location;
 		
 	    //Status
 	    
@@ -20,9 +22,15 @@
         this.register = 0;
         this.forgot = 0;
 
-		LoginFactory.teste();
+		console.log(url);
 
+		$scope.autenticar = function () {
 
+			console.log($scope.usuario, url);
+
+			LoginFactory.autenticar($scope.usuario, url);
+
+		}
 
 
 

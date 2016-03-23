@@ -188,3 +188,22 @@ DECLARE
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
+
+  
+  CREATE OR REPLACE FUNCTION sp_cambista_autenticar(
+    OUT "P_CS_GERAL" refcursor,
+    IN "P_APELIDO" character varying,
+    IN "P_SENHA" character varying)
+  RETURNS refcursor AS
+$BODY$
+DECLARE
+ P_CS_GERAL REFCURSOR;
+
+BEGIN
+
+OPEN $1 FOR 
+  SELECT * FROM cambista WHERE APELIDO_CAMBISTA = $2 AND SENHA_CAMBISTA = $3;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;

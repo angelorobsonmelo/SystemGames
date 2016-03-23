@@ -93,4 +93,26 @@ public class CambistaResource implements ICambistaResource {
 		}
 	}
 
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("autenticar")
+	public CambistaVO autenticar(CambistaVO cambistaVO) throws BOException,
+			SQLException {
+		try {
+
+			return cambistaBO.autenticar(cambistaVO);
+
+
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		}finally {
+
+			cambistaBO = null;
+
+
+		}
+	}
+
 }

@@ -16,5 +16,7 @@ public interface IUsuarioDAO {
 	public String alterar(UsuarioVO usuarioVO) throws DAOException;
 
 	public ArrayList<UsuarioVO> consultarPorParams() throws DAOException;
+	
+	public UsuarioVO autenticar(UsuarioVO usuarioVO) throws DAOException;
 
 }

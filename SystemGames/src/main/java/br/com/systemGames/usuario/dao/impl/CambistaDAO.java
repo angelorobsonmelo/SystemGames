@@ -11,6 +11,7 @@ import br.com.systemGames.excecao.BOException;
 import br.com.systemGames.excecao.DAOException;
 import br.com.systemGames.usuario.dao.ICambistaDAO;
 import br.com.systemGames.usuario.model.CambistaVO;
+import br.com.systemGames.util.VerificadorValorObjeto;
 
 public class CambistaDAO implements ICambistaDAO {
 
@@ -274,6 +275,68 @@ public class CambistaDAO implements ICambistaDAO {
 		}
 	}
 
+	public CambistaVO autenticar(CambistaVO cambistaVO) throws DAOException {
+		procedure = "{? = CALL SP_CAMBISTA_AUTENTICAR(?,?)}";
+		cstmt = null;
+		CambistaVO usuarioRetorno = null;
 
+		try
+		{
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.OTHER);
+			
+			cstmt.setString(2, VerificadorValorObjeto.retornaStringValorObjetoOuNull(cambistaVO.getApelido()));
+            cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(cambistaVO.getSenha()));
+			
+			cstmt.execute();
+
+			usuarioRetorno = mapearResultUsuarioRetornado((ResultSet) cstmt.getObject(1));
+
+			cstmt.close();		
+
+			return usuarioRetorno;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			throw new DAOException(ex);
+		} finally{        	
+			/*Indicar ao Garbage Collection do Java que as variáveis 
+			 * podem ser esvaziadas do Coletor de Lixo
+			 */        	
+			procedure = null;
+			cstmt = null;
+		}
+	}
+	
+	
+	public CambistaVO mapearResultUsuarioRetornado(ResultSet rs) throws SQLException, BOException, DAOException{
+
+		CambistaVO cambistaVO = null;
+
+		if(rs.next()){
+
+			cambistaVO = new CambistaVO();
+
+			cambistaVO.setSequencial(rs.getInt("seq_cambista"));
+			cambistaVO.setNome(rs.getString("nome_cambista"));
+			cambistaVO.setEmail(rs.getString("email_cambista"));
+			cambistaVO.setCpf(rs.getString("cpf_cambista"));
+			cambistaVO.setNumeroRg(rs.getString("num_rg_cambista"));
+			cambistaVO.setContato(rs.getString("num_contato_cambista"));
+			cambistaVO.setEndereco(rs.getString("endereco_cambista"));
+			cambistaVO.setComplemento(rs.getString("complemento_cambista"));
+			cambistaVO.setBairro(rs.getString("bairro_cambista"));
+			cambistaVO.setCidade(rs.getString("cidade_cambista"));
+			cambistaVO.setCep(rs.getString("cep_cambista"));
+			cambistaVO.setUf(rs.getString("uf_cambista"));
+			cambistaVO.setNumeroEndereco(rs.getString("num_endereco_cambista"));
+			cambistaVO.setApelido(rs.getString("apelido_cambista"));
+			cambistaVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
+		}
+		return cambistaVO;
+
+
+	}
 
 }

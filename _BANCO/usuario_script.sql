@@ -24,3 +24,23 @@ CREATE TABLE usuario
 WITH (
   OIDS=FALSE
 );
+
+
+
+CREATE OR REPLACE FUNCTION sp_usuario_autenticar(
+    OUT "P_CS_GERAL" refcursor,
+    IN "P_APELIDO" character varying,
+    IN "P_SENHA" character varying)
+  RETURNS refcursor AS
+$BODY$
+DECLARE
+ P_CS_GERAL REFCURSOR;
+
+BEGIN
+
+OPEN $1 FOR 
+  SELECT * FROM usuario WHERE APELIDO = $2 AND SENHA = $3;
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;

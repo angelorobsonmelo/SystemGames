@@ -12,6 +12,8 @@ public interface ICambistaResource {
 	
 	public String remover(Integer sequencial) throws BOException, SQLException;
 	
+	public CambistaVO autenticar(CambistaVO cambistaVO) throws BOException, SQLException;
+
 	
 	public ArrayList<CambistaVO> pesquisarPorSeqUsuario(Integer sequencialUsuario) throws BOException, SQLException;
 

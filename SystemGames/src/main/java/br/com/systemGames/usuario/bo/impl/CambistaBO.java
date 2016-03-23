@@ -131,4 +131,19 @@ finally{
 			}
 	}
 
+
+
+	public CambistaVO autenticar(CambistaVO cambistaVO) throws BOException,
+			SQLException {
+		try {
+
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			return cambistaDAO.autenticar(cambistaVO);
+		} catch (Exception e) {
+			throw new BOException(e);
+		}
+	}
+
 }

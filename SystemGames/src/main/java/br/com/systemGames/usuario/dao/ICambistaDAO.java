@@ -13,4 +13,5 @@ public interface ICambistaDAO {
 	
 	public ArrayList<CambistaVO> pesquisarPorSeqUsuario(CambistaVO cambistaVO) throws DAOException;
 	
+	public CambistaVO autenticar(CambistaVO cambistaVO) throws DAOException;
 }
