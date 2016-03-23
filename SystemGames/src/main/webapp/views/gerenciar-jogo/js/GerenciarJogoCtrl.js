@@ -140,6 +140,7 @@
 			modalScope.modalInstance = $modal.open({
 				templateUrl: 'views/gerenciar-jogo/modals/modal-gerenciar-jogo.html',
 				controller: AtualizarJogo,
+				scope: modalScope,
 				resolve: {
 					jogo: function () {
 						return jogo;
@@ -147,6 +148,62 @@
 				}
 			});
 
+		}
+		
+		$scope.openModalApostaRealizada = function(jogo){
+			
+			//console.log($scope.jogos,"Obj completo");
+
+			var modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-jogo/modals/modal-aposta-realizada.html',
+				controller: ApostaRealizada,
+				resolve: {
+					jogo: function () {
+						return jogo;
+					}
+				}
+			});
+
+		}
+		
+		function ApostaRealizada($scope, $uibModalInstance, jogo) {
+			
+			$scope.jogo = jogo;
+			
+			console.log($scope.jogo);
+			
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
+			
+		}
+		
+		$scope.openModaTaxaLimite = function(jogo){
+			
+			//console.log($scope.jogos,"Obj completo");
+
+			var modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-jogo/modals/modal-taxa-limite.html',
+				controller: TaxaLimite,
+				resolve: {
+					jogo: function () {
+						return jogo;
+					}
+				}
+			});
+
+		}
+		
+		function TaxaLimite($scope, $uibModalInstance, jogo) {
+			
+			$scope.jogo = jogo;
+			
+			console.log($scope.jogo);
+			
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
+			
 		}
 
 		function AtualizarJogo($scope, $modalInstance, jogo, EsporteFactory, CampeonatoFactory) {
@@ -156,7 +213,8 @@
 
 
 			$scope.salvar = function() {
-
+				swal("Aviso!", "Atualizado com Sucesso.", "success");
+				$modalInstance.dismiss('cancel');
 				console.log();
 
 				GerenciarJogoFactory.salvar($scope.jogo).then(function(resposta){
@@ -212,17 +270,13 @@
 
 			});
 
-
-			$scope.close = function () {
-				$modalInstance.dismiss('cancel');
-			};
 		};
 
 
 
 		$scope.cancel = function(){
 
-			$scope.modalInstance.dismiss();
+			$scope.modalInstance.close();
 
 		};
 

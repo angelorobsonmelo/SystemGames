@@ -37,20 +37,22 @@
 							<th class="label-th" style="width: 18%; text-align: center;">JOGO</th>
 							<th class="label-th" style="width: 12%; text-align: center;">CAMPEONATO</th>
 							<th class="label-th" style="width: 6%; text-align: center;">DATA</th>
+							<th class="label-th" style="width: 6%; text-align: center;">HORA</th>
 							<th class="label-th" style="width: 8%; text-align: center;">RESULTADO
 								CASA</th>
 							<th class="label-th" style="width: 8%; text-align: center;">RESULTADO
 								FORA</th>
 							<th class="label-th" style="width: 10%; text-align: center;">INSERIR
-								RESULT</th>
-							<th class="label-th" style="width: 4%; text-align: center;">DETALHES</th>
+								RESULTADO</th>
+							<th class="label-th" style="width: 4%; text-align: center;">APOSTAS REALIZADAS</th>
+							<th class="label-th" style="width: 4%; text-align: center;">TAXAS/LIMITES</th>
 							<th class="label-th" style="width: 4%; text-align: center;">EDITAR</th>
 							<th class="label-th" style="width: 4%; text-align: center;">EXCLUIR</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr
-							dir-paginate="w in jogos | filter:buscar | itemsPerPage: 5 |  orderBy:'-sequencial'"
+							dir-paginate="w in jogos | filter:buscar |  orderBy:'-sequencial'| itemsPerPage: 5 "
 							pagination-id="ListaDeJogos" at-implicit
 							at-attribute="name">
 							<td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">{{
@@ -61,32 +63,42 @@
 								w.campeonatoVO.nome }}</td>
 							<td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
 								{{ w.dataJogoFormatadaBasica }}</td>
+								<td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
+								{{ w.horaInicialJogo }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								{{ w.resultadoJogoVO.resultadoCasa }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								{{ w.resultadoJogoVO.resultadoFora }}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								<button
-									class="btn btn-success btn-icon waves-effect waves-circle"
+									class="btn bgm-orange btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
 
-									popover="Inserir Resultado do Jogo" ng-click="openModalGerenciarResultadoJogo(w)">
+									popover="Inserir Resultado do Jogo  {{ w.jogo }}" ng-click="openModalGerenciarResultadoJogo(w)">
 
-									<i class="zmdi zmdi-check-all"></i>
+									<i class="zmdi zmdi-file-plus zmdi-hc-fw"></i>
 								</button>
 							</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								<button
 									class="btn bgm-orange btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
-									popover="Mais dados sobre Jogo" ng-click="detalhes(w)">
-									<i class="zmdi zmdi-search"></i>
+									popover="Apostas Realizadas do Jogo {{ w.jogo }}" ng-click="openModalApostaRealizada(w)">
+									<i class="zmdi zmdi-shield-check zmdi-hc-fw"></i>
+								</button>
+							</td>
+							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
+								<button
+									class="btn bgm-orange btn-icon waves-effect waves-circle"
+									popover-placement="top" popover-trigger="mouseenter"
+									popover="Taxas e Limites do Jogo  {{ w.jogo }}" ng-click="openModaTaxaLimite(w)">
+									<i class="zmdi zmdi-chart zmdi-hc-fw"></i>
 								</button>
 							</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 								<button class="btn bgm-teal btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
-									popover="Editar" ng-click="editarJogo(w)">
+									popover="Editar Jogo  {{ w.jogo }}" ng-click="editarJogo(w)">
 									<i class="zmdi zmdi-edit"></i>
 								</button>
 							</td>
@@ -94,7 +106,7 @@
 								<button type="button" ng-click="remover(w)"
 									class="btn btn-danger btn-icon waves-effect waves-circle"
 									popover-placement="top" popover-trigger="mouseenter"
-									popover="Excluir">
+									popover="Excluir Jogo  {{ w.jogo }}">
 									<i class="zmdi zmdi-close"></i>
 								</button>
 							</td>
