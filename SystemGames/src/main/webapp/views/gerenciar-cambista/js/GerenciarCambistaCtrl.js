@@ -37,7 +37,7 @@
 		function AtualizarCambista($scope, $modalInstance, cambista, gerenciarCambistaFactory) {
 
 
-			$scope.usuario = cambista;
+			$scope.cambista = cambista;
 
 			$scope.alterarr = function() {
 				gerenciarCambistaFactory.alterarUsuarioCambista($scope.usuario).then(function(data) {
@@ -57,15 +57,7 @@
 
 			function listartodos() {
 
-				gerenciarCambistaFactory.buscarUsuariosCambistas().then(function(resposta) {
 
-					var cambistaCopy = angular.copy(resposta);
-
-					$rootScope.cambista = cambistaCopy;
-
-					console.log($scope.cambista);
-
-				});
 
 			}
 
@@ -79,7 +71,7 @@
 
 			var modalScope = $rootScope.$new();
 			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-cambista/modals/modal-editar-cambista.html',
+				templateUrl: 'views/gerenciar-cambista/modals/modal-gerenciar-cambista.html',
 				controller: AtualizarCambista,
 				resolve: {
 					cambista: function () {
@@ -91,19 +83,24 @@
 		}
 
 		$scope.salvar = function() {
-			$scope.usuario.codigoTipoUsuario = {};
-			$scope.usuario.codigoTipoUsuario.sequencial = 2;
-			gerenciarCambistaFactory.salvarUsuarioCambista($scope.usuario).then(function(data) {
+			$scope.cambista.usuarioVO = {};
+			$scope.cambista.usuarioVO .sequencial = 1;
+
+			console.log($scope.cambista);
 
 
-				if(data) {
+			gerenciarCambistaFactory.salvar($scope.cambista).then(function(data) {
+
+
+				if(data == 'OK') {
 
 					alert("salvo com sucesso!");
-					$scope.usuario = '';
-					listarUsuariosCambistas();
+
+
 				}
 
 			});
+
 
 
 		};
@@ -153,10 +150,10 @@
 
 
 
-		listarUsuariosCambistas();
-		function listarUsuariosCambistas() {
+		pesquisarPorSeqUsuario();
+		function pesquisarPorSeqUsuario() {
 
-			gerenciarCambistaFactory.buscarUsuariosCambistas().then(function(dado) {
+			gerenciarCambistaFactory.pesquisarPorSeqUsuario().then(function(dado) {
 
 				$scope.cambistas = dado;
 				console.log(dado);

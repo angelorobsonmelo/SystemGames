@@ -6,18 +6,14 @@ materialAdmin
 
 
 
-        function salvarUsuarioCambista(usuario) {
+        function salvar(usuario) {
 
             var retorno = $q.defer();
 
-            $http.post(urlRaiz + 'salvarCambista', usuario)
+            $http.post(urlRaiz + 'salvar', usuario)
                 .success(function(resposta) {
 
-
-
                     retorno.resolve(resposta);
-
-
 
                 })
                 .error(function(resposta, status) {
@@ -80,11 +76,11 @@ materialAdmin
 
 
 
-        function buscarUsuariosCambistas() {
+        function pesquisarPorSeqUsuario() {
 
             var retorno = $q.defer();
 
-            $http.get(urlRaiz + 'listarTodosCambista')
+            $http.get(urlRaiz + 'pesquisarPorSeqUsuario/' + 1)
                 .success(function(resultado) {
 
                     retorno.resolve(resultado);
@@ -106,8 +102,8 @@ materialAdmin
             return {
 
 
-                salvarUsuarioCambista: salvarUsuarioCambista,
-                buscarUsuariosCambistas: buscarUsuariosCambistas,
+                salvar: salvar,
+                pesquisarPorSeqUsuario: pesquisarPorSeqUsuario,
                 alterarUsuarioCambista: alterarUsuarioCambista,
                 remover: remover
 

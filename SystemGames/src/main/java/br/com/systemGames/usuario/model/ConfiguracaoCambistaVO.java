@@ -1,29 +1,23 @@
-package br.com.systemGames.usuario.cambista.model;
-
-import br.com.systemGames.usuario.model.UsuarioVO;
+package br.com.systemGames.usuario.model;
 
 
-public class ConfiguracaoCambistaVO extends UsuarioVO{
+
+public class ConfiguracaoCambistaVO{
 
 	private Integer sequencial;
 	private Double limiteMaximoVendaDiario;
 	private Double limiteMaximoVendaIndividual;
-	private UsuarioVO codigoUsuario;
+	private CambistaVO cambistaVO;
 	private String observacao;
-	private Integer comissao1;
-	private Integer comissao2;
-	private Integer comissao3;
+	private Double comissao1;
+	private Double comissao2;
+	private Double comissao3;
 	
 	
 	public ConfiguracaoCambistaVO() {
-		codigoUsuario = new UsuarioVO();
+		
 	}
-	public UsuarioVO getCodigoUsuario() {
-		return codigoUsuario;
-	}
-	public void setCodigoUsuario(UsuarioVO codigoUsuario) {
-		this.codigoUsuario = codigoUsuario;
-	}
+	
 	public Integer getSequencial() {
 		return sequencial;
 	}
@@ -49,22 +43,36 @@ public class ConfiguracaoCambistaVO extends UsuarioVO{
 		this.observacao = observacao;
 	}
 	
-	public Integer getComissao1() {
+
+	public CambistaVO getCambistaVO() {
+		return cambistaVO;
+	}
+
+	public void setCambistaVO(CambistaVO cambistaVO) {
+		this.cambistaVO = cambistaVO;
+	}
+
+	public Double getComissao1() {
 		return comissao1;
 	}
-	public void setComissao1(Integer comissao1) {
+
+	public void setComissao1(Double comissao1) {
 		this.comissao1 = comissao1;
 	}
-	public Integer getComissao2() {
+
+	public Double getComissao2() {
 		return comissao2;
 	}
-	public void setComissao2(Integer comissao2) {
+
+	public void setComissao2(Double comissao2) {
 		this.comissao2 = comissao2;
 	}
-	public Integer getComissao3() {
+
+	public Double getComissao3() {
 		return comissao3;
 	}
-	public void setComissao3(Integer comissao3) {
+
+	public void setComissao3(Double comissao3) {
 		this.comissao3 = comissao3;
 	}
 	

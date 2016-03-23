@@ -2,16 +2,15 @@ package br.com.systemGames.usuario.model;
 
 
 
-import br.com.systemGames.usuario.cambista.model.ConfiguracaoCambistaVO;
 
 
 public class UsuarioVO {
 	
-	private Integer Usuariosequencial;	
-	private TipoUsuarioVO codigoTipoUsuario;
-	private String nomeUsuario;
+	private Integer sequencial;	
+	private TipoUsuarioVO tipoUsuarioVO;
+	private String nome;
+	private String apelido;
 	private String email;
-	private String login;
 	private String senha;
 	private String cpf;
 	private String numeroRg;
@@ -23,39 +22,18 @@ public class UsuarioVO {
 	private String cidade;
 	private String cep;
 	private String uf;
-	ConfiguracaoCambistaVO configuracaoCambistaVO;
+	
 
 	
 
 	public UsuarioVO() {
-		codigoTipoUsuario = new TipoUsuarioVO();
+		
+		tipoUsuarioVO = new TipoUsuarioVO();
+		
 
 	}
-	public ConfiguracaoCambistaVO getConfiguracaoCambistaVO() {
-		return configuracaoCambistaVO;
-	}
-	public void setConfiguracaoCambistaVO(
-			ConfiguracaoCambistaVO configuracaoCambistaVO) {
-		this.configuracaoCambistaVO = configuracaoCambistaVO;
-	}
-	public Integer getUsuariosequencial() {
-		return Usuariosequencial;
-	}
-	public void setUsuariosequencial(Integer usuariosequencial) {
-		Usuariosequencial = usuariosequencial;
-	}
-	public TipoUsuarioVO getCodigoTipoUsuario() {
-		return codigoTipoUsuario;
-	}
-	public void setCodigoTipoUsuario(TipoUsuarioVO codigoTipoUsuario) {
-		this.codigoTipoUsuario = codigoTipoUsuario;
-	}
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
+
+	
 	public String getEmail() {
 		return email;
 	}
@@ -79,12 +57,6 @@ public class UsuarioVO {
 	}
 	public void setNumeroRg(String numeroRg) {
 		this.numeroRg = numeroRg;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
 	}
 	public String getContato() {
 		return contato;
@@ -133,6 +105,34 @@ public class UsuarioVO {
 	}
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+	public TipoUsuarioVO getTipoUsuarioVO() {
+		return tipoUsuarioVO;
+	}
+	public void setTipoUsuarioVO(TipoUsuarioVO tipoUsuarioVO) {
+		this.tipoUsuarioVO = tipoUsuarioVO;
+	}
+	public Integer getSequencial() {
+		return sequencial;
+	}
+	public void setSequencial(Integer sequencial) {
+		this.sequencial = sequencial;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getApelido() {
+		return apelido;
+	}
+
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
 	
 	

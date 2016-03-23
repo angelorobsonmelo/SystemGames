@@ -1,9 +1,9 @@
-package br.com.systemGames.usuario.cambista.bo;
+package br.com.systemGames.usuario.bo;
 
 import java.util.ArrayList;
 
 import br.com.systemGames.excecao.BOException;
-import br.com.systemGames.usuario.cambista.model.ConfiguracaoCambistaVO;
+import br.com.systemGames.usuario.model.ConfiguracaoCambistaVO;
 
 public interface IConfiguracaoCambistaBO {
 	
