@@ -65,16 +65,26 @@
 
 		};
 		
-		$scope.addItem = function (jogo,valor, tipo) {
-			
+		$scope.addItem = function (jogo,valor, tipo, index) {
+			for(var i=0; i<items.jogos.length; i++) {
+				if(items.jogos[i].id === jogo.sequencial) {
+					console.log("Achou");
+					$scope.deleteItem(index);
+				}
+			}
 			items.jogos.push({
-				id: $scope.items.jogos.length + 1,
+				id: jogo.sequencial,
 				jogo: jogo.jogo,
 				dataJogo: jogo.dataJogoFormatadaBasica,
 				aposta: valor,
 				tipo: tipo
 
 			});
+			for(var i=0; i<items.jogos.length; i++) {
+				if(items.jogos[i].id === jogo.sequencial) {
+					console.log("Achou");
+				}
+			}
 			
 			var teste = 1;
 			angular.forEach($scope.items.jogos, function(item, index) {
@@ -87,6 +97,37 @@
 
 			console.log($scope.items.jogos);
 		};
+
+		$scope.addItem = function (jogo,valor, tipo, index) {
+			for(var i=0; i<items.jogos.length; i++) {
+				if(items.jogos[i].id === jogo.sequencial) {
+					console.log("Achou");
+					console.log(i);
+					$scope.deleteItem(i);
+				}
+			}
+			items.jogos.push({
+				id: jogo.sequencial,
+				jogo: jogo.jogo,
+				dataJogo: jogo.dataJogoFormatadaBasica,
+				aposta: valor,
+				tipo: tipo
+
+			});
+
+
+			var teste = 1;
+			angular.forEach($scope.items.jogos, function(item, index) {
+
+
+				teste *= item.aposta;
+				$scope.valorTtotal = teste;
+				console.log(teste);
+			});
+
+			console.log($scope.items.jogos);
+		};
+
 
 
 

@@ -43,22 +43,22 @@
                             {{jogo.campeonatoVO.nome}}
                         </td>
                         <td data-title="'HORA'" filter="{ 'email': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.casa, 'Casa: ')">{{jogo.limiteApostaVO.casa}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.casa, 'Casa: ',jogos[$index])">{{jogo.limiteApostaVO.casa}}</button>
                         </td>
                         <td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.empate,'Empate: ')">{{jogo.limiteApostaVO.empate}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.empate,'Empate: ',jogos[$index])">{{jogo.limiteApostaVO.empate}}</button>
                         </td>
                         <td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.fora,'Fora: ')">{{jogo.limiteApostaVO.fora}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.fora,'Fora: ',jogos[$index])">{{jogo.limiteApostaVO.fora}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.golEMeio,'Gol e Meio: ')">{{jogo.limiteApostaVO.golEMeio}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.golEMeio,'Gol e Meio: ',jogos[$index])">{{jogo.limiteApostaVO.golEMeio}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.duplaChance,'Dupla Chance: ')">{{jogo.limiteApostaVO.duplaChance}}</button>
+                            <button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.duplaChance,'Dupla Chance: ',jogos[$index])">{{jogo.limiteApostaVO.duplaChance}}</button>
                         </td>
                         <td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-                          	<button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.ambos,'Ambos: ')">{{jogo.limiteApostaVO.ambos}}</button>
+                          	<button class="btn btn-primary btn-icon waves-effect waves-circle" ng-click="addItem(jogo,jogo.limiteApostaVO.ambos,'Ambos: ',jogos[$index])">{{jogo.limiteApostaVO.ambos}}</button>
                         </td>
                     </tr>
                     </tbody>
