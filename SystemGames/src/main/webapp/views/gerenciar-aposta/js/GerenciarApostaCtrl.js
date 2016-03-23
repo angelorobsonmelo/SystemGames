@@ -6,7 +6,7 @@
 	'use strict';
 
 	var app = angular.module('materialAdmin');
-	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory) {
+	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory','GerenciarApostaFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory,GerenciarApostaFactory) {
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
@@ -24,7 +24,7 @@
 			
 			GerenciarJogoFactory.salvar($scope.jogo);
 			
-		}
+		};
 
 
 
@@ -51,7 +51,8 @@
 
 			items.jogos.splice(index, 1);
 			var teste = 1;
-			
+			if(items.jogos.length === 0)
+				$scope.valorTtotal = '';
 			angular.forEach($scope.items.jogos, function(item, index) {
 
 
@@ -65,7 +66,7 @@
 		};
 		
 		$scope.addItem = function (jogo,valor, tipo) {
-			if(jogo.jogo != jogo.jogo){
+			
 			items.jogos.push({
 				id: $scope.items.jogos.length + 1,
 				jogo: jogo.jogo,
@@ -74,9 +75,7 @@
 				tipo: tipo
 
 			});
-			}else{
-				
-			}
+			
 			var teste = 1;
 			angular.forEach($scope.items.jogos, function(item, index) {
 
@@ -88,13 +87,6 @@
 
 			console.log($scope.items.jogos);
 		};
-
-		$scope.apostar = function(ta,bra){
-			var multi = ta * bra;
-			console.log(multi);
-		};
-
-
 
 
 
@@ -119,27 +111,20 @@
 			console.log($scope.esportes);
 
 		});
-		
-		
 
-		$scope.openModalInserirAposta = function () {
+		$scope.listarJogoPorCampeonato = function(){
 
-			var modalScope = $rootScope.$new();
-			modalScope.modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-aposta/modals/modal-inserir-aposta.html',
-				controller: 'GerenciarApostaCtrl',
-				scope: modalScope
+			GerenciarApostaFactory.buscarJogoPorParams($scope.jogo).then(function(dado){
+				var jogoPorCampeonatoCopy = angular.copy(dado);
+				$scope.jogos = jogoPorCampeonatoCopy;
+				console.log($scope.jogos);
+
+
 			});
-
-		};
-
-		$scope.cancel = function(){
-
-			$scope.modalInstance.cancel();
-
 		};
 		
-		
+
+
 
 
 	}]);

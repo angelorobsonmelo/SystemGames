@@ -242,4 +242,16 @@ public class JogoBO implements IJogoBO {
 		}
 	}
 
+	public ArrayList<JogoVO> listarPorParams(JogoVO jogoVO) throws BOException {
+		try {
+
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			return jogoDAO.listarPorParams(jogoVO);
+		} catch (Exception e) {
+			throw new BOException(e);
+		}
+	}
+
 }

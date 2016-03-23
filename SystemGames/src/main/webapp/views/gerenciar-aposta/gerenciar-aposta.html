@@ -1,12 +1,22 @@
 <meta charset="utf-8">
 
 
-<div class="container" data-ng-controller="tableCtrl as tctrl">
+<div class="container" >
 
 <div class="col-md-9">
     <div class="card">
+    <div>
+    <select class="form-control" name="campeonato" ng-change="listarJogoPorCampeonato()" id="campeonato" style="width: 104%"
+														ng-model="jogo.campeonatoVO.sequencial" required>
+													<option ng-repeat="item in campeonatos"
+															value="{{ item.sequencial }}" ng-selected="jogo.campeonatoVO.sequencial == item.sequencial" ng-bind="item.nome"></option>
+													<option value="" selected>Listar Todos</option>
+												</select>
+												
+												</div>
         <div class="card-header">
             <h3 class="modal-title text-center">Tabela de Jogo</h3>
+            
         </div>
 
         <div class="card-body">
@@ -101,7 +111,13 @@
 
                             <div class="input-group">
                                 <div class="fg-line">
-                                    <p>{{valorTtotal * valorAposta | currency}}</p>
+                                    <p>Possível Retorno: {{valorTtotal * valorAposta | currency}}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="fg-line">
+                                    <p>Quantidade de jogos: {{items.jogos.length}}</p>
                                 </div>
                             </div>
 

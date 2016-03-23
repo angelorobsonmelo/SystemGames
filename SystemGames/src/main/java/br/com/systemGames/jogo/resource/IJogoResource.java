@@ -15,5 +15,7 @@ public interface IJogoResource {
 	public ArrayList<JogoVO> listarTodos() throws SQLException, BOException;
 
 	public JogoVO retornarUltimoSequencial() throws SQLException, BOException;
+	
+	public ArrayList<JogoVO> listarPorParams(JogoVO jogoVO) throws BOException;
 
 }
