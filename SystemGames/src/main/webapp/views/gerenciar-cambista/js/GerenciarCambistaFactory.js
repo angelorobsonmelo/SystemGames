@@ -26,35 +26,13 @@ materialAdmin
 
         }
 
-        function alterarUsuarioCambista(usuario) {
+
+
+        function remover(cambista) {
 
             var retorno = $q.defer();
 
-            $http.put(urlRaiz + 'alterar', usuario)
-                .success(function(resposta) {
-
-
-
-                    retorno.resolve(resposta);
-
-
-
-                })
-                .error(function(resposta, status) {
-
-                    alert("Erro Status: " + status);
-                    retorno.resolve(resposta);
-                })
-
-            return retorno.promise;
-
-        }
-
-        function remover(usuario) {
-
-            var retorno = $q.defer();
-
-            $http.delete(urlRaiz + 'removerUsuario/'+ usuario.sequencial+'/'+ usuario.usuariosequencial)
+            $http.delete(urlRaiz + 'remover/'+ cambista.sequencial)
                 .success(function(resposta) {
 
 
@@ -104,7 +82,6 @@ materialAdmin
 
                 salvar: salvar,
                 pesquisarPorSeqUsuario: pesquisarPorSeqUsuario,
-                alterarUsuarioCambista: alterarUsuarioCambista,
                 remover: remover
 
             }

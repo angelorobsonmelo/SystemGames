@@ -10,6 +10,9 @@ public interface ICambistaBO {
 
 	public String salvar(CambistaVO cambistaVO) throws BOException, SQLException;
 	
+	public String remover(CambistaVO cambistaVO) throws BOException, SQLException;
+	
+	
 	public ArrayList<CambistaVO> pesquisarPorSeqUsuario(CambistaVO cambistaVO) throws BOException, SQLException;
 	
 	

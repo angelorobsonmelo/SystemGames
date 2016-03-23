@@ -97,4 +97,38 @@ finally{
 		}
 	}
 
+
+
+	public String remover(CambistaVO cambistaVO) throws BOException,
+			SQLException {
+	
+			String resultadoExecucaoInserirUnidadeDeSaude = null;
+
+			try{	
+				/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+				Conexao.setarAutoCommitParaFalse();
+
+				resultadoExecucaoProcedures.clear();
+
+				resultadoExecucaoInserirUnidadeDeSaude =  cambistaDAO.remover(cambistaVO);
+				resultadoExecucaoProcedures.add(resultadoExecucaoInserirUnidadeDeSaude);
+
+				if (!resultadoExecucaoInserirUnidadeDeSaude.equals("OK")){
+					throw new BOException("Erro ao inserir unidade de saúde. "+resultadoExecucaoInserirUnidadeDeSaude);
+				}
+
+				return Conexao.verificarResultadosDaExecucaoDeProceduresValidandoCommit(resultadoExecucaoProcedures);
+
+			}catch (Exception ex) { 
+				/*Preferivel que seja dado um Rollback neste caso*/
+
+				throw new BOException(ex);
+			}
+			finally{
+				resultadoExecucaoInserirUnidadeDeSaude = null;
+				resultadoExecucaoProcedures.clear();
+
+			}
+	}
+
 }

@@ -252,3 +252,59 @@ END;
 $BODY$
   LANGUAGE plpgsql VOLATILE
   COST 100;
+  
+  
+  CREATE OR REPLACE FUNCTION sp_cambista_atualizar(
+    "P_NOME_CAMBISTA" character varying,
+    "P_EMAIL_CAMBISTA" character varying,
+    "P_SENHA_CAMBISTA" character varying,
+    "P_CPF_CAMBISTA" character varying,
+    "P_NUM_RG_CAMBISTA" character varying,
+    "P_NUM_CONTATO_CAMBISTA" character varying,
+    "P_ENDERECO_CAMBISTA" character varying,
+    "P_NUM_ENDERECO_CAMBISTA" character varying,
+    "P_COMPLEMENTO_CAMBISTA" character varying,
+    "P_BAIRRO_CAMBISTA" character varying,
+    "P_CIDADE_CAMBISTA" character varying,
+    "P_CEP_CAMBISTA" character varying,
+    "P_UF_CAMBISTA" character varying,
+    "P_APELIDO_CAMBISTA" character varying,
+    "P_LIMITE_MAX_VENDA_DIARIA" double precision,
+    "P_LIMITE_MAX_VENDA_INDIVIDUAL" double precision,
+    "P_OBSERVACAO" character varying,
+    "P_COMISSAO1" double precision,
+    "P_COMISSAO2" double precision,
+    "P_COMISSAO3" double precision,
+    "P_SEQ_CAMBISTA" integer)
+  RETURNS character varying AS
+$BODY$
+DECLARE
+ P_MSG_RETORNO VARCHAR = '';   
+ BEGIN 
+
+
+
+ 
+ UPDATE cambista SET NOME_CAMBISTA = $1, EMAIL_CAMBISTA = $2, SENHA_CAMBISTA = $3, 
+ CPF_CAMBISTA = $4, NUM_RG_CAMBISTA = $5, NUM_CONTATO_CAMBISTA = $6,  ENDERECO_CAMBISTA = $7,
+  NUM_ENDERECO_CAMBISTA = $8, COMPLEMENTO_CAMBISTA = $9, BAIRRO_CAMBISTA = $10, CIDADE_CAMBISTA = $11, 
+  CEP_CAMBISTA = $12, UF_CAMBISTA = $13, APELIDO_CAMBISTA = $14
+ WHERE SEQ_CAMBISTA = $21;
+ 
+UPDATE configuracao_cambista SET limite_max_venda_diaria = $15, limite_max_venda_individual = $16, observacao = $17, comissao1 = $18, comissao2 = $19, comissao3 = $20
+WHERE COD_CAMBISTA = $21;
+
+ P_MSG_RETORNO = 'OK';
+ 
+ RETURN P_MSG_RETORNO;
+ EXCEPTION 
+ WHEN UNIQUE_VIOLATION THEN
+ P_MSG_RETORNO = SQLERRM;
+ RETURN P_MSG_RETORNO;
+ WHEN INTEGRITY_CONSTRAINT_VIOLATION THEN 
+ P_MSG_RETORNO = SQLERRM;
+ RETURN P_MSG_RETORNO; 
+ END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;

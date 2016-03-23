@@ -208,6 +208,7 @@ public class CambistaDAO implements ICambistaDAO {
 			cambistaVO.setUf(rs.getString("uf_cambista"));
 			cambistaVO.setNumeroEndereco(rs.getString("num_endereco_cambista"));
 			cambistaVO.setApelido(rs.getString("apelido_cambista"));
+			cambistaVO.setSenha(rs.getString("senha_cambista"));
 
 			cambistaVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
 
@@ -238,6 +239,39 @@ public class CambistaDAO implements ICambistaDAO {
 			lista.add(cambistaVO);
 		}
 		return lista;
+	}
+
+
+
+	public String remover(CambistaVO cambistaVO) throws DAOException {
+		procedure = "{ ? = CALL SP_CAMBISTA_REMOVER(?)}";	
+		cstmt = null;
+		resultado = null;
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.VARCHAR);
+
+			cstmt.setInt(2, cambistaVO.getSequencial());
+
+			cstmt.execute();
+
+			resultado = (String) cstmt.getString(1);
+			cstmt.close();
+
+			return resultado;
+
+		}
+		catch(Exception ex)
+		{
+			throw new DAOException(ex);
+		}finally{
+
+			procedure = null;
+			cstmt = null;
+		}
 	}
 
 

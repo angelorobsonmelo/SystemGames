@@ -30,7 +30,7 @@
 
 
 			$scope.modalInstance.close();
-			listarUsuariosCambistas();
+
 
 		};
 
@@ -39,14 +39,15 @@
 
 			$scope.cambista = cambista;
 
-			$scope.alterarr = function() {
-				gerenciarCambistaFactory.alterarUsuarioCambista($scope.usuario).then(function(data) {
+			$scope.salvar = function() {
+				gerenciarCambistaFactory.salvar($scope.cambista).then(function(data) {
 
 
-					if(data) {
+					if(data == "OK") {
 
-						alert("alterado com sucesso!");
-						listartodos();
+						swal("Aviso!", "Alterado com Sucesso.", "success");
+
+						pesquisarPorSeqUsuario();
 					}
 
 				});
@@ -54,12 +55,6 @@
 
 			};
 
-
-			function listartodos() {
-
-
-
-			}
 
 
 			$scope.close = function () {
@@ -94,8 +89,8 @@
 
 				if(data == 'OK') {
 
-					alert("salvo com sucesso!");
-
+					swal("Aviso!", "Salvo com Sucesso.", "success");
+					pesquisarPorSeqUsuario();
 
 				}
 
@@ -105,22 +100,9 @@
 
 		};
 
-		$scope.alterar = function() {
-			gerenciarCambistaFactory.alterarUsuarioCambista($scope.usuario).then(function(data) {
 
 
-				if(data) {
-
-					alert("alterado com sucesso!");
-					listarUsuariosCambistas();
-				}
-
-			});
-
-
-		};
-
-		$scope.removerCambista = function (usuario) {
+		$scope.remover = function (cambista) {
 
 			swal({
 				title: "Deseja Realmente Remover?",
@@ -132,14 +114,14 @@
 				closeOnConfirm: false
 			}, function(){
 
-				gerenciarCambistaFactory.remover(usuario).then(function(resposta){
+				gerenciarCambistaFactory.remover(cambista).then(function(resposta){
 
 
 					if(resposta == "OK"){
 
 						swal("Aviso!", "Removido com Sucesso.", "success");
-						listarUsuariosCambistas();
 
+						pesquisarPorSeqUsuario();
 					}
 
 
@@ -155,7 +137,7 @@
 
 			gerenciarCambistaFactory.pesquisarPorSeqUsuario().then(function(dado) {
 
-				$scope.cambistas = dado;
+				$rootScope.cambistas = dado;
 				console.log(dado);
 
 			})

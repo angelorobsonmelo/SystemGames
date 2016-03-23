@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -58,6 +59,28 @@ public class CambistaResource implements ICambistaResource {
 			cambistaVO.getUsuarioVO().setSequencial(sequencialUsuario);
 			
 			return cambistaBO.pesquisarPorSeqUsuario(cambistaVO);
+
+
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		}finally {
+
+			cambistaBO = null;
+
+
+		}
+	}
+
+	
+	@DELETE
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("remover/{sequencial}")
+	public String remover(@PathParam("sequencial") Integer sequencial) throws BOException, SQLException {
+		try {
+
+			cambistaVO.setSequencial(sequencial);
+			
+			return cambistaBO.remover(cambistaVO);
 
 
 		} catch (Exception ex) {

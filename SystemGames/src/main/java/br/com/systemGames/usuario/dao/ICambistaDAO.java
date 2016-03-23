@@ -9,6 +9,8 @@ public interface ICambistaDAO {
 
 	public String salvar(CambistaVO cambistaVO) throws DAOException;
 	
+	public String remover(CambistaVO cambistaVO) throws DAOException;
+	
 	public ArrayList<CambistaVO> pesquisarPorSeqUsuario(CambistaVO cambistaVO) throws DAOException;
 	
 }
