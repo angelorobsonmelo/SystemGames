@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <form ng-submit="salvar()" name="myForm">
         <div class="modal-header">
-            <div class="text-right"><i class="fa fa-times fa-2x" ng-click="cancel()"></i></div>
+            <div class="text-right"><i class="fa fa-times fa-2x botao-cancel" ng-click="cancel()"></i></div>
             <h3 class="modal-title text-center titulo-modal">Inserir Novo Cambista</h3>
         </div>
         <meta charset="utf-8">
@@ -15,14 +15,15 @@
                     <div class="col-md-9">
 
                         <div class="card">
-                            <div class="lv-item">
+                           <div class="lv-item">
                                 <div class="lv-title m-b-5">&nbsp;&nbsp;GERENCIAR CAMBISTAS</div>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                                         <span class="sr-only"></span>
                                     </div>
                                 </div>
                             </div>
+                           
                             <div class="card-body p-10">
                                 <div class="row">
                                     <div class="col-sm-12 m-b-5">
@@ -30,38 +31,15 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-account zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="cambista.nome" class="form-control bgm-blue-realizado" placeholder="Digite o nome do Cambista">
+                                                <input type="text" ng-model="cambista.nome" class="form-control bgm-blue-realizado" name="nome" id="nome"  ng-required="true" placeholder="Digite o nome do Cambista">
+                                                
+                                                <div ng-messages="myForm.nome.$error"
+													ng-show="myForm.nome.$touched">
+													<div ng-message="required">Campo obrigatório</div>
+												</div>
+                                                
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-sm-4 m-b-5">
-                                        <p class="f-12 c-black m-b-5">Limite Diario</p>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
-                                            <div class="fg-line">
-                                                <input type="text" ng-model="cambista.configuracaoCambistaVO.limiteMaximoVendaDiario" class="form-control c-red bgm-red-limite text-center" placeholder="0">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4 m-b-5">
-                                        <p class="f-12 c-black m-b-5">Limite Indivudual</p>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
-                                            <div class="fg-line">
-                                                <input type="text" ng-model="cambista.configuracaoCambistaVO.limiteMaximoVendaIndividual" class="form-control c-red bgm-red-limite text-center" placeholder="0">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="checkbox m-b-4">
-                                        <p class="f-12 c-black m-b-5">Descartar Limite</p>
-                                        <label class="f-11">
-                                            <input type="checkbox" value="">
-                                            <i class="input-helper"></i>
-                                            Descartar limite de joogo na aposta indivudual
-                                        </label>
                                     </div>
 
                                     <div class="col-sm-6 m-b-5">
@@ -69,7 +47,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="cambista.cpf" class="form-control c-blue bgm-blue-realizado" placeholder="000.000.000-00">
+                                                <input type="text" ng-model="cambista.cpf" class="form-control c-blue bgm-blue-realizado" data-input-mask="{mask: '000.000.000-00'}" placeholder=" 000.000.000-00">
                                             </div>
                                         </div>
                                     </div>
@@ -139,13 +117,13 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-label zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="cambista.cep" class="form-control c-blue bgm-blue-realizado" placeholder="00000-000">
+                                                <input type="text" ng-model="cambista.cep" class="form-control c-blue bgm-blue-realizado"  data-input-mask="{mask: '00000-000'}" placeholder=" 00000-000">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-2 m-b-5">
-                                        <p class="f-500 c-black m-b-15">UF</p>
+                                    <div class="col-sm-2">
+                                        <p class="f-500 c-black">UF</p>
                                         <select class="form-control" name="select" style="width: 80%"
                                                 ng-model="cambista.uf" required>
                                             <option value="AL">AL</option>
@@ -179,7 +157,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="zmdi zmdi-smartphone-android zmdi-hc-fw"></i></span>
                                             <div class="fg-line">
-                                                <input type="text" ng-model="cambista.contato" class="form-control c-blue bgm-blue-realizado" placeholder="00000-0000">
+                                                <input type="text" ng-model="cambista.contato" class="form-control c-blue bgm-blue-realizado" data-input-mask="{mask: '(00) 0000-0000'}" placeholder=" (00) 0000-0000">
                                             </div>
                                         </div>
                                     </div>
@@ -213,11 +191,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4 m-b-15 align-left">
+                                    <div class="col-sm-4 m-b-20 align-left">
                                         <div class="input-group">
                                             <span class="input-group-addon"></span>
                                             <div class="fg-line">
-                                                <button
+                                                <button ng-disabled="myForm.$invalid"
                                                         class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
                                                         popover-placement="top" popover-trigger="mouseenter"
                                                         popover="Salva Novo Cambista" type="submit" >
@@ -237,40 +215,45 @@
 
                         <div class="card">
                             <div class="lv-item">
-                                <div class="lv-title m-b-0">&nbsp;&nbsp;IMAGEM</div>
+                                <div class="lv-title m-b-5">&nbsp;&nbsp;LIMITES</div>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                                         <span class="sr-only"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-padding p-15" data-ng-controller="DatepickerDemoCtrl">
-                                <br/>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="pmo-pic">
-                                            <div class="p-relative" align="center">
-                                                <a href="">
-                                                    <img class="img-responsive" src="img/profile-pics/2.jpg" alt="" width="106" height="120">
-                                                </a>
+                            
+                             		<div class="col-sm-12 m-b-5">
+                                        <p class="f-12 c-black m-b-5">Limite Diario</p>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
+                                            <div class="fg-line">
+                                                <input type="text" ng-model="cambista.configuracaoCambistaVO.limiteMaximoVendaDiario" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="card">
+                                    <div class="col-sm-12 m-b-5">
+                                        <p class="f-12 c-black m-b-5">Limite Indivudual</p>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="zmdi zmdi-money zmdi-hc-fw"></i></span>
+                                            <div class="fg-line">
+                                                <input type="text" ng-model="cambista.configuracaoCambistaVO.limiteMaximoVendaIndividual" class="form-control c-red bgm-red-limite text-center" placeholder="0">
+                                            </div>
+                                        </div><br /><br />
+                                    </div>
+                                    </div>
+		
                             <div class="lv-item">
-                                <div class="lv-title m-b-0">&nbsp;&nbsp;COMISSAO / CAMBISTA</div>
+                                <div class="lv-title m-b-5">&nbsp;&nbsp;COMISSAO</div>
                                 <div class="progress">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                                         <span class="sr-only"></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-padding p-15" data-ng-controller="DatepickerDemoCtrl">
-                                <br/>
+                               <div class="card-padding p-15" data-ng-controller="DatepickerDemoCtrl">
                                 <div class="row">
                                     <div class="col-sm-12 m-b-5">
                                         <p class="f-12 c-black m-b-5">Comissao-1</p>
@@ -299,18 +282,12 @@
                                             <div class="fg-line">
                                                 <input type="text" ng-model="cambista.configuracaoCambistaVO.comissao3" class="form-control c-red bgm-red-limite text-center" placeholder="0">
                                             </div>
-                                        </div>
+                                        </div><br /><br /><br />
                                     </div>
-
-                                    <div class="col-sm-12 m-b-5">
-                                        <p class="f-12 c-black m-b-5">Tablet Bloqueado</p>
-                                        <select chosen data-placeholder="Select a country..." class="w-100">
-                                            <option value="United States">SIM</option>
-                                            <option value="United Kingdom">NÃO</option>
-                                        </select>
-                                    </div>
+              
                                 </div>
-                            </div>
+                                </div>
+                            
                         </div>
                     </div>
                 </div>

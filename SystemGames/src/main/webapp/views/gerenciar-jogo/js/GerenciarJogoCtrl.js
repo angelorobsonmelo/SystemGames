@@ -14,7 +14,11 @@
 
 		$scope.ToggleCampeonato = false;
 
+		$scope.cancel = function(){
 
+			$scope.modalInstance.close();
+
+		}
 
 		$scope.salvar = function() {
 
@@ -63,9 +67,9 @@
 
 				var capeonatosCopy = angular.copy(resposta);
 
-				$scope.campeonatos = capeonatosCopy;
+				$rootScope.campeonatos = capeonatosCopy;
 
-				console.log($scope.campeonatos);
+				console.log($rootScope.campeonatos);
 
 			});
 		}
@@ -78,9 +82,9 @@
 
 				var esportesCopy = angular.copy(resposta);
 
-				$scope.esportes = esportesCopy;
+				$rootScope.esportes = esportesCopy;
 
-				console.log($scope.esportes);
+				console.log($rootScope.esportes);
 
 			});
 		}
@@ -206,7 +210,7 @@
 			
 		}
 
-		function AtualizarJogo($scope, $modalInstance, jogo, EsporteFactory, CampeonatoFactory) {
+		function AtualizarJogo($scope, $uibModalInstance, jogo, EsporteFactory, CampeonatoFactory) {
 
 
 			$scope.jogo = jogo;
@@ -214,7 +218,7 @@
 
 			$scope.salvar = function() {
 				swal("Aviso!", "Atualizado com Sucesso.", "success");
-				$modalInstance.dismiss('cancel');
+			
 				console.log();
 
 				GerenciarJogoFactory.salvar($scope.jogo).then(function(resposta){
@@ -224,7 +228,7 @@
 
 
 						listartodos();
-						$scope.modalInstance.dismiss();
+						$uibModalInstance.dismiss('cancel');
 						swal("Aviso!", "Cadastrado com Sucesso.", "success");
 					}
 
@@ -269,9 +273,16 @@
 				console.log($scope.campeonatos);
 
 			});
+			
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
 
 		};
 
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
+		};
 
 
 		$scope.cancel = function(){

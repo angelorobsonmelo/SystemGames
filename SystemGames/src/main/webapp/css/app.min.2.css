@@ -363,7 +363,8 @@
   border-radius: 2px;
   width: 500px;
   display: inline-block;
-  margin-top: -15px;
+  margin-top: 38px;
+  margin-left: 30%;
   vertical-align: middle;
   position: relative;
 }

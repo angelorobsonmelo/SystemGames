@@ -2012,9 +2012,27 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1290px;
   }
 }
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+	.bgm-blue-aposta {
+	    width: 67% !important;
+	    
+	}
+	.div-possivel-retorno {
+		font-size: 13px !important;
+	}
+	.cor-card-aposta {
+		width: 95% !important;
+		font-size: 10px !important;
+	}
+	.title-valor-apostado{
+		font-size: 20px !important;
+	}
+
+}	
 
 .container-fluid {
   margin-right: auto;
@@ -10779,7 +10797,7 @@ h6 small,
   height: 129px;
   margin-bottom: 5px;
   width: 100%;
-  background: url(../img/profile-menu.png) no-repeat left top;
+  background: url(../img/Logo-System-games.png) no-repeat left top;
   background-size: 100%;
 }
 
@@ -10788,10 +10806,10 @@ h6 small,
 }
 
 .profile-menu > a .profile-pic > img {
-  width: 47px;
+  width: 0px;
   height: 47px;
   border-radius: 50%;
-  border: 3px solid rgba(0, 0, 0, 0.14);
+  border: 3px solid rgba(0, 0, 0, 0);	
   box-sizing: content-box;
 }
 
@@ -15416,4 +15434,58 @@ a.thumbnail.active {
 
 .text-jogo{
 	margin-left: 29%;
+}
+
+.remover-card-aposta{
+    color: #257F9E;
+    cursor: pointer;
+    margin-left: 93%;
+}
+
+.cor-card-aposta{
+    padding-top: 53px;
+    background-image: none!important;
+    background-color: rgba(64, 160, 236, 0.16)!important;
+    margin: 6px;
+    margin-top: -9%;
+    padding: 10px 4px 5px;
+    border-radius: 5px;
+    border-bottom: 3;
+    clear: both;
+    color: #2196F3;
+    width: 96%;
+    height: 106px;
+    border: 1px solid rgba(13, 138, 238, 0.35);
+}
+
+.div-possivel-retorno{
+    background-image: none!important;
+    background-color: rgba(64, 160, 236, 0.16)!important;
+    margin-top: -4%;
+    margin-left: -3%;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    clear: both;
+    color: #2196F3;
+    width: 106%;
+    height: 94px;
+    font-size: 16px;
+    padding: 6%;
+    border: 1px solid #0d8aee;
+}
+
+
+.corpo-div{
+	margin-top: -5%;
+}
+
+.bgm-blue-aposta {
+    background-color: #DBEEFD !important;
+	height: 35px;
+	font-size: 14px;
+	width: 118% !important;
+}
+
+.title-valor-apostado{
+	font-size: 20px;
 }

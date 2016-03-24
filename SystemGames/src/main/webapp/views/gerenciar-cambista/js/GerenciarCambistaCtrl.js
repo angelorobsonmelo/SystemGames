@@ -25,6 +25,60 @@
 			});
 
 		};
+		
+		
+		$scope.openModaDadosPessoais = function(cambista){
+
+			var modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-cambista/modals/modal-dados-pessoais.html',
+				controller: ModaDadosPessoais,
+				resolve: {
+					cambista: function () {
+						return cambista;
+					}
+				}
+			});
+
+		}
+		
+		function ModaDadosPessoais($scope, $uibModalInstance, cambista) {
+			
+			$scope.cambista = cambista;
+			
+			console.log($scope.cambista);
+			
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
+			
+		}
+		
+		
+		$scope.openModaLimiteTaxa = function(cambista){
+
+			var modalInstance = $modal.open({
+				templateUrl: 'views/gerenciar-cambista/modals/modal-limite-taxa-cambista.html',
+				controller: LimiteTaxa,
+				resolve: {
+					cambista: function () {
+						return cambista;
+					}
+				}
+			});
+
+		}
+		
+		function LimiteTaxa($scope, $uibModalInstance, cambista) {
+			
+			$scope.cambista = cambista;
+			
+			console.log($scope.cambista);
+			
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
+			
+		}
 
 		$scope.cancel = function(){
 
@@ -34,7 +88,7 @@
 
 		};
 
-		function AtualizarCambista($scope, $modalInstance, cambista, gerenciarCambistaFactory) {
+		function AtualizarCambista($scope, $uibModalInstance, cambista, gerenciarCambistaFactory) {
 
 
 			$scope.cambista = cambista;
@@ -48,6 +102,7 @@
 						swal("Aviso!", "Alterado com Sucesso.", "success");
 
 						pesquisarPorSeqUsuario();
+						$uibModalInstance.dismiss('cancel');
 					}
 
 				});
@@ -57,8 +112,8 @@
 
 
 
-			$scope.close = function () {
-				$modalInstance.dismiss('cancel');
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
 			};
 		};
 
@@ -68,12 +123,16 @@
 			modalScope.modalInstance = $modal.open({
 				templateUrl: 'views/gerenciar-cambista/modals/modal-gerenciar-cambista.html',
 				controller: AtualizarCambista,
+				scope: modalScope,
 				resolve: {
 					cambista: function () {
 						return cambista;
 					}
 				}
 			});
+			$scope.cancel = function () {
+				$uibModalInstance.dismiss('cancel');
+			};
 
 		}
 
@@ -94,6 +153,7 @@
 
 					swal("Aviso!", "Salvo com Sucesso.", "success");
 					pesquisarPorSeqUsuario();
+					$scope.modalInstance.close();
 
 				}
 
