@@ -1,39 +1,40 @@
 /**
  * Created by Ademar on 20/01/2016.
  */
-(function() {
+(function () {
 
-	'use strict';
+    'use strict';
 
-	var app = angular.module('materialAdmin');
+    var app = angular.module('materialAdmin');
 
-	app.controller('loginCtrl', ['$scope', '$rootScope', '$location', '$modal', 'LoginFactory', function($scope, $rootScope, $location, $modal, LoginFactory){
-		$rootScope.titulo = "Login";
-		$rootScope.activetab = $location.path();
-		$rootScope.esconderHeader = true;
+    app.controller('loginCtrl', ['$scope', '$rootScope', '$location', '$modal', 'LoginFactory', function ($scope, $rootScope, $location, $modal, LoginFactory) {
+        $rootScope.titulo = "Login";
+        $rootScope.activetab = $location.path();
+        $rootScope.esconderHeader = true;
 
-		$scope.ToggleCampeonato = false;
+        $scope.ToggleCampeonato = false;
 
-		var url = document.location;
-		
-	    //Status
-	    
+        localStorage.removeItem("usuarioLogado");
+
+        var url = $location.path();
+
+        //Status
+
         this.login = 1;
         this.register = 0;
         this.forgot = 0;
 
-		console.log(url);
+        console.log(url);
 
-		$scope.autenticar = function () {
+        $scope.autenticar = function () {
 
-			console.log($scope.usuario, url);
+            console.log($scope.usuario, url);
 
-			LoginFactory.autenticar($scope.usuario, url);
+            LoginFactory.autenticar($scope.usuario, url);
 
-		}
+        }
 
 
-
-	}]);
+    }]);
 
 }());

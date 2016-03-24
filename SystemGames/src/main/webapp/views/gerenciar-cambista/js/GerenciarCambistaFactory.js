@@ -58,7 +58,9 @@ materialAdmin
 
             var retorno = $q.defer();
 
-            $http.get(urlRaiz + 'pesquisarPorSeqUsuario/' + 1)
+            var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+            $http.get(urlRaiz + 'pesquisarPorSeqUsuario/' + usuarioLogado.sequencial)
                 .success(function(resultado) {
 
                     retorno.resolve(resultado);

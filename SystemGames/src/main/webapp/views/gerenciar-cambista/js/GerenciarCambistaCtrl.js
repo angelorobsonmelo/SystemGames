@@ -78,8 +78,11 @@
 		}
 
 		$scope.salvar = function() {
+
+			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
 			$scope.cambista.usuarioVO = {};
-			$scope.cambista.usuarioVO .sequencial = 1;
+			$scope.cambista.usuarioVO .sequencial = usuarioLogado.sequencial;
 
 			console.log($scope.cambista);
 

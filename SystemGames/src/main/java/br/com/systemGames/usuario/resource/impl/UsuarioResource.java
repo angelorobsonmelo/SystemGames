@@ -1,5 +1,7 @@
 package br.com.systemGames.usuario.resource.impl;
 
+
+
 import java.sql.SQLException;
 
 import javax.ws.rs.Consumes;

@@ -1,58 +1,75 @@
-(function() {
+(function () {
 
-	'use strict';
+    'use strict';
 
-	var app = angular.module('materialAdmin');
+    var app = angular.module('materialAdmin');
 
-	app.factory('LoginFactory', ['$http', '$q', function($http, $q){
-
-
-		var urlRaiz;
+    app.factory('LoginFactory', ['$http', '$q', '$location', function ($http, $q, $location) {
 
 
-
-       function autenticar(usuario, url){
-
-
-		   if(url.pathname == '/SystemGames/login_cambista.html') {
+        var urlRaiz;
+        var redirecionamento;
 
 
-               urlRaiz =  '/SystemGames/rest/cambista/';
-		   }
-		   else if(url.pathname == '/SystemGames/'){
-
-			   urlRaiz =  '/SystemGames/rest/usuario/';
-
-		   }
-		   
-		   $http.post(urlRaiz + 'autenticar', usuario)
-			   .success(function (resposta) {
-
-				   if(resposta.tipoUsuarioVO.sequencial == 2){
-
-					   alert("tela matuto")
-
-				   }else if(resposta.tipoUsuarioVO.sequencial == 3){
-
-					   alert("tela cambista")
-
-				   }
-				   
-			   })
-			   .error(function (error, status) {
-
-				   console.log(error);
-			   })
+        function autenticar(usuario, url) {
 
 
-	   }
+            if (url == '/login-cambista') {
 
 
-		return {
-			autenticar: autenticar
+                urlRaiz = '/SystemGames/rest/cambista/';
 
-		}
 
-	}]);
+
+
+            }
+            else if (url == '/login-usuario') {
+
+                urlRaiz = '/SystemGames/rest/usuario/';
+
+
+
+            }
+
+            $http.post(urlRaiz + 'autenticar', usuario)
+                .success(function (resposta) {
+
+                    if (resposta != '') {
+
+                        if (resposta.tipoUsuarioVO.sequencial == 2) {
+
+                            localStorage.setItem('usuarioLogado', angular.toJson(resposta));
+
+                            $location.path('/home');
+
+                        } else if (resposta.tipoUsuarioVO.sequencial == 3) {
+
+                            $location.path('/gerenciar/gerenciar-aposta');
+                            localStorage.setItem('usuarioLogado', angular.toJson(resposta));
+
+                        }
+
+                    } else {
+
+                        swal("Aviso!", "Usuário Inválido", "warning");
+
+                    }
+
+                })
+                .error(function (error, status) {
+
+                    console.log(error);
+                })
+
+
+        }
+
+
+        return {
+            autenticar: autenticar
+
+        }
+
+    }]);
 
 }());

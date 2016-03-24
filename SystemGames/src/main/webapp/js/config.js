@@ -1,6 +1,6 @@
 materialAdmin
-    .config(function ($stateProvider, $urlRouterProvider){
-        $urlRouterProvider.otherwise("/home");
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise("/login-usuario");
 
 
         $stateProvider
@@ -9,12 +9,12 @@ materialAdmin
             // HOME
             //------------------------------
 
-            .state ('home', {
+            .state('home', {
                 url: '/home',
                 templateUrl: 'views/home.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -40,7 +40,7 @@ materialAdmin
             //------------------------------
             // HEADERS
             //------------------------------
-            .state ('headers', {
+            .state('headers', {
                 url: '/headers',
                 templateUrl: 'views/common-2.html'
             })
@@ -65,7 +65,7 @@ materialAdmin
             // TYPOGRAPHY
             //------------------------------
 
-            .state ('typography', {
+            .state('typography', {
                 url: '/typography',
                 templateUrl: 'views/typography.html'
             })
@@ -75,17 +75,17 @@ materialAdmin
             // WIDGETS
             //------------------------------
 
-            .state ('widgets', {
+            .state('widgets', {
                 url: '/widgets',
                 templateUrl: 'views/common.html'
             })
 
-            .state ('widgets.widgets', {
+            .state('widgets.widgets', {
                 url: '/widgets',
                 templateUrl: 'views/widgets.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -105,7 +105,7 @@ materialAdmin
                 }
             })
 
-            .state ('widgets.widget-templates', {
+            .state('widgets.widget-templates', {
                 url: '/widget-templates',
                 templateUrl: 'views/widget-templates.html',
             })
@@ -115,17 +115,17 @@ materialAdmin
             // TABLES
             //------------------------------
 
-            .state ('tables', {
+            .state('tables', {
                 url: '/tables',
                 templateUrl: 'views/common.html'
             })
 
-            .state ('tables.tables', {
+            .state('tables.tables', {
                 url: '/tables',
                 templateUrl: 'views/tables.html'
             })
 
-            .state ('tables.data-table', {
+            .state('tables.data-table', {
                 url: '/data-table',
                 templateUrl: 'views/data-table.html'
             })
@@ -134,17 +134,17 @@ materialAdmin
             //------------------------------
             // FORMS
             //------------------------------
-            .state ('form', {
+            .state('form', {
                 url: '/form',
                 templateUrl: 'views/common.html'
             })
 
-            .state ('form.basic-form-elements', {
+            .state('form.basic-form-elements', {
                 url: '/basic-form-elements',
                 templateUrl: 'views/form-elements.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'vendors',
                                 files: [
@@ -156,12 +156,12 @@ materialAdmin
                 }
             })
 
-            .state ('form.form-components', {
+            .state('form.form-components', {
                 url: '/form-components',
                 templateUrl: 'views/form-components.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -192,12 +192,12 @@ materialAdmin
                 }
             })
 
-            .state ('form.form-examples', {
+            .state('form.form-examples', {
                 url: '/form-examples',
                 templateUrl: 'views/form-examples.html'
             })
 
-            .state ('form.form-validations', {
+            .state('form.form-validations', {
                 url: '/form-validations',
                 templateUrl: 'views/form-validations.html'
             })
@@ -206,225 +206,240 @@ materialAdmin
             // GERENCIAR
             //------------------------------
 
-            .state ('gerenciar', {
-            url: '/gerenciar',
-            templateUrl: 'views/common.html'
+            .state('gerenciar', {
+                url: '/gerenciar',
+                templateUrl: 'views/common.html'
             })
 
-            .state ('gerenciar.gerenciar-jogo', {
-            url: '/gerenciar-jogo',
-            templateUrl: 'views/gerenciar-jogo/gerenciar-jogo.html',
-            controller: 'GerenciarJogosCtrl',
-            resolve: {
-                loadPlugin: function($ocLazyLoad) {
-                    return $ocLazyLoad.load ([
-                        {
-                            name: 'css',
-                            insertBefore: '#app-level',
-                            files: [
-                                'vendors/bower_components/nouislider/jquery.nouislider.css',
-                                'vendors/farbtastic/farbtastic.css',
-                                'vendors/bower_components/summernote/dist/summernote.css',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-                                'vendors/bower_components/chosen/chosen.min.css'
-                            ]
-                        },
-                        {
-                            name: 'vendors',
-                            files: [
-                                'vendors/input-mask/input-mask.min.js',
-                                'vendors/bower_components/nouislider/jquery.nouislider.min.js',
-                                'vendors/bower_components/moment/min/moment.min.js',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-                                'vendors/bower_components/summernote/dist/summernote.min.js',
-                                'vendors/fileinput/fileinput.min.js',
-                                'vendors/bower_components/chosen/chosen.jquery.js',
-                                'vendors/bower_components/angular-chosen-localytics/chosen.js',
-                                'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
-                            ]
-                        }
-                    ])
+            .state('gerenciar.gerenciar-jogo', {
+                url: '/gerenciar-jogo',
+                templateUrl: 'views/gerenciar-jogo/gerenciar-jogo.html',
+                controller: 'GerenciarJogosCtrl',
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                name: 'css',
+                                insertBefore: '#app-level',
+                                files: [
+                                    'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                    'vendors/farbtastic/farbtastic.css',
+                                    'vendors/bower_components/summernote/dist/summernote.css',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                    'vendors/bower_components/chosen/chosen.min.css'
+                                ]
+                            },
+                            {
+                                name: 'vendors',
+                                files: [
+                                    'vendors/input-mask/input-mask.min.js',
+                                    'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                    'vendors/bower_components/moment/min/moment.min.js',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                    'vendors/bower_components/summernote/dist/summernote.min.js',
+                                    'vendors/fileinput/fileinput.min.js',
+                                    'vendors/bower_components/chosen/chosen.jquery.js',
+                                    'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                ]
+                            }
+                        ])
+                    }
                 }
-            }
             })
 
-            .state ('gerenciar.localizar-jogo', {
-            url: '/localizar-jogo',
-            templateUrl: 'views/gerenciar-jogo/localizar-jogo.html'
+            .state('gerenciar.localizar-jogo', {
+                url: '/localizar-jogo',
+                templateUrl: 'views/gerenciar-jogo/localizar-jogo.html'
             })
 
-            .state ('gerenciar.gerenciar-cambista', {
-            url: '/gerenciar-cambista',
-            templateUrl: 'views/gerenciar-cambista/gerenciar-cambista.html',
-            controller: 'GerenciarCambistaCtrl',
-            resolve: {
-                loadPlugin: function($ocLazyLoad) {
-                    return $ocLazyLoad.load ([
-                        {
-                            name: 'css',
-                            insertBefore: '#app-level',
-                            files: [
-                                'vendors/bower_components/nouislider/jquery.nouislider.css',
-                                'vendors/farbtastic/farbtastic.css',
-                                'vendors/bower_components/summernote/dist/summernote.css',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-                                'vendors/bower_components/chosen/chosen.min.css'
-                            ]
-                        },
-                        {
-                            name: 'vendors',
-                            files: [
-                                'vendors/input-mask/input-mask.min.js',
-                                'vendors/bower_components/nouislider/jquery.nouislider.min.js',
-                                'vendors/bower_components/moment/min/moment.min.js',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-                                'vendors/bower_components/summernote/dist/summernote.min.js',
-                                'vendors/fileinput/fileinput.min.js',
-                                'vendors/bower_components/chosen/chosen.jquery.js',
-                                'vendors/bower_components/angular-chosen-localytics/chosen.js',
-                                'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
-                            ]
-                        }
-                    ])
+            .state('gerenciar.gerenciar-cambista', {
+                url: '/gerenciar-cambista',
+                templateUrl: 'views/gerenciar-cambista/gerenciar-cambista.html',
+                controller: 'GerenciarCambistaCtrl',
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                name: 'css',
+                                insertBefore: '#app-level',
+                                files: [
+                                    'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                    'vendors/farbtastic/farbtastic.css',
+                                    'vendors/bower_components/summernote/dist/summernote.css',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                    'vendors/bower_components/chosen/chosen.min.css'
+                                ]
+                            },
+                            {
+                                name: 'vendors',
+                                files: [
+                                    'vendors/input-mask/input-mask.min.js',
+                                    'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                    'vendors/bower_components/moment/min/moment.min.js',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                    'vendors/bower_components/summernote/dist/summernote.min.js',
+                                    'vendors/fileinput/fileinput.min.js',
+                                    'vendors/bower_components/chosen/chosen.jquery.js',
+                                    'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                ]
+                            }
+                        ])
+                    }
                 }
-            }
-        })
-        
-          .state ('gerenciar.gerenciar-aposta', {
-            url: '/gerenciar-aposta',
-            templateUrl: 'views/gerenciar-aposta/gerenciar-aposta.html',
-            controller: 'GerenciarApostaCtrl',
-            resolve: {
-                loadPlugin: function($ocLazyLoad) {
-                    return $ocLazyLoad.load ([
-                        {
-                            name: 'css',
-                            insertBefore: '#app-level',
-                            files: [
-                                'vendors/bower_components/nouislider/jquery.nouislider.css',
-                                'vendors/farbtastic/farbtastic.css',
-                                'vendors/bower_components/summernote/dist/summernote.css',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-                                'vendors/bower_components/chosen/chosen.min.css'
-                            ]
-                        },
-                        {
-                            name: 'vendors',
-                            files: [
-                                'vendors/input-mask/input-mask.min.js',
-                                'vendors/bower_components/nouislider/jquery.nouislider.min.js',
-                                'vendors/bower_components/moment/min/moment.min.js',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-                                'vendors/bower_components/summernote/dist/summernote.min.js',
-                                'vendors/fileinput/fileinput.min.js',
-                                'vendors/bower_components/chosen/chosen.jquery.js',
-                                'vendors/bower_components/angular-chosen-localytics/chosen.js',
-                                'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
-                            ]
-                        }
-                    ])
+            })
+
+
+            .state('login-usuario', {
+                url: '/login-usuario',
+                templateUrl: 'views/login/login-usuario.html',
+                controller: 'loginCtrl'
+
+            })
+
+            .state('login-cambista', {
+                url: '/login-cambista',
+                templateUrl: 'views/login/login-usuario.html',
+                controller: 'loginCtrl'
+
+            })
+
+            .state('gerenciar.gerenciar-aposta', {
+                url: '/gerenciar-aposta',
+                templateUrl: 'views/gerenciar-aposta/gerenciar-aposta.html',
+                controller: 'GerenciarApostaCtrl',
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                name: 'css',
+                                insertBefore: '#app-level',
+                                files: [
+                                    'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                    'vendors/farbtastic/farbtastic.css',
+                                    'vendors/bower_components/summernote/dist/summernote.css',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                    'vendors/bower_components/chosen/chosen.min.css'
+                                ]
+                            },
+                            {
+                                name: 'vendors',
+                                files: [
+                                    'vendors/input-mask/input-mask.min.js',
+                                    'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                    'vendors/bower_components/moment/min/moment.min.js',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                    'vendors/bower_components/summernote/dist/summernote.min.js',
+                                    'vendors/fileinput/fileinput.min.js',
+                                    'vendors/bower_components/chosen/chosen.jquery.js',
+                                    'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                ]
+                            }
+                        ])
+                    }
                 }
-            }
-        })
-        
-                  .state ('gerenciar.visualizar-aposta', {
-            url: '/visualizar-aposta',
-            templateUrl: 'views/relatorio-aposta/visualizar-aposta.html',
-            controller: 'VisualizarApostaCtrl',
-            resolve: {
-                loadPlugin: function($ocLazyLoad) {
-                    return $ocLazyLoad.load ([
-                        {
-                            name: 'css',
-                            insertBefore: '#app-level',
-                            files: [
-                                'vendors/bower_components/nouislider/jquery.nouislider.css',
-                                'vendors/farbtastic/farbtastic.css',
-                                'vendors/bower_components/summernote/dist/summernote.css',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-                                'vendors/bower_components/chosen/chosen.min.css'
-                            ]
-                        },
-                        {
-                            name: 'vendors',
-                            files: [
-                                'vendors/input-mask/input-mask.min.js',
-                                'vendors/bower_components/nouislider/jquery.nouislider.min.js',
-                                'vendors/bower_components/moment/min/moment.min.js',
-                                'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-                                'vendors/bower_components/summernote/dist/summernote.min.js',
-                                'vendors/fileinput/fileinput.min.js',
-                                'vendors/bower_components/chosen/chosen.jquery.js',
-                                'vendors/bower_components/angular-chosen-localytics/chosen.js',
-                                'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
-                            ]
-                        }
-                    ])
+            })
+
+            .state('gerenciar.visualizar-aposta', {
+                url: '/visualizar-aposta',
+                templateUrl: 'views/relatorio-aposta/visualizar-aposta.html',
+                controller: 'VisualizarApostaCtrl',
+                resolve: {
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
+                            {
+                                name: 'css',
+                                insertBefore: '#app-level',
+                                files: [
+                                    'vendors/bower_components/nouislider/jquery.nouislider.css',
+                                    'vendors/farbtastic/farbtastic.css',
+                                    'vendors/bower_components/summernote/dist/summernote.css',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+                                    'vendors/bower_components/chosen/chosen.min.css'
+                                ]
+                            },
+                            {
+                                name: 'vendors',
+                                files: [
+                                    'vendors/input-mask/input-mask.min.js',
+                                    'vendors/bower_components/nouislider/jquery.nouislider.min.js',
+                                    'vendors/bower_components/moment/min/moment.min.js',
+                                    'vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+                                    'vendors/bower_components/summernote/dist/summernote.min.js',
+                                    'vendors/fileinput/fileinput.min.js',
+                                    'vendors/bower_components/chosen/chosen.jquery.js',
+                                    'vendors/bower_components/angular-chosen-localytics/chosen.js',
+                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                ]
+                            }
+                        ])
+                    }
                 }
-            }
-        })
+            })
 
 
             //------------------------------
             // USER INTERFACE
             //------------------------------
 
-            .state ('user-interface', {
+            .state('user-interface', {
                 url: '/user-interface',
                 templateUrl: 'views/common.html'
             })
 
-            .state ('user-interface.ui-bootstrap', {
+            .state('user-interface.ui-bootstrap', {
                 url: '/ui-bootstrap',
                 templateUrl: 'views/ui-bootstrap.html'
             })
 
-            .state ('user-interface.colors', {
+            .state('user-interface.colors', {
                 url: '/colors',
                 templateUrl: 'views/colors.html'
             })
 
-            .state ('user-interface.animations', {
+            .state('user-interface.animations', {
                 url: '/animations',
                 templateUrl: 'views/animations.html'
             })
 
-            .state ('user-interface.box-shadow', {
+            .state('user-interface.box-shadow', {
                 url: '/box-shadow',
                 templateUrl: 'views/box-shadow.html'
             })
 
-            .state ('user-interface.buttons', {
+            .state('user-interface.buttons', {
                 url: '/buttons',
                 templateUrl: 'views/buttons.html'
             })
 
-            .state ('user-interface.icons', {
+            .state('user-interface.icons', {
                 url: '/icons',
                 templateUrl: 'views/icons.html'
             })
 
-            .state ('user-interface.alerts', {
+            .state('user-interface.alerts', {
                 url: '/alerts',
                 templateUrl: 'views/alerts.html'
             })
 
-            .state ('user-interface.preloaders', {
+            .state('user-interface.preloaders', {
                 url: '/preloaders',
                 templateUrl: 'views/preloaders.html'
             })
 
-            .state ('user-interface.notifications-dialogs', {
+            .state('user-interface.notifications-dialogs', {
                 url: '/notifications-dialogs',
                 templateUrl: 'views/notification-dialog.html'
             })
 
-            .state ('user-interface.media', {
+            .state('user-interface.media', {
                 url: '/media',
                 templateUrl: 'views/media.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -445,7 +460,7 @@ materialAdmin
                 }
             })
 
-            .state ('user-interface.other-components', {
+            .state('user-interface.other-components', {
                 url: '/other-components',
                 templateUrl: 'views/other-components.html'
             })
@@ -455,22 +470,22 @@ materialAdmin
             // CHARTS
             //------------------------------
 
-            .state ('charts', {
+            .state('charts', {
                 url: '/charts',
                 templateUrl: 'views/common.html'
             })
 
-            .state ('charts.flot-charts', {
+            .state('charts.flot-charts', {
                 url: '/flot-charts',
                 templateUrl: 'views/flot-charts.html',
             })
 
-            .state ('charts.other-charts', {
+            .state('charts.other-charts', {
                 url: '/other-charts',
                 templateUrl: 'views/other-charts.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'vendors',
                                 files: [
@@ -488,12 +503,12 @@ materialAdmin
             // CALENDAR
             //------------------------------
 
-            .state ('calendar', {
+            .state('calendar', {
                 url: '/calendar',
                 templateUrl: 'views/calendar.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -518,12 +533,12 @@ materialAdmin
             // PHOTO GALLERY
             //------------------------------
 
-             .state ('photo-gallery', {
+            .state('photo-gallery', {
                 url: '/photo-gallery',
                 templateUrl: 'views/common.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -544,14 +559,14 @@ materialAdmin
 
             //Default
 
-            .state ('photo-gallery.photos', {
+            .state('photo-gallery.photos', {
                 url: '/photos',
                 templateUrl: 'views/photos.html'
             })
 
             //Timeline
 
-            .state ('photo-gallery.timeline', {
+            .state('photo-gallery.timeline', {
                 url: '/timeline',
                 templateUrl: 'views/photo-timeline.html'
             })
@@ -561,7 +576,7 @@ materialAdmin
             // GENERIC CLASSES
             //------------------------------
 
-            .state ('generic-classes', {
+            .state('generic-classes', {
                 url: '/generic-classes',
                 templateUrl: 'views/generic-classes.html'
             })
@@ -571,7 +586,7 @@ materialAdmin
             // PAGES
             //------------------------------
 
-            .state ('pages', {
+            .state('pages', {
                 url: '/pages',
                 templateUrl: 'views/common.html'
             })
@@ -579,22 +594,22 @@ materialAdmin
 
             //Profile
 
-            .state ('pages.profile', {
+            .state('pages.profile', {
                 url: '/profile',
                 templateUrl: 'views/profile.html'
             })
 
-            .state ('pages.profile.profile-about', {
+            .state('pages.profile.profile-about', {
                 url: '/profile-about',
                 templateUrl: 'views/profile-about.html'
             })
 
-            .state ('pages.profile.profile-timeline', {
+            .state('pages.profile.profile-timeline', {
                 url: '/profile-timeline',
                 templateUrl: 'views/profile-timeline.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -613,12 +628,12 @@ materialAdmin
                 }
             })
 
-            .state ('pages.profile.profile-photos', {
+            .state('pages.profile.profile-photos', {
                 url: '/profile-photos',
                 templateUrl: 'views/profile-photos.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'css',
                                 insertBefore: '#app-level',
@@ -637,7 +652,7 @@ materialAdmin
                 }
             })
 
-            .state ('pages.profile.profile-connections', {
+            .state('pages.profile.profile-connections', {
                 url: '/profile-connections',
                 templateUrl: 'views/profile-connections.html'
             })
@@ -645,37 +660,37 @@ materialAdmin
 
             //-------------------------------
 
-            .state ('pages.listview', {
+            .state('pages.listview', {
                 url: '/listview',
                 templateUrl: 'views/list-view.html'
             })
 
-            .state ('pages.messages', {
+            .state('pages.messages', {
                 url: '/messages',
                 templateUrl: 'views/messages.html'
             })
 
-            .state ('pages.pricing-table', {
+            .state('pages.pricing-table', {
                 url: '/pricing-table',
                 templateUrl: 'views/pricing-table.html'
             })
 
-            .state ('pages.contacts', {
+            .state('pages.contacts', {
                 url: '/contacts',
                 templateUrl: 'views/contacts.html'
             })
 
-            .state ('pages.invoice', {
+            .state('pages.invoice', {
                 url: '/invoice',
                 templateUrl: 'views/invoice.html'
             })
 
-            .state ('pages.wall', {
+            .state('pages.wall', {
                 url: '/wall',
                 templateUrl: 'views/wall.html',
                 resolve: {
-                    loadPlugin: function($ocLazyLoad) {
-                        return $ocLazyLoad.load ([
+                    loadPlugin: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load([
                             {
                                 name: 'vendors',
                                 insertBefore: '#app-level',
@@ -699,7 +714,7 @@ materialAdmin
             //------------------------------
             // BREADCRUMB DEMO
             //------------------------------
-            .state ('breadcrumb-demo', {
+            .state('breadcrumb-demo', {
                 url: '/breadcrumb-demo',
                 templateUrl: 'views/breadcrumb-demo.html'
             })
