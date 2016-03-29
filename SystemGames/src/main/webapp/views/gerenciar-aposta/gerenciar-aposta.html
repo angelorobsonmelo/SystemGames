@@ -87,7 +87,7 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-
+		<form ng-submit="salvarAposta()" name="myForm">
 		<div class="card">
 			<div class="lv-item">
 				<div class="lv-title m-b-0">&nbsp;&nbsp;CUPOM DE APOSTA</div>
@@ -99,8 +99,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-padding p-15"
-				data-ng-controller="DatepickerDemoCtrl">
+			<div class="card-padding p-15">
 				<br />
 
 				<!--<div>
@@ -119,9 +118,9 @@
 					id="item{{item.id}}">
 					<div class="col-sm-12 m-b-30 cor-card-aposta">							
 							<i class="fa fa-times remover-card-aposta groove" ng-click="deleteItem($index)"></i>
-							<p class="f-14 c-black m-b-5 col-sm-12"><strong>{{item.jogo}}</strong></p>
+							<p class="f-14 c-black m-b-5 col-sm-12"><strong>{{item.jogoApostado}}</strong></p>
 							<p class="f-14 c-black m-b-5 col-sm-12">{{item.dataJogo}}</p>
-							<p class="f-14 c-black m-b-5 col-sm-12" data-ng-model="item.apostaC"><strong>{{item.tipo}}{{item.aposta}}</strong></p>
+							<p class="f-14 c-black m-b-5 col-sm-12" data-ng-model="item.apostaC"><strong>{{item.tipoAposta}}{{item.valTaxa}}</strong></p>
 						
 					</div>
 
@@ -134,14 +133,14 @@
 						<div>
 							<input type="text"
 								class="form-control c-red bgm-blue-aposta text-center"
-								ng-model="valorAposta" placeholder="Valor Apostado">
+								ng-model="aposta.valApostado" placeholder="Valor Apostado">
 						</div>
 					</div>
 				</div>
 				<div class="div-possivel-retorno">
 					<div class="input-group">
 						<div class="fg-line">
-							<p><strong>Possível Retorno: {{valorTtotal * valorAposta | currency}}</strong></p>
+							<p ng-model="aposta.valRetornoPossivel"><strong>Possível Retorno: {{valorTtotal * 1 * aposta.valApostado  | currency}}</strong></p>
 						</div>
 					</div>
 	
@@ -156,11 +155,11 @@
 					<div class="input-group">
 						<input type="text"
 							class="form-control c-red bgm-blue-aposta text-center"
-							placeholder="Apostador">
+							placeholder="Apostador" ng-model="aposta.nomeApostador">
 					</div>
 				</div>
 
-				<button class="btn btn-primary btn-block waves-effect" type="button" ng-click="apostar(valorTtotal,valorAposta)">CONFIRMAR</button>
+				<button class="btn btn-primary btn-block waves-effect" type="submit" >CONFIRMAR</button>
 
 				<!--<div class="col-sm-12 m-b-5">
                             <p class="f-14 c-black m-b-5">Voce escolher <strong>"Empate"</strong></p>
@@ -203,5 +202,7 @@
                         </div>-->
 
 			</div>
+			</div>
+		</form>
 		</div>
 	</div>

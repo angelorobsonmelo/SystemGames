@@ -333,6 +333,10 @@ public class CambistaDAO implements ICambistaDAO {
 			cambistaVO.setNumeroEndereco(rs.getString("num_endereco_cambista"));
 			cambistaVO.setApelido(rs.getString("apelido_cambista"));
 			cambistaVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
+			
+			cambistaVO.getConfiguracaoCambistaVO().setComissao1(rs.getDouble("comissao1"));
+			cambistaVO.getConfiguracaoCambistaVO().setComissao2(rs.getDouble("comissao2"));
+			cambistaVO.getConfiguracaoCambistaVO().setComissao3(rs.getDouble("comissao3"));
 		}
 		return cambistaVO;
 

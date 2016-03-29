@@ -7,7 +7,7 @@
 	app.factory('GerenciarApostaFactory', ['$http', '$q', function($http, $q){
 
 
-		var urlRaiz = '/SystemGames/rest/jogo/';
+		var urlRaiz = '/SystemGames/rest/aposta/';
 
 
 		function buscarJogoPorParams(jogo) {
@@ -38,13 +38,34 @@
 
 		}
 
+		function salvar(aposta) {
+
+			var retorno = $q.defer();
+
+			$http.post(urlRaiz + 'salvar', aposta)
+				.success(function(resposta) {
+
+					retorno.resolve(resposta);
+
+				})
+				.error(function(resposta, status) {
+
+					alert("Erro Status: " + status);
+					retorno.resolve(resposta);
+				})
+
+			return retorno.promise;
+
+		}
+
 
 
 
 
 		return {
 
-			buscarJogoPorParams: buscarJogoPorParams
+			buscarJogoPorParams: buscarJogoPorParams,
+			salvar: salvar
 
 
 		}

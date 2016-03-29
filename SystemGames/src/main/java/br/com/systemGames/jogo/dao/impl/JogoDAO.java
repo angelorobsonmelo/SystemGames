@@ -336,16 +336,8 @@ public class JogoDAO implements IJogoDAO {
 		{
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.OTHER);
-			/*cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getSequencial()));
-			cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(jogoVO.getJogo()));
-			*/cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getCampeonatoVO().getSequencial()));
-			/*cstmt.setInt(5, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getEsporteVO().getSequencial()));
-			cstmt.setDate(6, VerificadorValorObjeto.retornaSQLDateTratandoFusoHorarioBrasileiro(jogoVO.getDataJogo()));
-			cstmt.setString(7, VerificadorValorObjeto.retornaStringValorObjetoOuNullOutVazio(jogoVO.getHoraInicialJogo()));
-			*/
-
-
-
+			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getCampeonatoVO().getSequencial()));
+			
 			cstmt.execute();
 
 			lista = mapearResultSetJogo((ResultSet) cstmt.getObject(1));

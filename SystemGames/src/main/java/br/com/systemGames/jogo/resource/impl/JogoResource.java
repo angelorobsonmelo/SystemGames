@@ -164,32 +164,18 @@ public class JogoResource implements IJogoResource {
 	}
 
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("listarPorParams/{sequencial}")
-	public ArrayList<JogoVO> listarPorParams(@PathParam("sequencial") Integer sequencial) throws BOException {
-		try {
-			jogoVO.getCampeonatoVO().setSequencial(sequencial);
-			System.out.println("seq "+jogoVO.getCampeonatoVO().getSequencial());
-			return jogoBO.listarPorParams(jogoVO);
-
-
-		} catch (Exception ex) {
-			throw new BOException(ex);
-		}finally {
-
-			jogoBO = null;
-
-
-		}
-	}
-
-
-	public ArrayList<JogoVO> listarPorParams(JogoVO jogoVO) throws BOException {
+	@Override
+	public ArrayList<JogoVO> listarPorParams(Integer sequencial)
+			throws BOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
+
+
+	
 
 
 

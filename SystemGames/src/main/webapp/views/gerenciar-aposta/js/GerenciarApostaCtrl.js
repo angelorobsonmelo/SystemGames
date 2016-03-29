@@ -43,7 +43,6 @@
 		items.jogos = [];
 		$scope.items = items;
 		$scope.valorTtotal = 0;
-		$scope.valorAposta = 0;
 
 		$scope.deleteItem = function (index) {
 
@@ -56,7 +55,7 @@
 			angular.forEach($scope.items.jogos, function(item, index) {
 
 
-				teste *= item.aposta;
+				teste *= item.valTaxa;
 				$scope.valorTtotal = teste;
 				console.log(teste);
 			});
@@ -64,54 +63,23 @@
 			console.log($scope.items.jogos);
 
 		};
-		
-		$scope.addItem = function (jogo,valor, tipo, index) {
-			for(var i=0; i<items.jogos.length; i++) {
-				if(items.jogos[i].id === jogo.sequencial) {
-					console.log("Achou");
-					$scope.deleteItem(index);
-				}
-			}
-			items.jogos.push({
-				id: jogo.sequencial,
-				jogo: jogo.jogo,
-				dataJogo: jogo.dataJogoFormatadaBasica,
-				aposta: valor,
-				tipo: tipo
-
-			});
-			for(var i=0; i<items.jogos.length; i++) {
-				if(items.jogos[i].id === jogo.sequencial) {
-					console.log("Achou");
-				}
-			}
-			
-			var teste = 1;
-			angular.forEach($scope.items.jogos, function(item, index) {
-
-
-                  teste *= item.aposta;
-				$scope.valorTtotal = teste;
-				console.log(teste);
-			});
-
-			console.log($scope.items.jogos);
-		};
 
 		$scope.addItem = function (jogo,valor, tipo, index) {
 			for(var i=0; i<items.jogos.length; i++) {
-				if(items.jogos[i].id === jogo.sequencial) {
+				if(items.jogos[i].seq === jogo.sequencial) {
 					console.log("Achou");
 					console.log(i);
 					$scope.deleteItem(i);
 				}
 			}
 			items.jogos.push({
-				id: jogo.sequencial,
-				jogo: jogo.jogo,
+				id: items.jogos.length + 1,
+				seq: jogo.sequencial,
+				jogoApostado: jogo.jogo,
 				dataJogo: jogo.dataJogoFormatadaBasica,
-				aposta: valor,
-				tipo: tipo
+				horaJogo: jogo.horaInicialJogo,
+				valTaxa: valor,
+				tipoAposta: tipo
 
 			});
 
@@ -120,9 +88,9 @@
 			angular.forEach($scope.items.jogos, function(item, index) {
 
 
-				teste *= item.aposta;
+				teste *= item.valTaxa;
 				$scope.valorTtotal = teste;
-				console.log(teste);
+
 			});
 
 			console.log($scope.items.jogos);
@@ -163,7 +131,55 @@
 
 			});
 		};
-		
+
+		$scope.salvarAposta = function(valorTtotal,valorAposta) {
+			$scope.aposta.jogoApostadoVO = {};
+
+			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+			if($scope.items.jogos.length == 1){
+
+				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao1 / 100);
+				console.log($scope.aposta.valComissao);
+			}
+			else if($scope.items.jogos.length == 2){
+
+				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao2 / 100);
+				console.log($scope.aposta.valComissao);
+			}
+			else if($scope.items.jogos.length == 3){
+
+				$scope.aposta.valComissao = (usuarioLogado.configuracaoCambistaVO.comissao3 * $scope.aposta.valApostado) / 100;
+				console.log($scope.aposta.valComissao);
+			}
+
+			$scope.aposta.valRetornoPossivel = $scope.aposta.valApostado * $scope.valorTtotal;
+			$scope.aposta.jogoApostadoVO = $scope.items.jogos;
+			$scope.aposta.cambistaVO = {};
+			$scope.aposta.cambistaVO.sequencial = usuarioLogado.sequencial;
+
+
+
+			console.log($scope.aposta);
+
+
+			GerenciarApostaFactory.salvar($scope.aposta).then(function(data) {
+
+
+				if(data == 'OK') {
+
+					swal("Aviso!", "Salvo com Sucesso.", "success");
+
+
+				}
+
+			});
+
+
+
+		};
+
+
 
 
 
