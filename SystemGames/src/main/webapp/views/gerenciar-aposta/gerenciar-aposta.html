@@ -13,7 +13,8 @@
 
 			<div class="card-body">
 				<div class="table-responsive">
-					<div>
+					<div class="col-sm-6 m-b-5">
+						<p class="f-500 c-black m-b-15">Listar Campeonato</p>
 						<select class="form-control" name="campeonato"
 							ng-change="listarJogoPorCampeonato()" id="campeonato"
 							style="width: 104%" ng-model="jogo.campeonatoVO.sequencial"
@@ -24,7 +25,18 @@
 								ng-bind="item.nome"></option>
 							<option value="" selected>Listar Todos</option>
 						</select>
-
+					</div>
+					<div class="col-sm-6 m-b-5">
+						<p class="f-500 c-black m-b-15">Buscar Jogo</p>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="zmdi zmdi-globe-alt zmdi-hc-fw"></i></span>
+							<div class="fg-line">
+								<input type="text" class="form-control text-center" name="jogo"
+									id="jogo" placeholder="Buscar Jogo..." ng-model="buscar"
+									ng-required="true">
+							</div>
+						</div>
 					</div>
 					<table ng-table="tctrl.tableFilter"
 						class="table table-striped table-vmiddle"
@@ -44,7 +56,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="jogo in jogos">
+							<tr dir-paginate="jogo in jogos | filter:buscar |  orderBy:'-sequencial'| itemsPerPage: 5 " pagination-id="ListaDeJogos" at-implicit
+							at-attribute="name">
 								<td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
 									{{jogo.jogo}}</td>
 								<td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">
@@ -81,6 +94,16 @@
 								</td>
 							</tr>
 						</tbody>
+						<tfoot>
+						<tr>
+							<td class="text-center" st-pagination="" st-items-by-page="10"
+								colspan="10"><dir-pagination-controls
+									pagination-id="ListaDeJogos"
+									class="modal-title text-center" max-size="5"
+									direction-links="true" boundary-links="true">
+								</dir-pagination-controls></td>
+						</tr>
+					</tfoot>
 					</table>
 				</div>
 			</div>
@@ -88,8 +111,8 @@
 	</div>
 	<div class="col-md-3">
 		<form ng-submit="salvarAposta()" name="myForm">
-		<div class="card">
-			<div class="lv-item">
+			<div class="card">
+				<div class="lv-item">
 				<div class="lv-title m-b-0">&nbsp;&nbsp;CUPOM DE APOSTA</div>
 				<div class="progress">
 					<div class="progress-bar progress-bar-info" role="progressbar"
@@ -119,7 +142,7 @@
 					<div class="col-sm-12 m-b-30 cor-card-aposta">							
 							<i class="fa fa-times remover-card-aposta groove" ng-click="deleteItem($index)"></i>
 							<p class="f-14 c-black m-b-5 col-sm-12"><strong>{{item.jogoApostado}}</strong></p>
-							<p class="f-14 c-black m-b-5 col-sm-12">{{item.dataJogo}}</p>
+							<p class="f-14 c-black m-b-5 col-sm-12">{{item.dataJogo}} - {{item.horaJogo}}h</p>
 							<p class="f-14 c-black m-b-5 col-sm-12" data-ng-model="item.apostaC"><strong>{{item.tipoAposta}}{{item.valTaxa}}</strong></p>
 						
 					</div>
