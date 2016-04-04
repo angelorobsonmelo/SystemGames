@@ -2016,23 +2016,7 @@ pre code {
   }
 }
 
-@media screen and (max-width: 1024px) and (min-width: 768px){
-	.bgm-blue-aposta {
-	    width: 67% !important;
-	    
-	}
-	.div-possivel-retorno {
-		font-size: 13px !important;
-	}
-	.cor-card-aposta {
-		width: 95% !important;
-		font-size: 10px !important;
-	}
-	.title-valor-apostado{
-		font-size: 20px !important;
-	}
-
-}	
+	
 
 .container-fluid {
   margin-right: auto;
@@ -3256,6 +3240,55 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+
+@media screen and (max-width: 960px) and (min-width: 600px){
+	.cor-card-aposta{
+	    margin-top: -4% !important;
+	}
+	.div-possivel-retorno{
+	    font-size: 17px !important;
+    	padding: 3% !important;
+	}    
+}
+
+@media screen and (max-width: 732px) and (min-width: 412px){
+	.cor-card-aposta{
+	    margin-top: -7% !important;
+	}    
+}
+
+@media screen and (max-width: 773px) and (min-width: 435px){
+	.cor-card-aposta{
+	    margin-top: -7% !important;
+	}    
+}
+
+@media screen and (max-width: 568px) and (min-width: 320px){
+	.div-possivel-retorno{
+	    font-size: 14px !important;
+	}    
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+	.cor-card-aposta{
+	    margin-top: -12% !important;
+	}    
+	.div-possivel-retorno{
+	    font-size: 15px !important;
+	    padding: 6% !important;
+	}
+}	
+
+@media screen and (max-width: 1280px) and (min-width: 800px){
+	.cor-card-aposta{
+	    margin-top: -11% !important;
+	}    
+	.div-possivel-retorno{
+		height: 110px !important;
+	    font-size: 16px !important;
+	    padding: 3% !important;
+	}
+}	
 
 fieldset {
   padding: 0;
