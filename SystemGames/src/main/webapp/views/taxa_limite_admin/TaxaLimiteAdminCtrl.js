@@ -5,7 +5,7 @@
 
 	var app = angular.module('materialAdmin');
 
-	app.controller('TaxaLimiteAdminCtrl', ['$scope', '$rootScope', '$location', '$modal', 'TaxaLimiteAdminFactory', 'jogo',  function($scope, $rootScope, $location, $modal, TaxaLimiteAdminFactory, jogo){
+	app.controller('TaxaLimiteAdminCtrl', ['$scope', '$rootScope', '$location', '$modal', 'TaxaLimiteAdminFactory', 'jogo', '$uibModalInstance',  function($scope, $rootScope, $location, $modal, TaxaLimiteAdminFactory, jogo, $uibModalInstance){
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
@@ -49,12 +49,8 @@
 		}
 
 
-
-
-		$scope.cancel = function(){
-
-			$scope.modalInstance.dismiss();
-
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss('cancel');
 		};
 
 

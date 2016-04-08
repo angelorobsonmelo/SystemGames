@@ -115,19 +115,12 @@
 											<div class="col-sm-2 m-b-5">
 												<p class="f-500 c-black m-b-15">Data</p>
 												<div class="input-group">
-													<div 
-														
-														>
-														<div class="fg-line"
-															>
+													<div>
+														<div class="fg-line">
 
-															<input type="date"
-																id="dataJogo" name="dataJogo" ng-required="true"
-																class="form-control"
-															 ng-model="jogo.dataJogo"
-																
-															
-																placeholder="01/01/1991" />
+															<input type="date" id="dataJogo" name="dataJogo"
+																ng-required="true" class="form-control"
+																ng-model="jogo.dataJogo" placeholder="01/01/1991" />
 														</div>
 
 														<div ng-messages="myForm.dataJogol.$error"
@@ -154,30 +147,31 @@
 
 										</div>
 									</div>
-<div class="col-sm-12 m-b-5">
+									<div class="col-sm-12 m-b-5 text-center">
 
-									<div class="input-group">
-																<span class="input-group-addon"></span>
-																<div class="fg-line">
+										<div class="input-group">
+											<span class="input-group-addon"></span>
+											<div class="fg-line">
 
-																	<button ng-disabled="myForm.$invalid"
-																		ng-if="!jogo.sequencial"
-																		class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
-																		popover-placement="top" popover-trigger="mouseenter"
-																		popover="Salvar Jogo" type="submit">
-																		<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
-																	</button>
+												<button ng-disabled="myForm.$invalid"
+													ng-if="!jogo.sequencial"
+													class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
+													popover-placement="top" popover-trigger="mouseenter"
+													popover="Salvar Jogo" type="submit">
+													<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
+												</button>
 
-																	<button ng-if="jogo.sequencial"
-																		class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
-																		popover-placement="top" popover-trigger="mouseenter"
-																		popover="Alterar Jogo" type="submit">
-																		<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
-																	</button>
+												<button ng-if="jogo.sequencial"
+													class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
+													popover-placement="top" popover-trigger="mouseenter"
+													popover="Alterar Jogo" type="submit">
+													<i class="zmdi zmdi-floppy zmdi-hc-fw"></i>
+												</button>
 
-																</div>
-															</div>
-															</div>
+											</div>
+										</div>
+									</div>
+									<br /><br /><br />
 								</div>
 							</div>
 						</div>

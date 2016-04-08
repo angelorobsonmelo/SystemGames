@@ -15523,3 +15523,11 @@ a.thumbnail.active {
 .title-valor-apostado{
 	font-size: 20px;
 }
+
+.cor-barra-superior{
+	background-color: #2196f3; 
+}
+
+.icone-sair{
+	font-size: 23px;
+}
