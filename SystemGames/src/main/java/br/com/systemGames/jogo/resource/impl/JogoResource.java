@@ -159,7 +159,7 @@ public class JogoResource implements IJogoResource {
 
 
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		System.out.println("");
+		System.out.println("ddddd");
 
 	}
 

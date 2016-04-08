@@ -284,10 +284,10 @@ public class CambistaDAO implements ICambistaDAO {
 		{
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.OTHER);
-			
+
 			cstmt.setString(2, VerificadorValorObjeto.retornaStringValorObjetoOuNull(cambistaVO.getApelido()));
-            cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(cambistaVO.getSenha()));
-			
+			cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(cambistaVO.getSenha()));
+
 			cstmt.execute();
 
 			usuarioRetorno = mapearResultUsuarioRetornado((ResultSet) cstmt.getObject(1));
@@ -308,8 +308,8 @@ public class CambistaDAO implements ICambistaDAO {
 			cstmt = null;
 		}
 	}
-	
-	
+
+
 	public CambistaVO mapearResultUsuarioRetornado(ResultSet rs) throws SQLException, BOException, DAOException{
 
 		CambistaVO cambistaVO = null;
@@ -334,9 +334,14 @@ public class CambistaDAO implements ICambistaDAO {
 			cambistaVO.setApelido(rs.getString("apelido_cambista"));
 			cambistaVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
 			
+			cambistaVO.getUsuarioVO().setSequencial(rs.getInt("cod_usuario"));
+
 			cambistaVO.getConfiguracaoCambistaVO().setComissao1(rs.getDouble("comissao1"));
 			cambistaVO.getConfiguracaoCambistaVO().setComissao2(rs.getDouble("comissao2"));
 			cambistaVO.getConfiguracaoCambistaVO().setComissao3(rs.getDouble("comissao3"));
+			
+			cambistaVO.getConfiguracaoCambistaVO().setLimiteMaximoVendaDiario(rs.getDouble("limite_max_venda_diaria"));
+			cambistaVO.getConfiguracaoCambistaVO().setLimiteMaximoVendaIndividual(rs.getDouble("limite_max_venda_individual"));
 		}
 		return cambistaVO;
 

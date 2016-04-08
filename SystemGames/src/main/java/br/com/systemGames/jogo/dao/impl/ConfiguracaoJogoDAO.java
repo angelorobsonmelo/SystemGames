@@ -19,7 +19,7 @@ public class ConfiguracaoJogoDAO implements IConfiguracaoJogoDAO {
 	private String resultado;
 	private String procedure;
 
-	public String inserir(JogoVO jogoVO)
+	public String inserir(ConfiguracaoJogoVO configuracaoJogoVO)
 			throws DAOException {
 		procedure = "{ ? = CALL SP_CONFIGURACAO_JOGO_INSERIR(?,?,?)}";
 		cstmt = null;
@@ -30,9 +30,9 @@ public class ConfiguracaoJogoDAO implements IConfiguracaoJogoDAO {
 
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.VARCHAR);
-			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getSequencial()));
-			cstmt.setBoolean(3, jogoVO.getConfiguracaoJogoVO().getFinalizarAutomaticamente());
-			cstmt.setBoolean(4, jogoVO.getConfiguracaoJogoVO().getJogoFinalizado());
+			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(configuracaoJogoVO.getJogoVO().getSequencial()));
+			cstmt.setBoolean(3, configuracaoJogoVO.getFinalizarAutomaticamente());
+			cstmt.setBoolean(4, configuracaoJogoVO.getJogoFinalizado());
 
 			cstmt.execute();
 
@@ -52,9 +52,9 @@ public class ConfiguracaoJogoDAO implements IConfiguracaoJogoDAO {
 		}
 	}
 
-	public String atualizar(JogoVO jogoVO) throws DAOException {
+	public String atualizar(ConfiguracaoJogoVO configuracaoJogoVO) throws DAOException {
 
-		procedure = "{ ? = CALL SP_CONFIGURACAO_JOGO_ATUALIZAR(?,?,?)}";
+		procedure = "{ ? = CALL SP_CONFIGURACAO_JOGO_ATUALIZAR(?,?)}";
 		cstmt = null;
 		resultado = null;
 
@@ -63,9 +63,8 @@ public class ConfiguracaoJogoDAO implements IConfiguracaoJogoDAO {
 
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.VARCHAR);
-			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(jogoVO.getSequencial()));
-			cstmt.setBoolean(3, jogoVO.getConfiguracaoJogoVO().getFinalizarAutomaticamente());
-			cstmt.setBoolean(4, jogoVO.getConfiguracaoJogoVO().getJogoFinalizado());
+			cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(configuracaoJogoVO.getJogoVO().getSequencial()));
+			cstmt.setBoolean(3, configuracaoJogoVO.getJogoFinalizado());
 
 
 			cstmt.execute();
@@ -140,17 +139,17 @@ public class ConfiguracaoJogoDAO implements IConfiguracaoJogoDAO {
 
 	}
 
-	public String salvar(JogoVO jogoVO) throws DAOException { 
+	public String salvar(ConfiguracaoJogoVO configuracaoJogoVO) throws DAOException { 
 
 
-		if (jogoVO.getConfiguracaoJogoVO().getSequencial() != null) {
+		if (configuracaoJogoVO.getJogoVO().getSequencial() != null) {
 
-			return atualizar(jogoVO);
+			return atualizar(configuracaoJogoVO);
 
 		} else {
 
 
-			return inserir(jogoVO);
+			return inserir(configuracaoJogoVO);
 		}
 	}
 

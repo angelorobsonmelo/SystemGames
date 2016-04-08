@@ -11,6 +11,8 @@
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
+		
+		var usuarioAlunoLogado = JSON.parse(localStorage.getItem("aprendizLogado"));
 
 		$scope.ToggleCampeonato = false;
 
@@ -184,11 +186,10 @@
 		
 		$scope.openModaTaxaLimite = function(jogo){
 			
-			//console.log($scope.jogos,"Obj completo");
 
 			var modalInstance = $modal.open({
-				templateUrl: 'views/gerenciar-jogo/modals/modal-taxa-limite.html',
-				controller: TaxaLimite,
+				templateUrl: 'views/taxa_limite/modals/modal-taxa-limite.html',
+				controller: 'TaxaLimiteCtrl',
 				resolve: {
 					jogo: function () {
 						return jogo;
@@ -197,6 +198,9 @@
 			});
 
 		}
+		
+		
+	
 		
 		function TaxaLimite($scope, $uibModalInstance, jogo) {
 			
@@ -319,6 +323,9 @@
 
 			});
 		}
+		
+		
+	
 
 
 	}]);

@@ -14,16 +14,13 @@ public class JogoVO {
 	private String dataJogoFormatada;
 	private String dataJogoFormatadaBasica;
 	private String horaInicialJogo;
-	private ConfiguracaoJogoVO configuracaoJogoVO;
-	private LimiteApostaVO limiteApostaVO;
 	private ResultadoJogoVO resultadoJogoVO;
 
 	public JogoVO() {
 
 		campeonatoVO = new CampeonatoVO();
 		esporteVO = new EsporteVO();
-		configuracaoJogoVO = new ConfiguracaoJogoVO();
-		limiteApostaVO = new LimiteApostaVO();
+		
 		resultadoJogoVO = new ResultadoJogoVO();
 
 	}
@@ -97,21 +94,6 @@ public class JogoVO {
 		this.campeonatoVO = campeonatoVO;
 	}
 
-	public ConfiguracaoJogoVO getConfiguracaoJogoVO() {
-		return configuracaoJogoVO;
-	}
-
-	public void setConfiguracaoJogoVO(ConfiguracaoJogoVO configuracaoJogoVO) {
-		this.configuracaoJogoVO = configuracaoJogoVO;
-	}
-
-	public LimiteApostaVO getLimiteApostaVO() {
-		return limiteApostaVO;
-	}
-
-	public void setLimiteApostaVO(LimiteApostaVO limiteApostaVO) {
-		this.limiteApostaVO = limiteApostaVO;
-	}
 
 	public ResultadoJogoVO getResultadoJogoVO() {
 		return resultadoJogoVO;

@@ -1,5 +1,7 @@
 package br.com.systemGames.jogo.model;
 
+import br.com.systemGames.usuario.model.UsuarioVO;
+
 public class LimiteApostaVO {
 
 	private Integer sequencial;
@@ -17,9 +19,12 @@ public class LimiteApostaVO {
 	private Double limiteDuplaChance;
 	private double limiteAmbos;
 	private Double limiteIndividual;
+	private UsuarioVO usuarioVO;
 	
 	public LimiteApostaVO() {
 
+		usuarioVO = new UsuarioVO();
+		jogoVO = new JogoVO();
 		
 	}
 
@@ -141,6 +146,14 @@ public class LimiteApostaVO {
 
 	public void setLimiteIndividual(Double limiteIndividual) {
 		this.limiteIndividual = limiteIndividual;
+	}
+
+	public UsuarioVO getUsuarioVO() {
+		return usuarioVO;
+	}
+
+	public void setUsuarioVO(UsuarioVO usuarioVO) {
+		this.usuarioVO = usuarioVO;
 	}
 	
 }

@@ -54,7 +54,7 @@ $BODY$
   
   
   
-  CREATE OR REPLACE FUNCTION sp_jogo_inserir(
+ CREATE OR REPLACE FUNCTION sp_jogo_inserir(
     "P_JOGO" character varying,
     "P_COD_CAMPIONATO" integer,
     "P_COD_ESPORTE" integer,
@@ -69,7 +69,7 @@ DECLARE
  
  INSERT INTO jogo (JOGO, COD_CAMPEONATO, COD_ESPORTE, DATA_JOGO, HORA_INICIAL_JOGO) VALUES ($1, $2, $3, $4, $5);
 
- P_SEQUENCIAL_JOGO = MAX(seq_jogo) FROM jogo; 
+ P_SEQUENCIAL_JOGO = currval('jogo_seq_jogo_seq'); 
 
  INSERT INTO resultado_jogo (cod_jogo) VALUES (P_SEQUENCIAL_JOGO);
 

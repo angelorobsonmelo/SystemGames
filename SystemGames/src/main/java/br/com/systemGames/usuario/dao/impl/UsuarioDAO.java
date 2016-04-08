@@ -14,12 +14,12 @@ import br.com.systemGames.usuario.model.UsuarioVO;
 import br.com.systemGames.util.VerificadorValorObjeto;
 
 public class UsuarioDAO implements IUsuarioDAO {
-	
+
 	private String procedure;
 	private CallableStatement cstmt;
 	private String resultado;
 
-	
+
 	public ArrayList<?> listarTodos() throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
@@ -55,7 +55,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			resultado = (String) cstmt.getString(1);
 			cstmt.close();
-			
+
 			return resultado;
 
 		}
@@ -63,7 +63,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 		{
 			throw new DAOException(ex);
 		}finally{
-			
+
 			procedure = null;
 			cstmt = null;
 		}
@@ -85,17 +85,17 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			resultado = (String) cstmt.getString(1);
 			cstmt.close();
-			
+
 			return resultado;
 
 		}
 		catch(Exception ex)
 		{
-			
+
 			throw new DAOException(ex);
-			
+
 		}finally{
-			
+
 			procedure = null;
 			cstmt = null;
 		}
@@ -131,24 +131,24 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			resultado = (String) cstmt.getString(1);
 			cstmt.close();
-			
+
 			return resultado;
 
 		}
 		catch(Exception ex)
 		{
-			
+
 			throw new DAOException(ex);
-			
+
 		}finally{
-			
+
 			procedure = null;
 			cstmt = null;
 		}
 
 	}
 
-	
+
 	public ArrayList<UsuarioVO> consultarPorParams()
 			throws DAOException {
 		procedure = "{ ? = CALL SP_USUARIO_BUSCAR_TODOS()}";
@@ -163,25 +163,61 @@ public class UsuarioDAO implements IUsuarioDAO {
 
 			lista = mapearResultSet((ResultSet) cstmt.getObject(1));
 			cstmt.close();
-			
+
 			return lista;
 
 		}
-		
+
 		catch(Exception ex)
 		{
-			
+
 			throw new DAOException(ex);
-			
+
 		}finally{
-			
+
 			procedure = null;
 			cstmt = null;			
-			
+
 		}		
 
 	}
-	
+
+
+	public ArrayList<UsuarioVO> listarTodosUsuarios()
+			throws DAOException {
+		procedure = "{ ? = CALL SP_USUARIO_LISTAR_TODOS()}";
+		ArrayList<UsuarioVO> lista = new ArrayList<UsuarioVO>();
+
+		try
+		{
+
+			cstmt = Conexao.getConexao().prepareCall(procedure);
+			cstmt.registerOutParameter(1, Types.OTHER);	
+			cstmt.execute();
+
+			lista = mapearResultSetApenasSequencial((ResultSet) cstmt.getObject(1));
+			cstmt.close();
+
+			return lista;
+
+		}
+
+		catch(Exception ex)
+		{
+
+			throw new DAOException(ex);
+
+		}finally{
+
+			procedure = null;
+			cstmt = null;			
+
+		}		
+
+	}
+
+
+
 	public ArrayList<UsuarioVO> mapearResultSet(ResultSet rs) throws SQLException{
 
 		ArrayList<UsuarioVO> lista = new ArrayList<UsuarioVO>();
@@ -206,16 +242,39 @@ public class UsuarioDAO implements IUsuarioDAO {
 			usuarioVO.setCidade(rs.getString("CIDADE"));
 			usuarioVO.setCep(rs.getString("CEP"));
 			usuarioVO.setUf(rs.getString("UF"));
-			
-			
+
+
 
 
 			lista.add(usuarioVO);
-			
+
 		}
-		
+
 		return lista;
-		
+
+	}
+
+
+
+	public ArrayList<UsuarioVO> mapearResultSetApenasSequencial(ResultSet rs) throws SQLException{
+
+		ArrayList<UsuarioVO> lista = new ArrayList<UsuarioVO>();
+
+		while(rs.next()){
+
+			UsuarioVO usuarioVO = new UsuarioVO();	
+
+			usuarioVO.setSequencial(rs.getInt("SEQ_USUARIO"));
+
+
+
+
+			lista.add(usuarioVO);
+
+		}
+
+		return lista;
+
 	}
 
 
@@ -228,10 +287,10 @@ public class UsuarioDAO implements IUsuarioDAO {
 		{
 			cstmt = Conexao.getConexao().prepareCall(procedure);
 			cstmt.registerOutParameter(1, Types.OTHER);
-			
+
 			cstmt.setString(2, VerificadorValorObjeto.retornaStringValorObjetoOuNull(usuarioVO.getApelido()));
-            cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(usuarioVO.getSenha()));
-			
+			cstmt.setString(3, VerificadorValorObjeto.retornaStringValorObjetoOuNull(usuarioVO.getSenha()));
+
 			cstmt.execute();
 
 			usuarioRetorno = mapearResultUsuarioRetornado((ResultSet) cstmt.getObject(1));
@@ -252,8 +311,8 @@ public class UsuarioDAO implements IUsuarioDAO {
 			cstmt = null;
 		}
 	}
-	
-	
+
+
 	public UsuarioVO mapearResultUsuarioRetornado(ResultSet rs) throws SQLException, BOException, DAOException{
 
 		UsuarioVO usuarioVO = null;

@@ -1,75 +1,87 @@
 (function () {
 
-    'use strict';
+	'use strict';
 
-    var app = angular.module('materialAdmin');
+	var app = angular.module('materialAdmin');
 
-    app.factory('LoginFactory', ['$http', '$q', '$location', function ($http, $q, $location) {
-
-
-        var urlRaiz;
-        var redirecionamento;
+	app.factory('LoginFactory', ['$http', '$q', '$location', function ($http, $q, $location) {
 
 
-        function autenticar(usuario, url) {
+		var urlRaiz;
+		var redirecionamento;
 
 
-            if (url == '/login-cambista') {
+		function autenticar(usuario, url) {
 
 
-                urlRaiz = '/SystemGames/rest/cambista/';
+			if (url == '/login-cambista') {
 
 
-
-
-            }
-            else if (url == '/login-usuario') {
-
-                urlRaiz = '/SystemGames/rest/usuario/';
+				urlRaiz = '/SystemGames/rest/cambista/';
 
 
 
-            }
 
-            $http.post(urlRaiz + 'autenticar', usuario)
-                .success(function (resposta) {
+			}
+			else if (url == '/login-usuario') {
 
-                    if (resposta != '') {
-
-                        if (resposta.tipoUsuarioVO.sequencial == 2) {
-
-                            localStorage.setItem('usuarioLogado', angular.toJson(resposta));
-
-                            $location.path('/home');
-
-                        } else if (resposta.tipoUsuarioVO.sequencial == 3) {
-
-                            $location.path('/gerenciar/gerenciar-aposta');
-                            localStorage.setItem('usuarioLogado', angular.toJson(resposta));
-
-                        }
-
-                    } else {
-
-                        swal("Aviso!", "Usuário Inválido", "warning");
-
-                    }
-
-                })
-                .error(function (error, status) {
-
-                    console.log(error);
-                })
+				urlRaiz = '/SystemGames/rest/usuario/';
 
 
-        }
+
+			}
+
+			$http.post(urlRaiz + 'autenticar', usuario)
+			.success(function (resposta) {
+
+				if (resposta != '') {
+
+					if (resposta.tipoUsuarioVO.sequencial == 2) {
+
+						localStorage.setItem('usuarioLogado', angular.toJson(resposta));
+
+						$location.path('/home');
+
+					} 
+
+					else if (resposta.tipoUsuarioVO.sequencial == 1) {
+
+						localStorage.setItem('usuarioLogado', angular.toJson(resposta));
+
+						$location.path('/gerenciar-jogo-admin');
+					}
 
 
-        return {
-            autenticar: autenticar
 
-        }
+					else if (resposta.tipoUsuarioVO.sequencial == 3) {
 
-    }]);
+						localStorage.setItem('usuarioLogado', angular.toJson(resposta));
+						$location.path('/gerenciar/gerenciar-aposta');
+						
+
+					}
+
+				} else {
+
+					swal("Aviso!", "Usuário Inválido", "warning");
+
+				}
+
+			})
+			.error(function (error, status) {
+
+				console.log(error);
+			})
+
+
+		}
+
+
+		return {
+			autenticar: autenticar
+
+		}
+
+	}]);
 
 }());

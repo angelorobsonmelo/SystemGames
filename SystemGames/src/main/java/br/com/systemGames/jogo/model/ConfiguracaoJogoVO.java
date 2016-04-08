@@ -11,6 +11,8 @@ public class ConfiguracaoJogoVO {
 	
 	public ConfiguracaoJogoVO() {
 		
+		jogoVO = new JogoVO();
+		
 	}
 
 	public Integer getSequencial() {

@@ -8,7 +8,7 @@ import br.com.systemGames.jogo.model.JogoVO;
 
 public interface IConfiguracaoJogoBO {
 
-public String salvar(JogoVO jogoVO) throws SQLException, BOException;
+public String salvar(ConfiguracaoJogoVO configuracaoJogoVO) throws SQLException, BOException;
 	
 	public ConfiguracaoJogoVO buscarConfiguracaoPorSeqJogo(JogoVO jogoVO) throws SQLException, BOException;
 	

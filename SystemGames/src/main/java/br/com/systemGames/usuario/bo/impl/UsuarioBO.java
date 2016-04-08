@@ -55,6 +55,20 @@ public class UsuarioBO implements IUsuarioBO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<UsuarioVO> listarTodosUsuarios() throws BOException,
+			SQLException {
+		try {
+
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			return usuarioDAO.listarTodosUsuarios();
+		} catch (Exception e) {
+			throw new BOException(e);
+		}
+	}
 	
 	
 }

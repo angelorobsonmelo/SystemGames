@@ -18,7 +18,7 @@ public class ConfiguracaoJogoBO implements IConfiguracaoJogoBO {
 
 	ArrayList<String> resultadoExecucaoProcedures= new ArrayList<String>();
 
-	public String salvar(JogoVO jogoVO)
+	public String salvar(ConfiguracaoJogoVO configuracaoJogoVO)
 			throws SQLException, BOException {
 
 		String resultadoExecucaoInserirUnidadeDeSaude = null;
@@ -28,7 +28,7 @@ public class ConfiguracaoJogoBO implements IConfiguracaoJogoBO {
 
 			resultadoExecucaoProcedures.clear();
 
-			resultadoExecucaoInserirUnidadeDeSaude =  configuracaoJogoDAO.salvar(jogoVO);
+			resultadoExecucaoInserirUnidadeDeSaude =  configuracaoJogoDAO.salvar(configuracaoJogoVO);
 			resultadoExecucaoProcedures.add(resultadoExecucaoInserirUnidadeDeSaude);
 
 			if (!resultadoExecucaoInserirUnidadeDeSaude.equals("OK")){

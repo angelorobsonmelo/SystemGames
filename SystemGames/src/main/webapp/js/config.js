@@ -305,6 +305,13 @@ materialAdmin
 
             })
 
+             .state('gerenciar-jogo-admin', {
+                url: '/gerenciar-jogo-admin',
+                templateUrl: 'views/gerenciar-jogo-admin/gerenciar-jogo-admin.html',
+                controller: 'GerenciarJogoAdminCtrl'
+
+            })
+            
             .state('gerenciar.gerenciar-aposta', {
                 url: '/gerenciar-aposta',
                 templateUrl: 'views/gerenciar-aposta/gerenciar-aposta.html',

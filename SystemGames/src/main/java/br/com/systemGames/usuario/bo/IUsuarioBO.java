@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.systemGames.excecao.BOException;
+import br.com.systemGames.excecao.DAOException;
 import br.com.systemGames.usuario.model.UsuarioVO;
 
 public interface IUsuarioBO {
@@ -19,5 +20,7 @@ public interface IUsuarioBO {
 	public String alterar(UsuarioVO usuarioVO) throws BOException;
 
 	public ArrayList<UsuarioVO> consultarPorParams(UsuarioVO usuarioVO) throws BOException;
+	
+	public ArrayList<UsuarioVO> listarTodosUsuarios() throws BOException, SQLException ;
 
 }

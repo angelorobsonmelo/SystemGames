@@ -5,14 +5,6 @@
 
 	<div class="card">
 		<div class="card-header">
-			<div class="text-right">
-				<button
-					class="btn bgm-lightgreen btn-icon waves-effect waves-circle"
-					popover-placement="top" popover-trigger="mouseenter"
-					popover="Inserir Novo Jogo" ng-click="openModalInserirJogo()">
-					<i class="zmdi zmdi-plus"></i>
-				</button>
-			</div>
 			<h4 class="modal-title text-center">TABELA DE JOGOS</h4>
 		</div>
 
@@ -46,8 +38,6 @@
 								RESULTADO</th>
 							<th class="label-th" style="width: 4%; text-align: center;">APOSTAS REALIZADAS</th>
 							<th class="label-th" style="width: 4%; text-align: center;">TAXAS/LIMITES</th>
-							<th class="label-th" style="width: 4%; text-align: center;">EDITAR</th>
-							<th class="label-th" style="width: 4%; text-align: center;">EXCLUIR</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -93,21 +83,6 @@
 									popover-placement="top" popover-trigger="mouseenter"
 									popover="Taxas e Limites do Jogo  {{ w.jogo }}" ng-click="openModaTaxaLimite(w)">
 									<i class="zmdi zmdi-chart zmdi-hc-fw"></i>
-								</button>
-							</td>
-							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-								<button class="btn bgm-teal btn-icon waves-effect waves-circle"
-									popover-placement="top" popover-trigger="mouseenter"
-									popover="Editar Jogo  {{ w.jogo }}" ng-click="editarJogo(w)">
-									<i class="zmdi zmdi-edit"></i>
-								</button>
-							</td>
-							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
-								<button type="button" ng-click="remover(w)"
-									class="btn btn-danger btn-icon waves-effect waves-circle"
-									popover-placement="top" popover-trigger="mouseenter"
-									popover="Excluir Jogo  {{ w.jogo }}">
-									<i class="zmdi zmdi-close"></i>
 								</button>
 							</td>
 					<tfoot>

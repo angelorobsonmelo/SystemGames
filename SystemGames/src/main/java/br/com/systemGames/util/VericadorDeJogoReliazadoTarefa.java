@@ -16,6 +16,7 @@ import org.quartz.JobExecutionException;
 import br.com.systemGames.excecao.BOException;
 import br.com.systemGames.jogo.bo.impl.ConfiguracaoJogoBO;
 import br.com.systemGames.jogo.bo.impl.JogoBO;
+import br.com.systemGames.jogo.model.ConfiguracaoJogoVO;
 import br.com.systemGames.jogo.model.JogoVO;
 
 public class VericadorDeJogoReliazadoTarefa implements Job{
@@ -23,11 +24,13 @@ public class VericadorDeJogoReliazadoTarefa implements Job{
 
 	private JogoBO jogoBO;
 	private ConfiguracaoJogoBO configuracaoJogoBO;
+	private ConfiguracaoJogoVO configuracaoJogoVO;
 
 	public VericadorDeJogoReliazadoTarefa() {
 
 		jogoBO = new JogoBO();
 		configuracaoJogoBO = new ConfiguracaoJogoBO();
+		configuracaoJogoVO = new ConfiguracaoJogoVO();
 	}
 
 
@@ -37,6 +40,8 @@ public class VericadorDeJogoReliazadoTarefa implements Job{
 
 		try {
 
+
+			System.out.println("execução");
 
 			Calendar dataAtual = new GregorianCalendar();
 			Calendar dataDoJogo = new GregorianCalendar();
@@ -64,30 +69,42 @@ public class VericadorDeJogoReliazadoTarefa implements Job{
 
 			String horaAtual = hora + "" + minuto + "" + segundo;
 
-
 			for (JogoVO jogoVO : listaJogoRetornado) {
 
-				
+
 				dataDoJogo.setTime(formatarDate.parse(jogoVO.getDataJogoFormatadaBasica()));
 
 				String texto = jogoVO.getHoraInicialJogo();
 				int inicio = texto.indexOf("");
 				int fim = texto.indexOf(":", inicio);
 
+				System.out.println("texto " + texto);
+
 				int inicio1 = texto.indexOf(":") + 1;
 				int fim2 = texto.indexOf(":", inicio1);
 
+				System.out.println("texto " + fim2);
+
 				int inicio3 = texto.indexOf(":") + 4;
+
+				System.out.println(texto.substring(inicio, fim));
+				System.out.println(texto.substring(inicio1, fim2));
+
+				Integer horaDoJogo = Integer.parseInt(texto.substring(inicio, fim));
+				Integer minutoDoJogo = Integer.parseInt(texto.substring(inicio1, fim2));
 
 				String horaInicialJogoRetornoString = texto.substring(inicio, fim) + "" + texto.substring(inicio1, fim2) + "" + texto.substring(inicio3);
 
-				if (dataDoJogo.getTimeInMillis() <= dataAtual.getTimeInMillis() && Integer.parseInt(horaInicialJogoRetornoString) <= Integer.parseInt(horaAtual)) {
+				if (dataDoJogo.getTimeInMillis() == dataAtual.getTimeInMillis() && hora >= horaDoJogo && minuto >= minutoDoJogo) {
 
 					System.out.println(jogoVO.getJogo());
-					
-					jogoVO.getConfiguracaoJogoVO().setJogoFinalizado(true);
+					System.out.println(jogoVO.getSequencial());
+					System.out.println("entrou na condição");
 
-					configuracaoJogoBO.salvar(jogoVO);
+					configuracaoJogoVO.setJogoFinalizado(true);
+					configuracaoJogoVO.getJogoVO().setSequencial(jogoVO.getSequencial());
+
+					configuracaoJogoBO.salvar(configuracaoJogoVO);
 				}
 
 
