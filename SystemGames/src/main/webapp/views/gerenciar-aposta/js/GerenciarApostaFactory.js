@@ -79,6 +79,33 @@
 			return retorno.promise;
 
 		}
+		
+		somaValoApostado();
+		function somaValoApostado(){
+
+			var retorno = $q.defer();
+			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+				$http.get(urlRaiz + 'somaValorAposta/' + usuarioLogado.sequencial)
+					.success(function(resultado) {
+
+						retorno.resolve(resultado);
+
+					})
+					.error(function(data) {
+						alert('Sistema indisponível no momento...');
+						console.log(data);
+					});
+
+
+
+
+
+
+			return retorno.promise;
+
+		}
+
 
 
 
@@ -88,7 +115,8 @@
 
 			buscarJogoPorParams: buscarJogoPorParams,
 			salvar: salvar,
-			inserirResultadoAposta: inserirResultadoAposta
+			inserirResultadoAposta: inserirResultadoAposta,
+			somaValoApostado: somaValoApostado
 
 
 		}

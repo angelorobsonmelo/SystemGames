@@ -100,6 +100,18 @@ public class ApostaBO implements IApostaBO{
 		}	
 	}
 	
+	public ArrayList<ApostaVO> consultarSomaApostaPorParametros(
+			ApostaVO apostaVO) throws BOException {
+		try {
+			/*Setar o AutoCommit para False*/
+			
+			return apostaDAO.consultarSomaApostaPorParametros(apostaVO);	
+			
+		}catch (Exception ex) {
+			throw new BOException(ex);
+		}	
+	}
+	
 	public ArrayList<ApostaVO> apostaPorSequencial(ApostaVO apostaVO)
 			throws BOException {
 		try {

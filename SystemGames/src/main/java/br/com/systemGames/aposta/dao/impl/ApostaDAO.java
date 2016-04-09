@@ -155,6 +155,54 @@ public class ApostaDAO implements IApostaDAO {
 			cstmt = null;
 		}
 	}
+	
+	
+		public ArrayList<ApostaVO> consultarSomaApostaPorParametros(
+			ApostaVO apostaVO) throws DAOException {
+		String consulta = "{? = CALL sp_aposta_soma_valor_apostado_por_params(?)}";
+        CallableStatement cstmt = null;
+        ArrayList<ApostaVO> listaAposta = new ArrayList<ApostaVO>();
+               
+        try
+        {        	
+            cstmt = Conexao.getConexao().prepareCall(consulta);
+            cstmt.registerOutParameter(1, Types.OTHER);
+            cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(apostaVO.getCambistaVO().getSequencial()));
+            cstmt.execute();
+			
+            listaAposta = mapearResultSetSoma((ResultSet) cstmt.getObject(1));
+			
+			cstmt.close();	
+			
+	        return listaAposta;
+        }
+        catch(Exception ex)
+        {
+        	throw new DAOException(ex);
+        }
+        finally{        	
+        	/*Indicar ao Garbage Collection do Java que as variáveis 
+			* podem ser esvaziadas do Coletor de Lixo
+			*/        	
+        	procedure = null;
+        	cstmt = null;
+        }
+	}
+	
+	
+	private ArrayList<ApostaVO> mapearResultSetSoma(ResultSet rs) throws SQLException{
+	
+	ArrayList<ApostaVO> lista = new ArrayList<ApostaVO>();
+    
+	while(rs.next()){
+	
+		ApostaVO apostaVO = new ApostaVO();
+		apostaVO.setValApostado(rs.getDouble("LIMITE_ATUAL"));
+		
+		lista.add(apostaVO);
+	}
+	return lista;
+}
 
 	public ArrayList<ApostaVO> consultarApostaPorParametros(
 			ApostaVO apostaVO) throws DAOException {

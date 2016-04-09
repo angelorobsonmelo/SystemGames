@@ -103,6 +103,27 @@ public class ApostaResource implements IApostaResource {
 
 		}
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("somaValorAposta/{sequencial}")
+	public ArrayList<ApostaVO> listarSomaPorParams(@PathParam("sequencial") Integer sequencial) throws BOException {
+		try {
+			
+			apostaVO.getCambistaVO().setSequencial(sequencial);			
+			return apostaBO.consultarSomaApostaPorParametros(apostaVO);
+
+
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		}finally {
+
+			jogoBO = null;
+
+
+		}
+	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)

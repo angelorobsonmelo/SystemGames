@@ -12,6 +12,7 @@
 		$rootScope.esconderHeader = true;
 
 		$scope.ToggleCampeonato = false;
+		var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
 
 		var items = {};
@@ -116,53 +117,68 @@
 
 			});
 		};
+		
+		somandoValores();
+		function somandoValores() {
+
+			GerenciarApostaFactory.somaValoApostado().then(function(dado) {
+
+				$rootScope.valoresSomados = dado;
+				console.log($rootScope.valoresSomados);
+
+			})
+
+		}
 
 		$scope.salvarAposta = function(valorTtotal,valorAposta) {
-			$scope.aposta.jogoApostadoVO = {};
-
-			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-
-			console.log($scope.items.jogos.length);
-			console.log($scope.aposta.valComissao);
-			if($scope.items.jogos.length == 1){
-
-				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao1 / 100);
-				console.log($scope.aposta.valComissao);
-			}
-			else if($scope.items.jogos.length == 2){
-
-				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao2 / 100);
-				console.log($scope.aposta.valComissao);
-			}
-			else if($scope.items.jogos.length >= 3){
-
-				$scope.aposta.valComissao = (usuarioLogado.configuracaoCambistaVO.comissao3 * $scope.aposta.valApostado) / 100;
-				console.log($scope.aposta.valComissao);
-			}
-
-			$scope.aposta.valRetornoPossivel = $scope.aposta.valApostado * $scope.valorTtotal;
-			$scope.aposta.jogoApostadoVO = $scope.items.jogos;
-			$scope.aposta.qtdJogos = $scope.items.jogos.length;
-			$scope.aposta.cambistaVO = {};
-			$scope.aposta.cambistaVO.sequencial = usuarioLogado.sequencial;
 
 
+			if($scope.valoresSomados[0].valApostado < usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario){
+				$scope.aposta.jogoApostadoVO = {};
+				if($scope.items.jogos.length == 1){
 
-			console.log($scope.aposta);
+					$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao1 / 100);
 
+				}
+				else if($scope.items.jogos.length == 2){
 
-			GerenciarApostaFactory.salvar($scope.aposta).then(function(data) {
+					$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao2 / 100);
 
+				}
+				else if($scope.items.jogos.length >= 3){
 
-				if(data == 'OK') {
-
-					swal("Aviso!", "Salvo com Sucesso.", "success");
-					$scope.aposta = '';
-					$scope.items.jogos = '';
+					$scope.aposta.valComissao = (usuarioLogado.configuracaoCambistaVO.comissao3 * $scope.aposta.valApostado) / 100;
 
 				}
 
-			});
+				$scope.aposta.valRetornoPossivel = $scope.aposta.valApostado * $scope.valorTtotal;
+				$scope.aposta.jogoApostadoVO = $scope.items.jogos;
+				$scope.aposta.qtdJogos = $scope.items.jogos.length;
+				$scope.aposta.cambistaVO = {};
+				$scope.aposta.cambistaVO.sequencial = usuarioLogado.sequencial;
+
+
+
+
+
+
+				GerenciarApostaFactory.salvar($scope.aposta).then(function(data) {
+
+
+					if(data == 'OK') {
+
+						swal("Aviso!", "Salvo com Sucesso.", "success");
+						$scope.aposta = '';
+						$scope.items.jogos = '';
+						$scope.limiteAtual = usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario - $scope.valoresSomados[0].valApostado;
+
+					}
+
+				});
+			}else{
+				alert('Não pode apostar');
+			}
+
 
 
 
