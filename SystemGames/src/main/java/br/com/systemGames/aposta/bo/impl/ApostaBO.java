@@ -7,6 +7,7 @@ import br.com.systemGames.aposta.dao.impl.ApostaDAO;
 import br.com.systemGames.aposta.model.ApostaVO;
 import br.com.systemGames.database.Conexao;
 import br.com.systemGames.excecao.BOException;
+import br.com.systemGames.jogo.model.JogoVO;
 
 public class ApostaBO implements IApostaBO{
 	
@@ -55,7 +56,7 @@ public class ApostaBO implements IApostaBO{
 		return null;
 	}
 
-	@Override
+	
 	public String salvarJogo(ApostaVO apostaVO) throws BOException {
 		String resultadoExecucaoInserirJogoAposta = null;
 
@@ -84,6 +85,53 @@ public class ApostaBO implements IApostaBO{
 			resultadoExecucaoProcedures.clear();
 
 		}
+	}
+	
+	public ArrayList<ApostaVO> consultarApostaPorParametros(
+			ApostaVO apostaVO) throws BOException {
+		try {
+			/*Setar o AutoCommit para False*/
+			
+			return apostaDAO.consultarApostaPorParametros(apostaVO);	
+			
+		}catch (Exception ex) {
+			throw new BOException(ex);
+		}	
+	}
+	
+	public ArrayList<ApostaVO> apostaPorSequencial(ApostaVO apostaVO)
+			throws BOException {
+		try {
+			/*Setar o AutoCommit para False*/
+			
+			
+			ArrayList<ApostaVO> retornoBanco =  apostaDAO.apostaPorSequencial(apostaVO);
+			ArrayList<ApostaVO> lista = new ArrayList<>();
+			
+			for (ApostaVO apostaVO1 : retornoBanco) {
+
+				
+
+
+				if (apostaVO1.getResultadoJogoVO().getResultadoCasa() == 0 && apostaVO1.getResultadoJogoVO().getResultadoFora() == 0 && apostaVO1.getConfiguracaoJogoVO().getJogoFinalizado() == false) {
+
+					apostaVO1.getResultadoJogoVO().setResultadoCasa(null);
+					apostaVO1.getResultadoJogoVO().setResultadoFora(null);
+
+					lista.add(apostaVO1);
+
+				}else {
+
+					lista.add(apostaVO1);
+
+				}
+			}
+			
+			return lista;
+			
+		}catch (Exception ex) {
+			throw new BOException(ex);
+		}	
 	}
 
 }

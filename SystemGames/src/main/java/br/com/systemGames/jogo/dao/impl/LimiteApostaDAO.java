@@ -198,7 +198,7 @@ public class LimiteApostaDAO implements ILimiteApostaDAO {
 	}
 
 
-	@Override
+	
 	public ArrayList<LimiteApostaVO> buscarTodosPorSeqJogo(
 			LimiteApostaVO limiteApostaVO) throws DAOException {
 		procedure = "{ ? = CALL SP_LIMITE_APOSTA_BUSCAR_POR_SEQ_JOGO(?)}";
@@ -272,7 +272,7 @@ public class LimiteApostaDAO implements ILimiteApostaDAO {
 	}
 
 
-	@Override
+	
 	public ArrayList<LimiteApostaVO> buscarPorSeqUsuario(
 			LimiteApostaVO limiteApostaVO) throws DAOException {
 		procedure = "{ ? = CALL SP_LIMITE_APOSTA_POR_SEQ_USU(?)}";

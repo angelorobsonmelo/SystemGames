@@ -6,37 +6,12 @@
 	'use strict';
 
 	var app = angular.module('materialAdmin');
-	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'GerenciarJogoFactory','GerenciarApostaFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, GerenciarJogoFactory,GerenciarApostaFactory) {
+	app.controller('GerenciarApostaCtrl', ['$scope', '$rootScope', '$location', '$modal', 'CampeonatoFactory', 'EsporteFactory', 'TaxaLimiteFactory','GerenciarApostaFactory', function($scope, $rootScope, $location, $modal, CampeonatoFactory, EsporteFactory, TaxaLimiteFactory,GerenciarApostaFactory) {
 		$rootScope.titulo = "jogos";
 		$rootScope.activetab = $location.path();
 		$rootScope.esconderHeader = true;
 
 		$scope.ToggleCampeonato = false;
-
-
-
-
-
-		$scope.salvar = function() {
-
-			console.log($scope.jogo);
-			
-			
-			GerenciarJogoFactory.salvar($scope.jogo);
-			
-		};
-
-
-
-		GerenciarJogoFactory.listarTodos().then(function(resposta) {
-
-			var jogosCopy = angular.copy(resposta);
-
-			$scope.jogos = jogosCopy;
-
-			console.log($scope.jogos);
-
-		});
 
 
 		var items = {};
@@ -66,7 +41,7 @@
 
 		$scope.addItem = function (jogo,valor, tipo, index) {
 			for(var i=0; i<items.jogos.length; i++) {
-				if(items.jogos[i].seq === jogo.sequencial) {
+				if(items.jogos[i].seq === jogo.jogoVO.sequencial) {
 					console.log("Achou");
 					console.log(i);
 					$scope.deleteItem(i);
@@ -74,10 +49,10 @@
 			}
 			items.jogos.push({
 				id: items.jogos.length + 1,
-				seq: jogo.sequencial,
-				jogoApostado: jogo.jogo,
-				dataJogo: jogo.dataJogoFormatadaBasica,
-				horaJogo: jogo.horaInicialJogo,
+				seq: jogo.jogoVO.sequencial,
+				jogoApostado: jogo.jogoVO.jogo,
+				dataJogo: jogo.jogoVO.dataJogoFormatadaBasica,
+				horaJogo: jogo.jogoVO.horaInicialJogo,
 				valTaxa: valor,
 				tipoAposta: tipo
 
@@ -110,6 +85,16 @@
 
 		});
 
+		TaxaLimiteFactory.buscarTodosPorSeqUsuario().then(function(resposta) {
+
+			var jogoCopy = angular.copy(resposta);
+
+			$scope.jogos = jogoCopy;
+
+			console.log($scope.jogos);
+
+		});
+
 
 		EsporteFactory.listarTodos().then(function(resposta) {
 
@@ -137,6 +122,8 @@
 
 			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
+			console.log($scope.items.jogos.length);
+			console.log($scope.aposta.valComissao);
 			if($scope.items.jogos.length == 1){
 
 				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao1 / 100);
@@ -155,6 +142,7 @@
 
 			$scope.aposta.valRetornoPossivel = $scope.aposta.valApostado * $scope.valorTtotal;
 			$scope.aposta.jogoApostadoVO = $scope.items.jogos;
+			$scope.aposta.qtdJogos = $scope.items.jogos.length;
 			$scope.aposta.cambistaVO = {};
 			$scope.aposta.cambistaVO.sequencial = usuarioLogado.sequencial;
 
@@ -169,7 +157,8 @@
 				if(data == 'OK') {
 
 					swal("Aviso!", "Salvo com Sucesso.", "success");
-
+					$scope.aposta = '';
+					$scope.items.jogos = '';
 
 				}
 

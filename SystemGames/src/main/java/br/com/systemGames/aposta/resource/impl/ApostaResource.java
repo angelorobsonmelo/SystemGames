@@ -89,6 +89,33 @@ public class ApostaResource implements IApostaResource {
 
 		}
 	}
+	
+	@POST
+    @Produces(MediaType.APPLICATION_JSON)
+	@Path("apostaPorParams")
+	public ArrayList<ApostaVO> consultarAposta(ApostaVO apostaVO)
+			throws BOException, SQLException {
+		try {
+			System.out.println(apostaVO.getDataInicial());
+			return apostaBO.consultarApostaPorParametros(apostaVO);
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		
+		}
+	}
+
+	@POST
+    @Produces(MediaType.APPLICATION_JSON)
+	@Path("apostaPorSeq")
+	public ArrayList<ApostaVO> consultarApostaPorSequencial(ApostaVO apostaVO)
+			throws BOException, SQLException {
+		try {
+			return apostaBO.apostaPorSequencial(apostaVO);
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		
+		}
+	}
 
 	public String remover(Integer sequencial) throws BOException, SQLException {
 		// TODO Auto-generated method stub

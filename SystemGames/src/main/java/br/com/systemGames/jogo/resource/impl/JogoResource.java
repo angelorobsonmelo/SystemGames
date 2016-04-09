@@ -164,7 +164,7 @@ public class JogoResource implements IJogoResource {
 	}
 
 
-	@Override
+	
 	public ArrayList<JogoVO> listarPorParams(Integer sequencial)
 			throws BOException {
 		// TODO Auto-generated method stub

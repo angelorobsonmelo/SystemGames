@@ -59,38 +59,38 @@
 							<tr dir-paginate="jogo in jogos | filter:buscar |  orderBy:'-sequencial'| itemsPerPage: 5 " pagination-id="ListaDeJogos" at-implicit
 							at-attribute="name">
 								<td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
-									{{jogo.jogo}}</td>
+									{{jogo.jogoVO.jogo}}</td>
 								<td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">
-									{{jogo.campeonatoVO.nome}}</td>
+									{{jogo.jogoVO.campeonatoVO.nome}}</td>
 								<td data-title="'HORA'" filter="{ 'email': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.casa, 'Casa: ',jogos[$index])">{{jogo.limiteApostaVO.casa}}</button>
+										ng-click="addItem(jogo,jogo.casa, 'Casa',jogos[$index])">{{jogo.casa}}</button>
 								</td>
 								<td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.empate,'Empate: ',jogos[$index])">{{jogo.limiteApostaVO.empate}}</button>
+										ng-click="addItem(jogo,jogo.empate,'Empate',jogos[$index])">{{jogo.empate}}</button>
 								</td>
 								<td data-title="'DS_JOGO'" filter="{ 'username': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.fora,'Fora: ',jogos[$index])">{{jogo.limiteApostaVO.fora}}</button>
+										ng-click="addItem(jogo,jogo.fora,'Fora',jogos[$index])">{{jogo.fora}}</button>
 								</td>
 								<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.golEMeio,'Gol e Meio: ',jogos[$index])">{{jogo.limiteApostaVO.golEMeio}}</button>
+										ng-click="addItem(jogo,jogo.golEMeio,'Gol e Meio',jogos[$index])">{{jogo.golEMeio}}</button>
 								</td>
 								<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.duplaChance,'Dupla Chance: ',jogos[$index])">{{jogo.limiteApostaVO.duplaChance}}</button>
+										ng-click="addItem(jogo,jogo.duplaChance,'Dupla Chance',jogos[$index])">{{jogo.duplaChance}}</button>
 								</td>
 								<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">
 									<button
 										class="btn btn-primary btn-icon waves-effect waves-circle"
-										ng-click="addItem(jogo,jogo.limiteApostaVO.ambos,'Ambos: ',jogos[$index])">{{jogo.limiteApostaVO.ambos}}</button>
+										ng-click="addItem(jogo,jogo.ambos,'Ambos',jogos[$index])">{{jogo.ambos}}</button>
 								</td>
 							</tr>
 						</tbody>
@@ -143,7 +143,7 @@
 							<i class="fa fa-times remover-card-aposta groove" ng-click="deleteItem($index)"></i>
 							<p class="f-14 c-black m-b-5 col-sm-12"><strong>{{item.jogoApostado}}</strong></p>
 							<p class="f-14 c-black m-b-5 col-sm-12">{{item.dataJogo}} - {{item.horaJogo}}h</p>
-							<p class="f-14 c-black m-b-5 col-sm-12" data-ng-model="item.apostaC"><strong>{{item.tipoAposta}}{{item.valTaxa}}</strong></p>
+							<p class="f-14 c-black m-b-5 col-sm-12" data-ng-model="item.apostaC"><strong>{{item.tipoAposta+' :'}}{{item.valTaxa}}</strong></p>
 						
 					</div>
 
@@ -169,7 +169,7 @@
 	
 					<div class="input-group">
 						<div class="fg-line">
-							<p><strong>Quantidade de jogos: {{items.jogos.length}}</strong></p>
+							<p ng-model="aposta.qtdJogos"><strong>Quantidade de jogos: {{items.jogos.length}}</strong></p>
 						</div>
 					</div>
 				</div>

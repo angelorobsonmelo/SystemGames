@@ -38,7 +38,7 @@
 
 			var usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-			$http.get(urlRaiz + 'listarPorSeqUsuario/' + usuario.sequencial)
+			$http.get(urlRaiz + 'listarPorSeqUsuario/' + usuario.usuarioVO.sequencial)
 			.success(function(data) {
 
 				retorno.resolve(data);
@@ -98,6 +98,7 @@
 		return {
 
 			buscarTodosPorSeqJogoEUsuario: buscarTodosPorSeqJogoEUsuario,
+			buscarTodosPorSeqUsuario: buscarTodosPorSeqUsuario,
 			salvar: salvar,
 			remover: remover
 

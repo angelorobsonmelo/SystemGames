@@ -59,7 +59,7 @@ public class LimiteApostaBO implements ILimiteApostaBO {
 		}
 	}
 
-	@Override
+	
 	public ArrayList<LimiteApostaVO> buscarTodosPorSeqJogo(
 			LimiteApostaVO limiteApostaVO) throws SQLException, BOException {
 		try {
@@ -73,7 +73,7 @@ public class LimiteApostaBO implements ILimiteApostaBO {
 		}
 	}
 
-	@Override
+	
 	public ArrayList<LimiteApostaVO> buscarPorSeqUsuario(
 			LimiteApostaVO limiteApostaVO) throws SQLException, BOException {
 		try {

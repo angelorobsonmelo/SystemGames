@@ -56,20 +56,33 @@ materialAdmin
 
         function pesquisarPorSeqUsuario() {
 
-            var retorno = $q.defer();
+            var cambista = [];
 
+            var retorno = $q.defer();
+            var fimUrl = '';
             var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-            $http.get(urlRaiz + 'pesquisarPorSeqUsuario/' + usuarioLogado.sequencial)
-                .success(function(resultado) {
+            if(usuarioLogado.tipoUsuarioVO.sequencial == 1 || usuarioLogado.tipoUsuarioVO.sequencial == 2){
+                fimUrl = 'pesquisarPorSeqUsuario/';
 
-                    retorno.resolve(resultado);
 
-                })
-                .error(function(data) {
-                    alert('Sistema indisponível no momento...');
-                    console.log(data);
-                });
+                $http.get(urlRaiz + fimUrl + usuarioLogado.sequencial)
+                    .success(function(resultado) {
+
+                        retorno.resolve(resultado);
+
+                    })
+                    .error(function(data) {
+                        alert('Sistema indisponível no momento...');
+                        console.log(data);
+                    });
+
+            }else{
+                cambista.push(usuarioLogado);
+                retorno.resolve(cambista);
+            }
+
+
 
 
             return retorno.promise;

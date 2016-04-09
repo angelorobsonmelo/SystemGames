@@ -118,7 +118,7 @@ public class LimiteApostaResource implements ILimiteApostaResource {
 		}
 	}
 
-	@Override
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("listarPorSeqJogo/{sequencialJogo}")
@@ -141,7 +141,7 @@ public class LimiteApostaResource implements ILimiteApostaResource {
 		}
 	}
 
-	@Override
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("listarPorSeqUsuario/{sequencialAdmin}")

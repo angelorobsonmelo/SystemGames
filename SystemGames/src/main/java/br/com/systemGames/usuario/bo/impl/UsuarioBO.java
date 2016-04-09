@@ -56,7 +56,7 @@ public class UsuarioBO implements IUsuarioBO {
 		return null;
 	}
 
-	@Override
+	
 	public ArrayList<UsuarioVO> listarTodosUsuarios() throws BOException,
 			SQLException {
 		try {

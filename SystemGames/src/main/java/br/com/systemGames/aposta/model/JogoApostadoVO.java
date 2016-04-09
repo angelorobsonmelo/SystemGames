@@ -1,5 +1,6 @@
 package br.com.systemGames.aposta.model;
 
+import br.com.systemGames.jogo.model.JogoVO;
 
 public class JogoApostadoVO {
 	
@@ -12,9 +13,11 @@ public class JogoApostadoVO {
 	private Double valTaxa;
 	private Integer seq;
 	private Integer id;
-	
-	
-	
+	private JogoVO jogoVO;
+		
+	public JogoApostadoVO() {
+		jogoVO = new JogoVO();
+	}
 	public Integer getSequencial() {
 		return sequencial;
 	}
@@ -70,6 +73,13 @@ public class JogoApostadoVO {
 	public void setCodAposta(Integer codAposta) {
 		this.codAposta = codAposta;
 	}
+	public JogoVO getJogoVO() {
+		return jogoVO;
+	}
+	public void setJogoVO(JogoVO jogoVO) {
+		this.jogoVO = jogoVO;
+	}
+	
 	
 	
 		

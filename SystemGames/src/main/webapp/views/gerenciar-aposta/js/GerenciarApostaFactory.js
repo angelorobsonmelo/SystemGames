@@ -4,7 +4,7 @@
 
 	var app = angular.module('materialAdmin');
 
-	app.factory('GerenciarApostaFactory', ['$http', '$q', function($http, $q){
+	app.factory('GerenciarApostaFactory','VisualizarApostaFactory', ['$http', '$q', function($http, $q,VisualizarApostaFactory){
 
 
 		var urlRaiz = '/SystemGames/rest/aposta/';
@@ -36,6 +36,14 @@
 
 			return retorno.promise;
 
+		}
+
+		function comparar(aposta){
+			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+			VisualizarApostaFactory.buscarAposta(aposta).then(function(data) {
+
+
+			});
 		}
 
 		function salvar(aposta) {

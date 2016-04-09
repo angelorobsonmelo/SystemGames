@@ -1,7 +1,10 @@
 package br.com.systemGames.aposta.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import br.com.systemGames.jogo.model.ConfiguracaoJogoVO;
+import br.com.systemGames.jogo.model.ResultadoJogoVO;
 import br.com.systemGames.usuario.model.CambistaVO;
 
 public class ApostaVO {
@@ -14,13 +17,20 @@ public class ApostaVO {
 	private Double valRetornoPossivel;
 	private String dthInclusao;
 	private JogoApostadoVO jogoApostadoVO2;
-	private ArrayList<JogoApostadoVO> jogoApostadoVO;
+	private ArrayList<JogoApostadoVO> jogoApostadoVO; 
+	private ResultadoJogoVO resultadoJogoVO; 
+	private Integer qtdJogos;
+	private ConfiguracaoJogoVO configuracaoJogoVO;
 	
+	private Date dataInicial;
+	private Date dataFinal;
 		
 	public ApostaVO() {
 		cambistaVO = new CambistaVO();
 		jogoApostadoVO = new ArrayList<JogoApostadoVO>();
 		jogoApostadoVO2 = new JogoApostadoVO();
+		configuracaoJogoVO = new ConfiguracaoJogoVO();
+		resultadoJogoVO = new ResultadoJogoVO();
 	}
 	
 	
@@ -86,6 +96,58 @@ public class ApostaVO {
 	public void setJogoApostadoVO2(JogoApostadoVO jogoApostadoVO2) {
 		this.jogoApostadoVO2 = jogoApostadoVO2;
 	}
+
+
+	public ResultadoJogoVO getResultadoJogoVO() {
+		return resultadoJogoVO;
+	}
+
+
+	public void setResultadoJogoVO(ResultadoJogoVO resultadoJogoVO) {
+		this.resultadoJogoVO = resultadoJogoVO;
+	}
+
+
+	public Integer getQtdJogos() {
+		return qtdJogos;
+	}
+
+
+	public void setQtdJogos(Integer qtdJogos) {
+		this.qtdJogos = qtdJogos;
+	}
+
+
+	public Date getDataInicial() {
+		return dataInicial;
+	}
+
+
+	public void setDataInicial(Date dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+
+	public ConfiguracaoJogoVO getConfiguracaoJogoVO() {
+		return configuracaoJogoVO;
+	}
+
+
+	public void setConfiguracaoJogoVO(ConfiguracaoJogoVO configuracaoJogoVO) {
+		this.configuracaoJogoVO = configuracaoJogoVO;
+	}
+	
+	
 	
 	
 	
