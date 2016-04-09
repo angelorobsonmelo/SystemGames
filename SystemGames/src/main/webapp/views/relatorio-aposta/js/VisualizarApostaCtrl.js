@@ -118,6 +118,8 @@
 
 			$scope.aposta = aposta;
 			
+			console.log($scope.aposta);
+			
 			/*$scope.atualizar = function () {
 
 
@@ -143,104 +145,8 @@
 
 					$rootScope.detalhes = apostaCopy;
 
-					for(var index=0; index<$scope.detalhes.length; index++) {
-						console.log($scope.aposta.jogoApostadoVO2.status);
-						if($scope.aposta.jogoApostadoVO2.status === null) {
-							$scope.aposta.jogoApostadoVO2.status = 'ABERTO';
-
-							if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora) && ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Casa: ')){
-
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Fora: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa == $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Empate: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa+$scope.detalhes[index].resultadoJogoVO.resultadoFora >= 2)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Gol e Meio: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora || $scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Dupla Chance: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > 0 && $scope.detalhes[index].resultadoJogoVO.resultadoFora > 0)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Ambos: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else{
-								$scope.aposta.jogoApostadoVO2.status = 'PERDEU';
-							}
-
-							$scope.aposta.jogoApostadoVO2.sequencial = $scope.detalhes[index].jogoApostadoVO2.sequencial;
-							console.log($scope.aposta.jogoApostadoVO2.sequencial);
-							$scope.atualiza(aposta);
-							$scope.aposta.jogoApostadoVO2.sequencial = '';
-							console.log($scope.aposta.jogoApostadoVO2.sequencial);
-
-						}else if($scope.aposta.jogoApostadoVO2.status != null) {
-
-							if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora) && ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Casa: ')){
-
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Fora: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa == $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Empate: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa+$scope.detalhes[index].resultadoJogoVO.resultadoFora >= 2)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Gol e Meio: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora || $scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Dupla Chance: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > 0 && $scope.detalhes[index].resultadoJogoVO.resultadoFora > 0)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Ambos: ')){
-								$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-							}else{
-								$scope.aposta.jogoApostadoVO2.status = 'PERDEU';
-							}
-
-							$scope.aposta.jogoApostadoVO2.sequencial = $scope.detalhes[index].jogoApostadoVO2.sequencial;
-
-							$scope.atualiza(aposta);
-							$scope.aposta.jogoApostadoVO2.sequencial = '';
-							console.log($scope.aposta.jogoApostadoVO2.sequencial);
-						}
-					}
-
-					/*angular.forEach($scope.detalhes, function(item, index) {
-
-						$scope.aposta.jogoApostadoVO2.status = 'ABERTO';
-
-						if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora) && ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Casa: ')){
-
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Fora: ')){
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa == $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Empate: ')){
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa+$scope.detalhes[index].resultadoJogoVO.resultadoFora >= 2)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Gol e Meio: ')){
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > $scope.detalhes[index].resultadoJogoVO.resultadoFora || $scope.detalhes[index].resultadoJogoVO.resultadoCasa < $scope.detalhes[index].resultadoJogoVO.resultadoFora)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Dupla Chance: ')){
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else if(($scope.detalhes[index].resultadoJogoVO.resultadoCasa > 0 && $scope.detalhes[index].resultadoJogoVO.resultadoFora > 0)&& ($scope.detalhes[index].jogoApostadoVO2.tipoAposta == 'Ambos: ')){
-							$scope.aposta.jogoApostadoVO2.status = 'ACERTOU';
-						}else{
-							$scope.aposta.jogoApostadoVO2.status = 'PERDEU';
-						}
-
-						$scope.aposta.jogoApostadoVO2.sequencial = $scope.detalhes[index].jogoApostadoVO2.sequencial;
-						console.log($scope.aposta.jogoApostadoVO2.sequencial);
-						VisualizarApostaFactory.atualizar($scope.aposta).then(function(resposta) {
-
-							if(resposta == 'OK'){
-
-								swal("Aviso!", "Alterado com Sucesso.", "success");
-
-							}
-
-						});
-						
-
-						/!*if($rootScope.detalhes[index].jogoApostadoVO2.jogoVO.configuracaoJogoVO.jogoFinalizado == true){
-							$scope.finalizado = 'S';
-						}else{
-							$scope.finalizado = 'N';
-						}*!/
-
-
-					});*/
 					console.log($scope.detalhes);
+					
 				});
 				$scope.atualiza = function(aposta){
 					console.log(aposta);

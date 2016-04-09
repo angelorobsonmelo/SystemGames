@@ -4,7 +4,7 @@
 
 	var app = angular.module('materialAdmin');
 
-	app.factory('GerenciarApostaFactory','VisualizarApostaFactory', ['$http', '$q', function($http, $q,VisualizarApostaFactory){
+	app.factory('GerenciarApostaFactory', ['$http', '$q', function($http, $q){
 
 
 		var urlRaiz = '/SystemGames/rest/aposta/';
@@ -38,19 +38,33 @@
 
 		}
 
-		function comparar(aposta){
-			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-			VisualizarApostaFactory.buscarAposta(aposta).then(function(data) {
-
-
-			});
-		}
 
 		function salvar(aposta) {
 
 			var retorno = $q.defer();
 
 			$http.post(urlRaiz + 'salvar', aposta)
+				.success(function(resposta) {
+
+					retorno.resolve(resposta);
+
+				})
+				.error(function(resposta, status) {
+
+					alert("Erro Status: " + status);
+					retorno.resolve(resposta);
+				})
+
+			return retorno.promise;
+
+		}
+		
+		
+		function inserirResultadoAposta(aposta) {
+
+			var retorno = $q.defer();
+
+			$http.post(urlRaiz + 'inserirResultadoAposta', aposta)
 				.success(function(resposta) {
 
 					retorno.resolve(resposta);
@@ -73,7 +87,8 @@
 		return {
 
 			buscarJogoPorParams: buscarJogoPorParams,
-			salvar: salvar
+			salvar: salvar,
+			inserirResultadoAposta: inserirResultadoAposta
 
 
 		}

@@ -4,7 +4,7 @@
 	<form ng-submit="salvar()" name="myForm">
 		<div class="modal-header">
 			<div class="text-right"><i class="fa fa-times fa-2x botao-cancel" ng-click="cancel()"></i></div>
-			<h3 class="modal-title text-center titulo-modal">APOSTAS REALIZADAS PELO CLIENTE ""</h3>
+			<h3 class="modal-title text-center titulo-modal">APOSTAS REALIZADAS PELO CLIENTE "{{aposta.nomeApostador}}"</h3>
 		</div>
 		<div id="modal-padding" class="modal-body">
 		<div class="card-body">
@@ -41,8 +41,8 @@
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{w.resultadoJogoVO.resultadoCasa +'x'+ w.resultadoJogoVO.resultadoFora}}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{w.jogoApostadoVO2.tipoAposta}}</td>
 							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{w.jogoApostadoVO2.valTaxa}}</td>
-							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{ganhou}}</td>
-							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{finalizado}}</td>
+							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{w.status}}</td>
+							<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{w.configuracaoJogoVO.jogoFinalizado}}</td>
 							<tfoot>
 								<tr>
 									<td class="text-center" st-pagination="" st-items-by-page="10"

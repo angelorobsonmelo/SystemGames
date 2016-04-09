@@ -1,5 +1,6 @@
 package br.com.systemGames.aposta.bo.impl;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import br.com.systemGames.aposta.bo.IApostaBO;
@@ -106,7 +107,7 @@ public class ApostaBO implements IApostaBO{
 			
 			
 			ArrayList<ApostaVO> retornoBanco =  apostaDAO.apostaPorSequencial(apostaVO);
-			ArrayList<ApostaVO> lista = new ArrayList<>();
+			ArrayList<ApostaVO> lista = new ArrayList<ApostaVO>();
 			
 			for (ApostaVO apostaVO1 : retornoBanco) {
 
@@ -132,6 +133,37 @@ public class ApostaBO implements IApostaBO{
 		}catch (Exception ex) {
 			throw new BOException(ex);
 		}	
+	}
+
+	public String inserirResultadoAposta(ApostaVO apostaVO) throws BOException,
+			SQLException {
+		String resultadoExecucaoInserirAposta = null;
+
+		try{	
+			/*Setar o AutoCommit para False, validar toda a transação antes do Commit*/
+			Conexao.setarAutoCommitParaFalse();
+
+			resultadoExecucaoProcedures.clear();
+
+			resultadoExecucaoInserirAposta =  apostaDAO.inserirResultadoAposta(apostaVO);
+			resultadoExecucaoProcedures.add(resultadoExecucaoInserirAposta);
+
+			if (!resultadoExecucaoInserirAposta.equals("OK")){
+				throw new BOException("Erro ao inserir aposta. "+resultadoExecucaoInserirAposta);
+			}
+
+			return Conexao.verificarResultadosDaExecucaoDeProceduresValidandoCommit(resultadoExecucaoProcedures);
+
+		}catch (Exception ex) { 
+			/*Preferivel que seja dado um Rollback neste caso*/
+
+			throw new BOException(ex);
+		}
+		finally{
+			resultadoExecucaoInserirAposta = null;
+			resultadoExecucaoProcedures.clear();
+
+		}
 	}
 
 }

@@ -21,6 +21,8 @@ public class ApostaVO {
 	private ResultadoJogoVO resultadoJogoVO; 
 	private Integer qtdJogos;
 	private ConfiguracaoJogoVO configuracaoJogoVO;
+	private String resultadoAposta;
+	private String status;
 	
 	private Date dataInicial;
 	private Date dataFinal;
@@ -145,6 +147,26 @@ public class ApostaVO {
 
 	public void setConfiguracaoJogoVO(ConfiguracaoJogoVO configuracaoJogoVO) {
 		this.configuracaoJogoVO = configuracaoJogoVO;
+	}
+
+
+	public String getResultadoAposta() {
+		return resultadoAposta;
+	}
+
+
+	public void setResultadoAposta(String resultadoAposta) {
+		this.resultadoAposta = resultadoAposta;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

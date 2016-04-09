@@ -21,14 +21,14 @@ import br.com.systemGames.jogo.model.JogoVO;
 
 @Path("aposta")
 public class ApostaResource implements IApostaResource {
-	
+
 	ApostaBO apostaBO;
 	ApostaVO apostaVO;
 	JogoVO jogoVO;
 	JogoBO jogoBO;
 
 
-	
+
 
 	public ApostaResource() {
 		apostaBO = new ApostaBO();
@@ -46,8 +46,8 @@ public class ApostaResource implements IApostaResource {
 			String ok = null;
 			apostaBO.salvar(apostaVO);
 			for (JogoApostadoVO jogoApostadoVO : apostaVO.getJogoApostadoVO()) {
-				
-				
+
+
 				apostaVO.getJogoApostadoVO2().setDataJogo(jogoApostadoVO.getDataJogo());
 				apostaVO.getJogoApostadoVO2().setHoraJogo(jogoApostadoVO.getHoraJogo());
 				apostaVO.getJogoApostadoVO2().setSeq(jogoApostadoVO.getSeq());
@@ -55,7 +55,7 @@ public class ApostaResource implements IApostaResource {
 				apostaVO.getJogoApostadoVO2().setValTaxa(jogoApostadoVO.getValTaxa());
 				ok =  apostaBO.salvarJogo(apostaVO);
 			}
-			
+
 			return ok;
 
 
@@ -68,14 +68,14 @@ public class ApostaResource implements IApostaResource {
 
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("listarPorParams/{sequencial}")
 	public ArrayList<JogoVO> listarPorParams(@PathParam("sequencial") Integer sequencial) throws BOException {
 		try {
-			
+
 			jogoVO.getCampeonatoVO().setSequencial(sequencial);			
 			return jogoBO.listarPorParams(jogoVO);
 
@@ -89,9 +89,9 @@ public class ApostaResource implements IApostaResource {
 
 		}
 	}
-	
+
 	@POST
-    @Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("apostaPorParams")
 	public ArrayList<ApostaVO> consultarAposta(ApostaVO apostaVO)
 			throws BOException, SQLException {
@@ -100,12 +100,12 @@ public class ApostaResource implements IApostaResource {
 			return apostaBO.consultarApostaPorParametros(apostaVO);
 		} catch (Exception ex) {
 			throw new BOException(ex);
-		
+
 		}
 	}
 
 	@POST
-    @Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("apostaPorSeq")
 	public ArrayList<ApostaVO> consultarApostaPorSequencial(ApostaVO apostaVO)
 			throws BOException, SQLException {
@@ -113,7 +113,7 @@ public class ApostaResource implements IApostaResource {
 			return apostaBO.apostaPorSequencial(apostaVO);
 		} catch (Exception ex) {
 			throw new BOException(ex);
-		
+
 		}
 	}
 
@@ -126,6 +126,28 @@ public class ApostaResource implements IApostaResource {
 			throws BOException, SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("inserirResultadoAposta")
+	public String inserirResultadoAposta(ApostaVO apostaVO) throws BOException,
+	SQLException {
+		try {
+
+			apostaVO.setResultadoAposta("SIM");
+			return apostaBO.inserirResultadoAposta(apostaVO);
+
+		} catch (Exception ex) {
+			throw new BOException(ex);
+		}finally {
+
+			apostaBO = null;
+
+
+		}
 	}
 
 }

@@ -88,6 +88,7 @@
 					style="text-align: center;" show-filter="true">
 					<thead>
 						<tr>
+						<th class="label-th" style="width: 4%; text-align: center;">#</th>
 							<th class="label-th" style="width: 4%; text-align: center;">ID</th>
 							<th class="label-th" style="width: 15%; text-align: center;">CAMBISTA</th>
 							<th class="label-th" style="width: 10%; text-align: center;">DATA
@@ -106,6 +107,8 @@
 						<tr dir-paginate="w in apostas | filter:buscar | itemsPerPage: 5 |  orderBy:'-sequencial'"
 							pagination-id="ListaDeApostas" at-implicit
 							at-attribute="name">
+							<td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
+								{{$index + 1 }}</td>
 							<td data-title="'CD_CODIGO'" filter="{ 'id': 'text' }">
 								{{w.sequencial }}</td>
 							<td data-title="'DATA_JOGO'" filter="{ 'name': 'text' }">{{
@@ -165,17 +168,6 @@
 						tpago }}</td>
 					<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{tcomissao}}</td>
 					<td data-title="'DS_CAMPEONATO'" filter="{ 'contact': 'text' }">{{tliquido}}</td>
-
-					<tfoot>
-					<tr>
-						<td class="text-center" st-pagination="" st-items-by-page="10"
-							colspan="10"><dir-pagination-controls
-								pagination-id="ListaDeApostas" class="modal-title text-center"
-								max-size="5" direction-links="true" boundary-links="true">
-						</dir-pagination-controls></td>
-					</tr>
-					</tfoot>
-					</tr>
 					</tbody>
 
 				</table>

@@ -14,6 +14,9 @@ public interface IApostaResource {
 	public String remover(Integer sequencial) throws BOException, SQLException;
 	
 	public ArrayList<ApostaVO> pesquisarPorSeqUsuario(Integer sequencialUsuario) throws BOException, SQLException;
+	
+	public String inserirResultadoAposta(ApostaVO apostaVO) throws BOException,
+	SQLException;
 
 
 }

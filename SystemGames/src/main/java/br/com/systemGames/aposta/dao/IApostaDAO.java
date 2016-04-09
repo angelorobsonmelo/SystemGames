@@ -16,5 +16,8 @@ public interface IApostaDAO {
 	public ArrayList<ApostaVO> pesquisarPorSeqUsuario(ApostaVO apostaVO) throws DAOException;
 	
 	
+	public String inserirResultadoAposta(ApostaVO apostaVO) throws DAOException;
+	
+	
 
 }

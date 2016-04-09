@@ -134,7 +134,7 @@
 				$scope.aposta.valComissao = $scope.aposta.valApostado * (usuarioLogado.configuracaoCambistaVO.comissao2 / 100);
 				console.log($scope.aposta.valComissao);
 			}
-			else if($scope.items.jogos.length == 3){
+			else if($scope.items.jogos.length >= 3){
 
 				$scope.aposta.valComissao = (usuarioLogado.configuracaoCambistaVO.comissao3 * $scope.aposta.valApostado) / 100;
 				console.log($scope.aposta.valComissao);
