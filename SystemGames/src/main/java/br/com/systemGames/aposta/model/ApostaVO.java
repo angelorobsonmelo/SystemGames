@@ -26,6 +26,7 @@ public class ApostaVO {
 	
 	private Date dataInicial;
 	private Date dataFinal;
+	private java.sql.Date teste;
 		
 	public ApostaVO() {
 		cambistaVO = new CambistaVO();
@@ -167,6 +168,16 @@ public class ApostaVO {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	public java.sql.Date getTeste() {
+		return teste;
+	}
+
+
+	public void setTeste(java.sql.Date teste) {
+		this.teste = teste;
 	}
 	
 	

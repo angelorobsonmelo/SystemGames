@@ -1,6 +1,7 @@
 package br.com.systemGames.aposta.dao.impl;
 
 import java.sql.CallableStatement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -10,6 +11,7 @@ import br.com.systemGames.aposta.dao.IApostaDAO;
 import br.com.systemGames.aposta.model.ApostaVO;
 import br.com.systemGames.database.Conexao;
 import br.com.systemGames.excecao.DAOException;
+import br.com.systemGames.util.DataUtil;
 import br.com.systemGames.util.VerificadorValorObjeto;
 
 public class ApostaDAO implements IApostaDAO {
@@ -159,7 +161,7 @@ public class ApostaDAO implements IApostaDAO {
 	
 		public ArrayList<ApostaVO> consultarSomaApostaPorParametros(
 			ApostaVO apostaVO) throws DAOException {
-		String consulta = "{? = CALL sp_aposta_soma_valor_apostado_por_params(?)}";
+		String consulta = "{? = CALL sp_aposta_soma_valor_apostado_por_params(?,?)}";
         CallableStatement cstmt = null;
         ArrayList<ApostaVO> listaAposta = new ArrayList<ApostaVO>();
                
@@ -168,6 +170,7 @@ public class ApostaDAO implements IApostaDAO {
             cstmt = Conexao.getConexao().prepareCall(consulta);
             cstmt.registerOutParameter(1, Types.OTHER);
             cstmt.setInt(2, VerificadorValorObjeto.retornaIntValorObjetoOuZero(apostaVO.getCambistaVO().getSequencial()));
+            cstmt.setDate(3, new java.sql.Date(VerificadorValorObjeto.retornaLongValorObjetoOuZero(apostaVO.getDataInicial().getTime())));
             cstmt.execute();
 			
             listaAposta = mapearResultSetSoma((ResultSet) cstmt.getObject(1));

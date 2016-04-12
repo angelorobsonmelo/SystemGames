@@ -1,3 +1,4 @@
+
 /**
  * Created by Ademar on 20/01/2016.
  */
@@ -131,9 +132,10 @@
 		}
 
 		$scope.salvarAposta = function(valorTtotal,valorAposta) {
+			somandoValores();
+			console.log($scope.valoresSomados[0].valApostado);
+			console.log(usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario);
 
-
-			if($scope.valoresSomados[0].valApostado < usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario){
 				$scope.aposta.jogoApostadoVO = {};
 				if($scope.items.jogos.length == 1){
 
@@ -161,22 +163,24 @@
 
 
 
-
+			if(($scope.valoresSomados[0].valApostado > 0) && ($scope.valoresSomados[0].valApostado >= $scope.aposta.valApostado)){
 				GerenciarApostaFactory.salvar($scope.aposta).then(function(data) {
 
 
 					if(data == 'OK') {
 
 						swal("Aviso!", "Salvo com Sucesso.", "success");
+						somandoValores();
+
 						$scope.aposta = '';
-						$scope.items.jogos = '';
-						$scope.limiteAtual = usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario - $scope.valoresSomados[0].valApostado;
+						items.jogos = [];
+						/*$scope.limiteAtual = usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario - $scope.valoresSomados[0].valApostado;*/
 
 					}
 
 				});
-			}else{
-				alert('Não pode apostar');
+			}else {
+				alert('NÃ£o pode apostar');
 			}
 
 

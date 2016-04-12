@@ -119,20 +119,6 @@
 			$scope.aposta = aposta;
 			
 			console.log($scope.aposta);
-			
-			/*$scope.atualizar = function () {
-
-
-				VisualizarApostaFactory.atualizar($scope.aposta).then(function(resposta) {
-
-					if(resposta == 'OK'){
-
-						swal("Aviso!", "Cadastrado com Sucesso.", "success");
-
-					}
-
-				})
-			}*/
 
 			listartodos();
 

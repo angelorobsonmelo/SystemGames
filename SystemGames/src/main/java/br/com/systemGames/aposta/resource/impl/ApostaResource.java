@@ -2,6 +2,7 @@ package br.com.systemGames.aposta.resource.impl;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -18,6 +19,7 @@ import br.com.systemGames.aposta.resource.IApostaResource;
 import br.com.systemGames.excecao.BOException;
 import br.com.systemGames.jogo.bo.impl.JogoBO;
 import br.com.systemGames.jogo.model.JogoVO;
+import br.com.systemGames.util.DataUtil;
 
 @Path("aposta")
 public class ApostaResource implements IApostaResource {
@@ -104,14 +106,18 @@ public class ApostaResource implements IApostaResource {
 		}
 	}
 	
-	@GET
+	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("somaValorAposta/{sequencial}")
-	public ArrayList<ApostaVO> listarSomaPorParams(@PathParam("sequencial") Integer sequencial) throws BOException {
+	@Path("somaValorAposta")
+	public ArrayList<ApostaVO> listarSomaPorParams(ApostaVO apostaVO) throws BOException {
 		try {
+			Date data = new Date(System.currentTimeMillis());
+			//apostaVO.setDataInicial(data);
+			//apostaVO.getCambistaVO().setSequencial(sequencial);	
 			
-			apostaVO.getCambistaVO().setSequencial(sequencial);			
+			System.out.println(apostaVO.getCambistaVO().getSequencial());
+			System.out.println(apostaVO.getDataInicial());
 			return apostaBO.consultarSomaApostaPorParametros(apostaVO);
 
 

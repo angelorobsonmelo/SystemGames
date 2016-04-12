@@ -80,20 +80,31 @@
 
 		}
 		
-		somaValoApostado();
+		/*somaValoApostado();*/
 		function somaValoApostado(){
 
 			var retorno = $q.defer();
+			var dataInicial = new Date();
 			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+			console.log(dataInicial + '' + usuarioLogado.sequencial);
+			var apostaToJson = function () {
+				return angular.toJson({
 
-				$http.get(urlRaiz + 'somaValorAposta/' + usuarioLogado.sequencial)
-					.success(function(resultado) {
+					"cambistaVO":{"sequencial": usuarioLogado.sequencial},
+					"dataInicial": dataInicial
 
-						retorno.resolve(resultado);
+				});
+			};
+
+			apostaToJson();
+			$http.post(urlRaiz + 'somaValorAposta',apostaToJson()).success(function(resultado) {
+
+				retorno.resolve(resultado);
+				console.log(resultado);
 
 					})
 					.error(function(data) {
-						alert('Sistema indisponível no momento...');
+						alert('Sistema indisponï¿½vel no momento...');
 						console.log(data);
 					});
 
