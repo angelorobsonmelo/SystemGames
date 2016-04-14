@@ -36,9 +36,15 @@ materialAdmin
 
 			retorno.resolve(resultado);
 			console.log(resultado);
+
 			if(resultado == null){
 				var dlg = dialogs.error('Atenção','Nenhum resultado encotrado, selecione outro filtro');
 			}
+
+			angular.forEach(resultado, function(item, index) {
+
+			});
+
 
 		})
 		.error(function(data) {

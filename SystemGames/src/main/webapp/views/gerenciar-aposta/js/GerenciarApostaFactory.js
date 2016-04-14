@@ -100,7 +100,10 @@
 			$http.post(urlRaiz + 'somaValorAposta',apostaToJson()).success(function(resultado) {
 
 				retorno.resolve(resultado);
-				console.log(resultado);
+
+				if(resultado[0].valApostado == 0){
+					resultado[0].valApostado = resultado[0].cambistaVO.configuracaoCambistaVO.limiteMaximoVendaDiario;
+				}
 
 					})
 					.error(function(data) {

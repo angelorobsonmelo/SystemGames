@@ -184,6 +184,70 @@
 
 				<button class="btn btn-primary btn-block waves-effect" type="submit" >CONFIRMAR</button>
 
+				<page size="A4" class="" id="PDFtoPrint" ng-show="mostrar">
+
+					<table>
+						<thead>
+
+							<th >PALPITE CERTO</th>
+
+						</thead>
+						<tbody ng-repeat="w in items.jogos">
+						<tr >
+
+								<td class=""><strong>{{w.jogoApostado}}</strong><br/></td>
+						</tr>
+						<tr>
+								<td class="">{{w.dataJogo}}{{w.horaJogo}}<br/></td>
+						</tr>
+						<tr>
+								<td class="" data-ng-model="item.apostaC"><strong>{{w.tipoAposta}}{{w.valTaxa}}</strong></td>
+
+
+						</tr>
+						<tr>
+							<td>
+								<p  class="borda-cupom"></p><!--<hr id="borda-cupom"/>-->
+							</td>
+						</tr>
+						</tbody>
+						<tfoot>
+
+						<tr>
+							<td><strong>Possível Retorno: {{valorTtotal * 1 * aposta.valApostado  | currency}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>Quantidade de jogos: {{items.jogos.length}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>Valor Apostado: {{aposta.valApostado}}</strong></td>
+						</tr>
+						<tr>
+							<td>
+								<p  class="borda-cupom"></p><!--<hr id="borda-cupom"/>-->
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Cambista: {{usuario.apelido}}</strong></td>
+						</tr>
+						<tr>
+							<td><strong>Telefone: {{usuario.contato}}</strong></td>
+						</tr>
+						<tr>
+							<td>
+								<p  class="borda-cupom"></p><!--<hr id="borda-cupom"/>-->
+							</td>
+						</tr>
+						<tr>
+							<td><strong>Apostas Realizadas apos o inicio de um dos eventos esportivos, sera cancelada, e devolvido o valor apostado.</strong></td>
+						</tr>
+						</tfoot>
+					</table>
+
+				</page>
+				<!--<input type="button" value="Print" onclick="document.getElementById('PDFtoPrint').window.print();">-->
+
+
 				<!--<div class="col-sm-12 m-b-5">
                             <p class="f-14 c-black m-b-5">Voce escolher <strong>"Empate"</strong></p>
                                 <p class="f-12 c-black m-b-5">Hull x Arsenal </p>

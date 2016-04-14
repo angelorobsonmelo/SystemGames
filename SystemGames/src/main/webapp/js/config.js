@@ -341,7 +341,10 @@ materialAdmin
                                     'vendors/fileinput/fileinput.min.js',
                                     'vendors/bower_components/chosen/chosen.jquery.js',
                                     'vendors/bower_components/angular-chosen-localytics/chosen.js',
-                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js'
+                                    'vendors/bower_components/angular-farbtastic/angular-farbtastic.js',
+                                    'vendors/bower_components/jquery/dist/jquery.min.js'
+
+
                                 ]
                             }
                         ])

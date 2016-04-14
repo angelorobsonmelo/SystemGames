@@ -201,7 +201,7 @@ public class ApostaDAO implements IApostaDAO {
 	
 		ApostaVO apostaVO = new ApostaVO();
 		apostaVO.setValApostado(rs.getDouble("LIMITE_ATUAL"));
-		
+		apostaVO.getCambistaVO().getConfiguracaoCambistaVO().setLimiteMaximoVendaDiario(rs.getDouble("limite"));
 		lista.add(apostaVO);
 	}
 	return lista;

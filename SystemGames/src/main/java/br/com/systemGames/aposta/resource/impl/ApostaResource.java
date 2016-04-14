@@ -112,12 +112,7 @@ public class ApostaResource implements IApostaResource {
 	@Path("somaValorAposta")
 	public ArrayList<ApostaVO> listarSomaPorParams(ApostaVO apostaVO) throws BOException {
 		try {
-			Date data = new Date(System.currentTimeMillis());
-			//apostaVO.setDataInicial(data);
-			//apostaVO.getCambistaVO().setSequencial(sequencial);	
-			
-			System.out.println(apostaVO.getCambistaVO().getSequencial());
-			System.out.println(apostaVO.getDataInicial());
+
 			return apostaBO.consultarSomaApostaPorParametros(apostaVO);
 
 

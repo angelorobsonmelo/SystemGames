@@ -14,6 +14,10 @@
 
 		$scope.ToggleCampeonato = false;
 		var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+		$scope.usuario = usuarioLogado;
+
+		$scope.mostrar = false;
+
 
 
 		var items = {};
@@ -134,6 +138,7 @@
 		$scope.salvarAposta = function(valorTtotal,valorAposta) {
 			somandoValores();
 			console.log($scope.valoresSomados[0].valApostado);
+			$scope.mostrar = true;
 			console.log(usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario);
 
 				$scope.aposta.jogoApostadoVO = {};
@@ -165,18 +170,23 @@
 
 			if(($scope.valoresSomados[0].valApostado > 0) && ($scope.valoresSomados[0].valApostado >= $scope.aposta.valApostado)){
 				GerenciarApostaFactory.salvar($scope.aposta).then(function(data) {
-
+					/*var btn_print = document.querySelector('#botao-print');
+					 console.log(btn_print);
+					 btn_print.addEventListener('click', function(){});*/
 
 					if(data == 'OK') {
 
-						swal("Aviso!", "Salvo com Sucesso.", "success");
+						print();
+
 						somandoValores();
 
 						$scope.aposta = '';
 						items.jogos = [];
+						$scope.mostrar = false;
 						/*$scope.limiteAtual = usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario - $scope.valoresSomados[0].valApostado;*/
 
 					}
+
 
 				});
 			}else {
