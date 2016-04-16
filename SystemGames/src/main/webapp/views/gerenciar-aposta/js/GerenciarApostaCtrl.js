@@ -17,6 +17,10 @@
 		$scope.usuario = usuarioLogado;
 
 		$scope.mostrar = false;
+		var myDate = new Date();
+
+		myDate = new Date(myDate.getUTCFullYear(), myDate.getUTCMonth(), myDate.getUTCDate());
+		$scope.data = myDate;
 
 
 
@@ -112,6 +116,22 @@
 
 		});
 
+		var sorteados = [];
+		var valorMaximo = 1000000;
+		$scope.gera = function(){
+			if (sorteados.length == valorMaximo) {
+				if (confirm('Já não há mais! Quer recomeçar?')) sorteados = [];
+				else return;
+			}
+			var sugestao = Math.ceil(Math.random() * valorMaximo) + 1000; // Escolher um numero ao acaso
+			while (sorteados.indexOf(sugestao) >= 0) {  // Enquanto o numero já existir, escolher outro
+				sugestao = Math.ceil(Math.random() * valorMaximo) + 1000;
+			}
+			sorteados.push(sugestao);// adicionar este numero à array de numeros sorteados para futura referência
+			$scope.codigoGerado = sugestao;
+			return sugestao; // devolver o numero único
+		};
+
 		$scope.listarJogoPorCampeonato = function(){
 
 			GerenciarApostaFactory.buscarJogoPorParams($scope.jogo).then(function(dado){
@@ -137,7 +157,7 @@
 
 		$scope.salvarAposta = function(valorTtotal,valorAposta) {
 			somandoValores();
-			console.log($scope.valoresSomados[0].valApostado);
+			$scope.gera();
 			$scope.mostrar = true;
 			console.log(usuarioLogado.configuracaoCambistaVO.limiteMaximoVendaDiario);
 
@@ -159,13 +179,11 @@
 				}
 
 				$scope.aposta.valRetornoPossivel = $scope.aposta.valApostado * $scope.valorTtotal;
+				$scope.aposta.codigo = $scope.codigoGerado;
 				$scope.aposta.jogoApostadoVO = $scope.items.jogos;
 				$scope.aposta.qtdJogos = $scope.items.jogos.length;
 				$scope.aposta.cambistaVO = {};
 				$scope.aposta.cambistaVO.sequencial = usuarioLogado.sequencial;
-
-
-
 
 
 			if(($scope.valoresSomados[0].valApostado > 0) && ($scope.valoresSomados[0].valApostado >= $scope.aposta.valApostado)){

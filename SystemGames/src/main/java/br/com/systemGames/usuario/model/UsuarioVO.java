@@ -22,6 +22,7 @@ public class UsuarioVO {
 	private String cidade;
 	private String cep;
 	private String uf;
+	private EmpresaVO empresaVO;
 	
 
 	
@@ -29,6 +30,7 @@ public class UsuarioVO {
 	public UsuarioVO() {
 		
 		tipoUsuarioVO = new TipoUsuarioVO();
+		empresaVO = new EmpresaVO();
 		
 
 	}
@@ -133,6 +135,16 @@ public class UsuarioVO {
 
 	public void setApelido(String apelido) {
 		this.apelido = apelido;
+	}
+
+
+	public EmpresaVO getEmpresaVO() {
+		return empresaVO;
+	}
+
+
+	public void setEmpresaVO(EmpresaVO empresaVO) {
+		this.empresaVO = empresaVO;
 	}
 	
 	

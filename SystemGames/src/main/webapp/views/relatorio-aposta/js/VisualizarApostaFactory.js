@@ -3,6 +3,7 @@ materialAdmin
 
 
 	var urlRaiz = '/SystemGames/rest/aposta/';
+		var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
 
 
@@ -22,7 +23,7 @@ materialAdmin
 		var apostaToJson = function () {
 			return angular.toJson({
 
-				"cambistaVO":{"sequencial": aposta2.seq},
+				"cambistaVO":{"sequencial": aposta2.seq, "usuarioVO": {"sequencial": usuarioLogado.usuarioVO.sequencial}},
 				"dataInicial": aposta2.dtInicial,
 				"dataFinal": aposta2.dtFinal,
 				"sequencial": aposta2.seqAposta

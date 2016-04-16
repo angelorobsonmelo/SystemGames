@@ -183,15 +183,35 @@
 				</div>
 
 				<button class="btn btn-primary btn-block waves-effect" type="submit" >CONFIRMAR</button>
+				<br/>
+				<button class="btn btn-primary waves-effect" type="button" ng-click="gera()" >RANDON</button>
 
 				<page size="A4" class="" id="PDFtoPrint" ng-show="mostrar">
 
 					<table>
 						<thead>
 
-							<th >PALPITE CERTO</th>
+							<th >{{usuario.usuarioVO.empresaVO.nome}}</th>
+							<tr >
+
+								<td class=""><strong>{{'Codigo: ' + codigoGerado }}</strong><br/></td>
+							</tr>
+							<tr>
+								<td class="">{{'Apostador: ' + aposta.nomeApostador}}<br/></td>
+							</tr>
+							<tr>
+								<td class=""><strong>{{data}}</strong></td>
+
+
+							</tr>
+							<tr>
+								<td>
+									<p  class="borda-cupom"></p><!--<hr id="borda-cupom"/>-->
+								</td>
+							</tr>
 
 						</thead>
+
 						<tbody ng-repeat="w in items.jogos">
 						<tr >
 

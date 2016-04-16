@@ -23,7 +23,7 @@
 		$scope.listarAposta = function(aposta){
 
 			var usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-
+			console.log(usuarioLogado);
 			if(usuarioLogado.tipoUsuarioVO.sequencial == 2){
 				aposta.seq = aposta.sequencial
 			}else if(usuarioLogado.tipoUsuarioVO.sequencial == 3){

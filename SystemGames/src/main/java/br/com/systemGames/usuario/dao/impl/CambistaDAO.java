@@ -335,6 +335,7 @@ public class CambistaDAO implements ICambistaDAO {
 			cambistaVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
 			
 			cambistaVO.getUsuarioVO().setSequencial(rs.getInt("cod_usuario"));
+			cambistaVO.getUsuarioVO().getEmpresaVO().setNome(rs.getString("nome_empresa"));
 
 			cambistaVO.getConfiguracaoCambistaVO().setComissao1(rs.getDouble("comissao1"));
 			cambistaVO.getConfiguracaoCambistaVO().setComissao2(rs.getDouble("comissao2"));

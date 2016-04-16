@@ -23,6 +23,7 @@ public class ApostaVO {
 	private ConfiguracaoJogoVO configuracaoJogoVO;
 	private String resultadoAposta;
 	private String status;
+	private Integer codigo;
 	
 	private Date dataInicial;
 	private Date dataFinal;
@@ -179,6 +180,17 @@ public class ApostaVO {
 	public void setTeste(java.sql.Date teste) {
 		this.teste = teste;
 	}
+
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+	
 	
 	
 	

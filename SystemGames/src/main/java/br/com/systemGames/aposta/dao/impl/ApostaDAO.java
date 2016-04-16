@@ -31,7 +31,7 @@ public class ApostaDAO implements IApostaDAO {
 	}
 
 	public String inserir(ApostaVO apostaVO) throws DAOException {
-		procedure = "{ ? = CALL SP_APOSTA_INSERIR(?,?,?,?,?,?)}";	
+		procedure = "{ ? = CALL SP_APOSTA_INSERIR(?,?,?,?,?,?,?)}";	
 		cstmt = null;
 		resultado = null;
 
@@ -46,6 +46,7 @@ public class ApostaDAO implements IApostaDAO {
 			cstmt.setDouble(5, apostaVO.getValComissao());			
 			cstmt.setDouble(6, apostaVO.getValRetornoPossivel());
 			cstmt.setInt(7, apostaVO.getQtdJogos());
+			cstmt.setInt(8, apostaVO.getCodigo());
 
 
 			cstmt.execute();
@@ -209,7 +210,7 @@ public class ApostaDAO implements IApostaDAO {
 
 	public ArrayList<ApostaVO> consultarApostaPorParametros(
 			ApostaVO apostaVO) throws DAOException {
-		String consulta = "{? = CALL SP_APOSTA_BUSCAR_POR_PARAMS(?,?,?,?)}";
+		String consulta = "{? = CALL SP_APOSTA_BUSCAR_POR_PARAMS(?,?,?,?,?)}";
 		CallableStatement cstmt = null;
 		ArrayList<ApostaVO> listaAposta = new ArrayList<ApostaVO>();
 
@@ -221,6 +222,7 @@ public class ApostaDAO implements IApostaDAO {
 			cstmt.setDate(3, new java.sql.Date(VerificadorValorObjeto.retornaLongValorObjetoOuZero(apostaVO.getDataInicial().getTime())));            
 			cstmt.setDate(4, VerificadorValorObjeto.retornaSQLDateValorObjetoOuNull(apostaVO.getDataFinal()));
 			cstmt.setInt(5, VerificadorValorObjeto.retornaIntValorObjetoOuZero(apostaVO.getSequencial()));
+			cstmt.setInt(6, VerificadorValorObjeto.retornaIntValorObjetoOuZero(apostaVO.getCambistaVO().getUsuarioVO().getSequencial()));
 			cstmt.execute();
 
 			listaAposta = mapearResultSet((ResultSet) cstmt.getObject(1));
@@ -256,6 +258,7 @@ public class ApostaDAO implements IApostaDAO {
 			apostaVO.setValRetornoPossivel(rs.getDouble("val_retorno_possivel"));
 			apostaVO.setNomeApostador(rs.getString("nome_apostador"));
 			apostaVO.setQtdJogos(rs.getInt("qtd_jogos"));
+			apostaVO.setCodigo(rs.getInt("codigo"));
 			apostaVO.getCambistaVO().setNome(rs.getString("nome_cambista"));
 			apostaVO.getCambistaVO().setApelido(rs.getString("apelido_cambista"));
 
@@ -327,6 +330,7 @@ public class ApostaDAO implements IApostaDAO {
 			apostaVO.setValRetornoPossivel(rs.getDouble("val_retorno_possivel"));
 			apostaVO.setNomeApostador(rs.getString("nome_apostador"));
 			apostaVO.setQtdJogos(rs.getInt("qtd_jogos"));
+			apostaVO.setCodigo(rs.getInt("codigo"));
 
 
 

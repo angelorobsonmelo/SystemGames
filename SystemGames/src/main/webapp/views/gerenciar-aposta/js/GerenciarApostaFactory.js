@@ -9,6 +9,23 @@
 
 		var urlRaiz = '/SystemGames/rest/aposta/';
 
+		var sorteados = [];
+		var valorMaximo = 1000;
+
+		function criarUnico() {
+			if (sorteados.length == valorMaximo) {
+				if (confirm('Já não há mais! Quer recomeçar?')) sorteados = [];
+				else return;
+			}
+			var sugestao = Math.ceil(Math.random() * valorMaximo); // Escolher um numero ao acaso
+			while (sorteados.indexOf(sugestao) >= 0) {  // Enquanto o numero já existir, escolher outro
+				sugestao = Math.ceil(Math.random() * valorMaximo);
+			}
+			sorteados.push(sugestao);
+			console.log(sugestao);// adicionar este numero à array de numeros sorteados para futura referência
+			return sugestao; // devolver o numero único
+		}
+
 
 		function buscarJogoPorParams(jogo) {
 				if(typeof jogo.campeonatoVO.sequencial == 'undefined'){
@@ -130,7 +147,8 @@
 			buscarJogoPorParams: buscarJogoPorParams,
 			salvar: salvar,
 			inserirResultadoAposta: inserirResultadoAposta,
-			somaValoApostado: somaValoApostado
+			somaValoApostado: somaValoApostado,
+			criarUnico: criarUnico
 
 
 		}

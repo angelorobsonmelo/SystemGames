@@ -336,6 +336,7 @@ public class UsuarioDAO implements IUsuarioDAO {
 			usuarioVO.setNumeroEndereco(rs.getString("num_endereco"));
 			usuarioVO.setApelido(rs.getString("apelido"));
 			usuarioVO.getTipoUsuarioVO().setSequencial(rs.getInt("cod_tipo_usuario"));
+			usuarioVO.getEmpresaVO().setNome(rs.getString("nome_empresa"));
 
 		}
 		return usuarioVO;
